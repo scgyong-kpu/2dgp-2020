@@ -1,6 +1,18 @@
 from pico2d import *
 from gobj import *
 
+def enter():
+    global grass, team
+    grass = Grass()
+    team = [ Boy() for i in range(11) ]
+
+def update():
+    for b in team: b.update()
+
+def draw():
+    grass.draw()
+    for b in team: b.draw()
+
 def handle_events():
     global running
     evts = get_events()
@@ -12,8 +24,7 @@ def handle_events():
 
 open_canvas()
 
-grass = Grass()
-team = [ Boy() for i in range(11) ]
+enter()
 
 running = True
 
@@ -22,12 +33,11 @@ while running:
     handle_events()
 
     # game logic
-    for b in team: b.update()
+    update()
 
     # game rendering
     clear_canvas()
-    grass.draw()
-    for b in team: b.draw()
+    draw()
     update_canvas()
 
     delay(0.01)
