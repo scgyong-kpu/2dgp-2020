@@ -18,7 +18,7 @@ def handle_event(e):
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
         gfw.quit()
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_SPACE):
-        gfw.change(game_state)
+        gfw.push(game_state)
 
 def exit():
     global image
