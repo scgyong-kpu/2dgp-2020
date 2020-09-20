@@ -13,14 +13,12 @@ def draw():
     grass.draw()
     for b in team: b.draw()
 
-def handle_events():
+def handle_event(e):
     global running
-    evts = get_events()
-    for e in evts:
-        if e.type == SDL_QUIT:
-            running = False
-        elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-            running = False
+    if e.type == SDL_QUIT:
+        running = False
+    elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
+        running = False
 
 open_canvas()
 
@@ -30,7 +28,8 @@ running = True
 
 while running:
     # event handling
-    handle_events()
+    evts = get_events()
+    for e in evts: handle_event(e)
 
     # game logic
     update()
