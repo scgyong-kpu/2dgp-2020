@@ -1,34 +1,44 @@
 # version 2020-0921
+import time
 from pico2d import *
 
 running = True
+stack = None
 frame_interval = 0.01
+delta_time = 0
 
 def quit():
     global running
     running = False
 
-def run(state):
-    global running
-    global current_state
-
-    current_state = state
+def run(start_state):
+    global running, stack
+    running = True
+    stack = [start_state]
 
     open_canvas()
-    current_state.enter()
 
+    start_state.enter()
+
+    global delta_time
+    last_time = time.time()
     while running:
+        # inter-frame (delta) time
+        now = time.time()
+        delta_time = now - last_time
+        last_time = now
+
         # event handling
         evts = get_events()
         for e in evts:
-            current_state.handle_event(e)
+            stack[-1].handle_event(e)
 
         # game logic
-        current_state.update()
+        stack[-1].update()
 
         # game rendering
         clear_canvas()
-        current_state.draw()
+        stack[-1].draw()
         update_canvas()
 
         delay(frame_interval)
@@ -36,10 +46,32 @@ def run(state):
     close_canvas()
 
 def change(state):
-    global current_state
-    current_state.exit()
-    current_state = state
-    current_state.enter()
+    global stack
+    if (len(stack) > 0):
+        stack.pop().exit()
+    stack.append(state)
+    state.enter()
+
+def push(state):
+    global stack
+    if (len(stack) > 0):
+        stack[-1].pause()
+    stack.append(state)
+    state.enter()
+
+def pop():
+    global stack
+    size = len(stack)
+    if size == 1:
+        quit()
+    elif size > 1:
+        # execute the current state's exit function
+        stack[-1].exit()
+        # remove the current state
+        stack.pop()
+
+        # execute resume function of the previous state
+        stack[-1].resume()
 
 def run_main():
     import sys
