@@ -1,4 +1,4 @@
 import gfw
-import game_state
+import title_state
 
-gfw.run(game_state)
+gfw.run(title_state)

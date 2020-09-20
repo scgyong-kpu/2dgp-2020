@@ -10,24 +10,33 @@ def quit():
 
 def run(state):
     global running
+    global current_state
+
+    current_state = state
 
     open_canvas()
-    state.enter()
+    current_state.enter()
 
     while running:
         # event handling
         evts = get_events()
         for e in evts:
-            state.handle_event(e)
+            current_state.handle_event(e)
 
         # game logic
-        state.update()
+        current_state.update()
 
         # game rendering
         clear_canvas()
-        state.draw()
+        current_state.draw()
         update_canvas()
 
         delay(frame_interval)
 
     close_canvas()
+
+def change(state):
+    global current_state
+    current_state.exit()
+    current_state = state
+    current_state.enter()
