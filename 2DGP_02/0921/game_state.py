@@ -24,3 +24,6 @@ def handle_event(e):
 def exit():
     pass
 
+if __name__ == '__main__':
+    gfw.run_main()
+    

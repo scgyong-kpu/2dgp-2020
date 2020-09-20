@@ -23,3 +23,6 @@ def handle_event(e):
 def exit():
     global image
     del image
+
+if __name__ == '__main__':
+    gfw.run_main()

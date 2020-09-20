@@ -40,3 +40,8 @@ def change(state):
     current_state.exit()
     current_state = state
     current_state.enter()
+
+def run_main():
+    import sys
+    main_module = sys.modules['__main__']
+    run(main_module)
