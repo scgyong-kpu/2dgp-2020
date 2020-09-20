@@ -1,3 +1,4 @@
+import gfw
 from pico2d import *
 from gobj import *
 
@@ -14,32 +15,9 @@ def draw():
     for b in team: b.draw()
 
 def handle_event(e):
-    global running
     if e.type == SDL_QUIT:
-        running = False
+        gfw.quit()
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-        running = False
+        gfw.quit()
 
-open_canvas()
-
-enter()
-
-running = True
-
-while running:
-    # event handling
-    evts = get_events()
-    for e in evts: handle_event(e)
-
-    # game logic
-    update()
-
-    # game rendering
-    clear_canvas()
-    draw()
-    update_canvas()
-
-    delay(0.01)
-
-close_canvas()
 
