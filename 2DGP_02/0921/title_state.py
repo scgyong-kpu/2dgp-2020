@@ -19,10 +19,14 @@ def handle_event(e):
         gfw.quit()
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_SPACE):
         gfw.push(game_state)
-
 def exit():
     global image
     del image
 
+def pause():
+    pass
+def resume():
+    pass
+    
 if __name__ == '__main__':
     gfw.run_main()
