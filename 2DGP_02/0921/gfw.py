@@ -43,6 +43,10 @@ def run(start_state):
 
         delay(frame_interval)
 
+    while (len(stack) > 0):
+        stack[-1].exit()
+        stack.pop()
+
     close_canvas()
 
 def change(state):
