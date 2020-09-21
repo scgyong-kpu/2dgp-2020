@@ -1,13 +1,19 @@
 import gfw
 from pico2d import *
-import game_state
+import title_state
+
 
 def enter():
-    global image
+    global image, elapsed
     image = load_image('../res/kpu_credit.png')
+    elapsed = 0
 
 def update():
-    pass
+    global elapsed
+    elapsed += gfw.delta_time
+    print(elapsed)
+    if elapsed > 1.0:
+        gfw.change(title_state)
 
 def draw():
     image.draw(400, 300)
