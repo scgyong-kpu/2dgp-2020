@@ -57,8 +57,14 @@ class Boy:
         self.pos = x+dx, y+dy
         self.fidx = (self.fidx + 1) % 8
 
+    def ballDelta(self):
+        dxs = [ -3, 3, -1, 1 ]
+        mag = dxs[self.action]
+        dx,dy = self.delta
+        return mag+dx, 2+dy
+
     def fire(self):
-        ball = Ball(self.pos, self.delta)
+        ball = Ball(self.pos, self.ballDelta())
         Ball.balls.append(ball)
         print('Ball count = %d' % len(Ball.balls))
 
