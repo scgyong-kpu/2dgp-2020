@@ -21,6 +21,8 @@ class Ball:
         self.image = load_image(RES_DIR + imageName)
         self.pos = pos
         self.delta = delta
+        self.radius = self.image.h // 2
+        print('Radius = %d' % self.radius)
     def draw(self):
         self.image.draw(*self.pos)
     def update(self):
@@ -30,7 +32,9 @@ class Ball:
         y += dy
         gravity = 0.1
         dy -= gravity
-        if y < 50 and dy < 0:
+
+        bottom = y - self.radius
+        if bottom < 50 and dy < 0:
             dy *= rand(-0.8)
             if dy <= 1:
                 dy = 0
