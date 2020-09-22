@@ -51,13 +51,12 @@ class Boy:
         if self.target is not None:
             helper.move_toward_obj(self)
             if self.target == None:
-                print("Done")
-            #     print("Removing target: ", self.targets[0], " from %d target(s)." % len(self.targets))
-            #     del self.targets[0]
-            #     if len(self.targets) > 0:
-            #         helper.set_target(self, self.targets[0])
-            #     else:
-            #         self.speed = 0
+                print("Removing target: ", self.targets[0], " from %d target(s)." % len(self.targets))
+                del self.targets[0]
+                if len(self.targets) > 0:
+                    helper.set_target(self, self.targets[0])
+                # else:
+                #     self.speed = 0
         self.fidx = (self.fidx + 1) % 8
 
     def ballDelta(self):
@@ -85,15 +84,16 @@ class Boy:
 
     def appendTarget(self, target):
         if target == self.pos: return
-        # for t in self.targets:
-        #     if t == target: return
+        for t in self.targets:
+            if t == target: return
 
-        helper.set_target(self, target)
+        # helper.set_target(self, target)
 
-        # self.targets.append(target)
+        self.targets.append(target)
         # self.speed += 1
         # print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
-        # helper.set_target(self, self.targets[0])
+        if len(self.targets) == 1:
+            helper.set_target(self, self.targets[0])
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Boy.KEY_MAP:
