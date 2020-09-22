@@ -1,5 +1,6 @@
 import random
 from pico2d import *
+import gfw_image
 from gobj import *
 from ball import Ball
 
@@ -31,7 +32,7 @@ class Boy:
         self.delta = 0, 0
         self.fidx = random.randint(0, 7)
         if Boy.image == None:
-            Boy.image = load_image(RES_DIR + '/animation_sheet.png')
+            Boy.image = gfw_image.load(RES_DIR + '/animation_sheet.png')
 
     def draw(self):
         sx = self.fidx * 100
