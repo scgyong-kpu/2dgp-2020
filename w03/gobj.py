@@ -24,23 +24,21 @@ class Ball:
         dx,dy = self.delta
         self.pos = x+dx, y+dy
 
-KEY_MAP = {
-    (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
-    (SDL_KEYDOWN, SDLK_RIGHT): ( 1,  0),
-    (SDL_KEYDOWN, SDLK_DOWN):  ( 0, -1),
-    (SDL_KEYDOWN, SDLK_UP):    ( 0,  1),
-    (SDL_KEYUP, SDLK_LEFT):    ( 1,  0),
-    (SDL_KEYUP, SDLK_RIGHT):   (-1,  0),
-    (SDL_KEYUP, SDLK_DOWN):    ( 0,  1),
-    (SDL_KEYUP, SDLK_UP):      ( 0, -1),
-}
-KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
-
+    
 class Boy:
+    KEY_MAP = {
+        (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
+        (SDL_KEYDOWN, SDLK_RIGHT): ( 1,  0),
+        (SDL_KEYDOWN, SDLK_DOWN):  ( 0, -1),
+        (SDL_KEYDOWN, SDLK_UP):    ( 0,  1),
+        (SDL_KEYUP, SDLK_LEFT):    ( 1,  0),
+        (SDL_KEYUP, SDLK_RIGHT):   (-1,  0),
+        (SDL_KEYUP, SDLK_DOWN):    ( 0,  1),
+        (SDL_KEYUP, SDLK_UP):      ( 0, -1),
+    }
+    KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
+
     #constructor
-    # def __init__(self, pos, delta):
-    # 	self.x, self.y = pos
-    # 	self.dx, self.dy = delta
     def __init__(self):
         self.pos = get_canvas_width() // 2, get_canvas_height() // 2
         self.delta = 0, 0
@@ -62,9 +60,9 @@ class Boy:
         print('Ball count = %d' % len(Ball.balls))
     def handle_event(self, e):
         pair = (e.type, e.key)
-        if pair in KEY_MAP:
+        if pair in Boy.KEY_MAP:
             prev_dx = self.delta[0]
-            dd = KEY_MAP[pair]
+            dd = Boy.KEY_MAP[pair]
             self.delta = (self.delta[0] + dd[0], self.delta[1] + dd[1])
             if prev_dx != self.delta[0]:
                 if self.delta[0] < 0:
@@ -75,7 +73,7 @@ class Boy:
                     self.action = 2
                 elif prev_dx > 0:
                     self.action = 3
-        elif pair == KEYDOWN_SPACE:
+        elif pair == Boy.KEYDOWN_SPACE:
             self.fire()
 
 if __name__ == "__main__":
