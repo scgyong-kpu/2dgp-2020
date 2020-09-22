@@ -23,6 +23,8 @@ class Ball:
         x,y = self.pos
         dx,dy = self.delta
         self.pos = x+dx, y+dy
+        gravity = 0.05
+        self.delta = dx, dy - gravity
 
     
 class Boy:
