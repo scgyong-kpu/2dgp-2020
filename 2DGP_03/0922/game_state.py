@@ -3,22 +3,26 @@ from pico2d import *
 from gobj import *
 
 def enter():
-    global grass, team
+    global grass, boy
     grass = Grass()
-    team = [ Boy() for i in range(11) ]
+    boy = Boy()
 
 def update():
-    for b in team: b.update()
+    boy.update()
+    for b in balls: b.update()
 
 def draw():
     grass.draw()
-    for b in team: b.draw()
+    boy.draw()
+    for b in balls: b.draw()
 
 def handle_event(e):
     if e.type == SDL_QUIT:
         gfw.quit()
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
         gfw.pop()
+    elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_SPACE):
+        boy.fire()
 
 def exit():
     pass
