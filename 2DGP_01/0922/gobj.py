@@ -4,12 +4,25 @@ from pico2d import *
 RES_DIR = '../res'
 
 class Grass:
-	def __init__(self):
-		self.image = load_image(RES_DIR + '/grass.png')
-	def draw(self):
-		self.image.draw(400, 30)
-	def update(self):
-		pass
+    def __init__(self):
+        self.image = load_image(RES_DIR + '/grass.png')
+    def draw(self):
+        self.image.draw(400, 30)
+    def update(self):
+        pass
+
+class Ball:
+    def __init__(self, x, y, dx, dy):
+        self.image = load_image(RES_DIR + '/ball21x21.png')
+        self.x, self.y = x, y
+        self.dx, self.dy = dx, dy
+    def draw(self):
+        self.image.draw(self.x, self.y)
+    def update(self):
+        self.x += self.dx
+        self.y += self.dy
+
+balls = []
 
 class Boy:
     #constructor
@@ -37,6 +50,10 @@ class Boy:
         self.x += self.dx
         self.y += self.dy
         self.fidx = (self.fidx + 1) % 8
+    def fire(self):
+        ball = Ball(self.x, self.y, self.dx, self.dy)
+        balls.append(ball)
+        print(ball)
     def handle_event(self, e):
         prev_dx = self.dx
         if e.type == SDL_KEYDOWN:
@@ -48,6 +65,8 @@ class Boy:
                 self.dy -= 1
             elif e.key == SDLK_UP:
                 self.dy += 1
+            elif e.key == SDLK_SPACE:
+                self.fire()
         elif e.type == SDL_KEYUP:
             if e.key == SDLK_LEFT:
                 self.dx += 1
