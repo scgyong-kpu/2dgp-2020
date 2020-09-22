@@ -45,34 +45,38 @@ class Boy:
         self.fidx = random.randint(0, 7)
         self.image = load_image(RES_DIR + '/animation_sheet.png')
         self.action = 3
+
     def draw(self):
         sx = self.fidx * 100
         sy = self.action * 100
         self.image.clip_draw(sx, sy, 100, 100, *self.pos)
+
     def update(self):
         x,y = self.pos
         dx,dy = self.delta
         self.pos = x+dx, y+dy
         self.fidx = (self.fidx + 1) % 8
+
     def fire(self):
         ball = Ball(self.pos, self.delta)
         Ball.balls.append(ball)
         print('Ball count = %d' % len(Ball.balls))
+
+    def updateDelta(self, ddx, ddy):
+        dx,dy = self.delta
+        dx += ddx
+        dy += ddy
+        if ddx != 0:
+            self.action = \
+                0 if dx < 0 else \
+                1 if dx > 0 else \
+                2 if ddx > 0 else 3
+        self.delta = dx, dy
+
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Boy.KEY_MAP:
-            prev_dx = self.delta[0]
-            dd = Boy.KEY_MAP[pair]
-            self.delta = (self.delta[0] + dd[0], self.delta[1] + dd[1])
-            if prev_dx != self.delta[0]:
-                if self.delta[0] < 0:
-                    self.action = 0
-                elif self.delta[0] > 0:
-                    self.action = 1
-                elif prev_dx < 0:
-                    self.action = 2
-                elif prev_dx > 0:
-                    self.action = 3
+            self.updateDelta(*Boy.KEY_MAP[pair])
         elif pair == Boy.KEYDOWN_SPACE:
             self.fire()
 
