@@ -15,6 +15,7 @@ class Boy:
         (SDL_KEYUP, SDLK_UP):      ( 0, -1),
     }
     KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
+    image = None
 
     #constructor
     def __init__(self, rand_pos=False):
@@ -29,7 +30,8 @@ class Boy:
             self.action = 3
         self.delta = 0, 0
         self.fidx = random.randint(0, 7)
-        self.image = load_image(RES_DIR + '/animation_sheet.png')
+        if Boy.image == None:
+            Boy.image = load_image(RES_DIR + '/animation_sheet.png')
 
     def draw(self):
         sx = self.fidx * 100
