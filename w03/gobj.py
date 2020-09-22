@@ -3,6 +3,9 @@ from pico2d import *
 
 RES_DIR = '../res'
 
+def rand(val):
+    return val * random.uniform(0.9, 1.1)
+
 class Grass:
     def __init__(self):
         self.image = load_image(RES_DIR + '/grass.png')
@@ -27,7 +30,7 @@ class Ball:
         gravity = 0.1
         dy -= gravity
         if y < 50 and dy < 0:
-            dy *= -0.8
+            dy *= rand(-0.8)
             if dy <= 1:
                 dy = 0
 
@@ -70,7 +73,7 @@ class Boy:
         dxs = [ -3, 3, -1, 1 ]
         mag = dxs[self.action]
         dx,dy = self.delta
-        return mag+dx, 2+dy
+        return rand(mag+dx), rand(2+dy)
 
     def fire(self):
         ball = Ball(self.pos, self.ballDelta())
