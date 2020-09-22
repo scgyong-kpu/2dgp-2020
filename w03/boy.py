@@ -17,12 +17,19 @@ class Boy:
     KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
 
     #constructor
-    def __init__(self):
-        self.pos = get_canvas_width() // 2, get_canvas_height() // 2
+    def __init__(self, rand_pos=False):
+        if rand_pos:
+            self.pos = (
+                random.randint(100, 700),
+                random.randint(100, 500)
+            )
+            self.action = random.randint(0, 3)
+        else:
+            self.pos = get_canvas_width() // 2, get_canvas_height() // 2
+            self.action = 3
         self.delta = 0, 0
         self.fidx = random.randint(0, 7)
         self.image = load_image(RES_DIR + '/animation_sheet.png')
-        self.action = 3
 
     def draw(self):
         sx = self.fidx * 100
