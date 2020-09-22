@@ -28,6 +28,8 @@ class Ball:
         dy -= gravity
         if y < 50 and dy < 0:
             dy *= -0.8
+            if dy <= 1:
+                dy = 0
 
         self.pos = x, y
         self.delta = dx, dy
