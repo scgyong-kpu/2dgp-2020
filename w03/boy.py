@@ -49,14 +49,17 @@ class Boy:
         self.pos = x+dx, y+dy
 
         if self.target is not None:
+            ddx = -self.delta[0]
             helper.move_toward_obj(self)
             if self.target == None:
                 print("Removing target: ", self.targets[0], " from %d target(s)." % len(self.targets))
                 del self.targets[0]
                 if len(self.targets) > 0:
                     helper.set_target(self, self.targets[0])
+                    self.updateAction(self.delta[0],0)
                 else:
                     self.speed = 0
+                    self.updateAction(0, ddx)
         self.fidx = (self.fidx + 1) % 8
 
     def ballDelta(self):
@@ -76,11 +79,14 @@ class Boy:
         dx += ddx
         dy += ddy
         if ddx != 0:
-            self.action = \
-                0 if dx < 0 else \
-                1 if dx > 0 else \
-                2 if ddx > 0 else 3
+            self.updateAction(dx, ddx)
         self.delta = dx, dy
+
+    def updateAction(self, dx, ddx):
+        self.action = \
+            0 if dx < 0 else \
+            1 if dx > 0 else \
+            2 if ddx > 0 else 3
 
     def appendTarget(self, target):
         if target == self.pos: return
@@ -93,6 +99,7 @@ class Boy:
         self.speed += 1
         print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
         helper.set_target(self, self.targets[0])
+        self.updateAction(self.delta[0],0)
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Boy.KEY_MAP:
