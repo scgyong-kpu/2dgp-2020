@@ -1,11 +1,13 @@
 import random
 from pico2d import *
 
+RES_DIR = '../res'
+
 class Boy:
 	def __init__(self):
 		#self.x, self.y = get_canvas_width() // 2, 85
 		self.x, self.y = random.randint(100, 700), random.randint(100, 500)
-		self.image = load_image('../../res/run_animation.png')
+		self.image = load_image(RES_DIR + '/run_animation.png')
 		self.dx = random.random()
 		self.fidx = random.randint(0, 7)
 	def draw(self):
@@ -17,7 +19,7 @@ class Boy:
 class Grass:
 	def __init__(self):
 		self.x, self.y = 400, 30
-		self.image = load_image('../../res/grass.png')
+		self.image = load_image(RES_DIR + '/grass.png')
 	def draw(self):
 		self.image.draw(self.x, self.y)
 
