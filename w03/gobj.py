@@ -22,10 +22,15 @@ class Ball:
     def update(self):
         x,y = self.pos
         dx,dy = self.delta
-        self.pos = x+dx, y+dy
-        gravity = 0.05
-        self.delta = dx, dy - gravity
+        x += dx
+        y += dy
+        gravity = 0.1
+        dy -= gravity
+        if y < 50 and dy < 0:
+            dy *= -0.8
 
+        self.pos = x, y
+        self.delta = dx, dy
     
 class Boy:
     KEY_MAP = {
