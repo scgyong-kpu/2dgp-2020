@@ -8,7 +8,7 @@ def enter():
     global grass, boy
     grass = Grass()
     boy = Boy()
-    Boy.boys = [ Boy(True) for i in range(100) ]
+    Boy.boys = [ Boy(True) for i in range(1000) ]
 
 def update():
     boy.update()
