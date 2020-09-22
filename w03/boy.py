@@ -34,7 +34,7 @@ class Boy:
         self.fidx = random.randint(0, 7)
         self.target = None
         self.targets = []
-        self.speed = 1
+        self.speed = 0
         if Boy.image == None:
             Boy.image = gfw_image.load(RES_DIR + '/animation_sheet.png')
 
@@ -55,8 +55,8 @@ class Boy:
                 del self.targets[0]
                 if len(self.targets) > 0:
                     helper.set_target(self, self.targets[0])
-                # else:
-                #     self.speed = 0
+                else:
+                    self.speed = 0
         self.fidx = (self.fidx + 1) % 8
 
     def ballDelta(self):
@@ -90,10 +90,9 @@ class Boy:
         # helper.set_target(self, target)
 
         self.targets.append(target)
-        # self.speed += 1
-        # print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
-        if len(self.targets) == 1:
-            helper.set_target(self, self.targets[0])
+        self.speed += 1
+        print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
+        helper.set_target(self, self.targets[0])
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Boy.KEY_MAP:
