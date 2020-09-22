@@ -15,13 +15,14 @@ class Ball:
     balls = []
     def __init__(self, x, y, dx, dy):
         self.image = load_image(RES_DIR + '/ball21x21.png')
-        self.x, self.y = x, y
-        self.dx, self.dy = dx, dy
+        self.pos = x, y
+        self.delta = dx, dy
     def draw(self):
-        self.image.draw(self.x, self.y)
+        self.image.draw(*self.pos)
     def update(self):
-        self.x += self.dx
-        self.y += self.dy
+        x,y = self.pos
+        dx,dy = self.delta
+        self.pos = x+dx, y+dy
 
 class Boy:
     #constructor
