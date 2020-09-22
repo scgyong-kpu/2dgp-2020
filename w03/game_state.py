@@ -1,6 +1,8 @@
 import gfw
 from pico2d import *
 from gobj import *
+from ball import Ball
+from boy import Boy
 
 def enter():
     global grass, boy
