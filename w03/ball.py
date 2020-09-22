@@ -1,11 +1,12 @@
 from pico2d import *
 from gobj import *
+import gfw_image
 
 class Ball:
     balls = []
     def __init__(self, pos, delta, big=False):
         imageName = '/ball41x41.png' if big else '/ball21x21.png'
-        self.image = load_image(RES_DIR + imageName)
+        self.image = gfw_image.load(RES_DIR + imageName)
         self.pos = pos
         self.delta = delta
         self.radius = self.image.h // 2

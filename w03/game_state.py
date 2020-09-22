@@ -17,8 +17,8 @@ def update():
 
 def draw():
     grass.draw()
-    for b in Ball.balls: b.draw()
     for b in Boy.boys: b.draw()
+    for b in Ball.balls: b.draw()
     boy.draw()
 
 def handle_event(e):
