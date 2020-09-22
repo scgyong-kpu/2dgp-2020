@@ -12,6 +12,7 @@ class Grass:
         pass
 
 class Ball:
+    balls = []
     def __init__(self, x, y, dx, dy):
         self.image = load_image(RES_DIR + '/ball21x21.png')
         self.x, self.y = x, y
@@ -21,8 +22,6 @@ class Ball:
     def update(self):
         self.x += self.dx
         self.y += self.dy
-
-balls = []
 
 class Boy:
     #constructor
@@ -52,8 +51,8 @@ class Boy:
         self.fidx = (self.fidx + 1) % 8
     def fire(self):
         ball = Ball(self.x, self.y, self.dx, self.dy)
-        balls.append(ball)
-        print(ball)
+        Ball.balls.append(ball)
+        print('Ball count = %d' % len(Ball.balls))
     def handle_event(self, e):
         prev_dx = self.dx
         if e.type == SDL_KEYDOWN:

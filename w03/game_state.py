@@ -9,12 +9,12 @@ def enter():
 
 def update():
     boy.update()
-    for b in balls: b.update()
+    for b in Ball.balls: b.update()
 
 def draw():
     grass.draw()
     boy.draw()
-    for b in balls: b.draw()
+    for b in Ball.balls: b.draw()
 
 def handle_event(e):
     global boy
