@@ -8,16 +8,13 @@ def enter():
     global grass, boy
     grass = Grass()
     boy = Boy()
-    Boy.boys = [ Boy(True) for i in range(1000) ]
 
 def update():
     boy.update()
     for b in Ball.balls: b.update()
-    for b in Boy.boys: b.update()
 
 def draw():
     grass.draw()
-    for b in Boy.boys: b.draw()
     for b in Ball.balls: b.draw()
     boy.draw()
 
