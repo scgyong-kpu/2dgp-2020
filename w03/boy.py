@@ -100,9 +100,17 @@ class Boy:
         print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
         helper.set_target(self, self.targets[0])
         self.updateAction(self.delta[0],0)
+
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Boy.KEY_MAP:
+            if self.target is not None:
+                if e.type == SDL_KEYUP: return
+                self.updateAction(0, -self.delta[0])
+                self.target = None
+                self.delta = 0,0
+                self.targets = []
+                self.speed = 0
             self.updateDelta(*Boy.KEY_MAP[pair])
         elif pair == Boy.KEYDOWN_SPACE:
             self.fire()
