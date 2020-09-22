@@ -16,8 +16,9 @@ class Grass:
 
 class Ball:
     balls = []
-    def __init__(self, pos, delta):
-        self.image = load_image(RES_DIR + '/ball21x21.png')
+    def __init__(self, pos, delta, big=False):
+        imageName = '/ball41x41.png' if big else '/ball21x21.png'
+        self.image = load_image(RES_DIR + imageName)
         self.pos = pos
         self.delta = delta
     def draw(self):
@@ -80,7 +81,8 @@ class Boy:
         return rand(mag+dx), rand(2+dy)
 
     def fire(self):
-        ball = Ball(self.pos, self.ballDelta())
+        big = random.choice([False, True])
+        ball = Ball(self.pos, self.ballDelta(), big)
         Ball.balls.append(ball)
         print('Ball count = %d' % len(Ball.balls))
 
