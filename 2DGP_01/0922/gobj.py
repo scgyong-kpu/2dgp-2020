@@ -17,9 +17,9 @@ class Boy:
 	# 	self.x, self.y = pos
 	# 	self.dx, self.dy = delta
 	def __init__(self):
-		self.x = random.randint(100, 300) 
-		self.y = random.randint(100, 300)
-		self.dx, self.dy = random.random(), random.random()
+		self.x = get_canvas_width() // 2
+		self.y = get_canvas_height() // 2
+		self.dx, self.dy = 0, 0
 		self.fidx = random.randint(0, 7)
 		self.image = load_image(RES_DIR + '/run_animation.png')
 	def draw(self):
