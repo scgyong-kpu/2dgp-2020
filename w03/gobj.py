@@ -34,6 +34,10 @@ class Ball:
             if dy <= 1:
                 dy = 0
 
+        if x < -100 or x > get_canvas_width() + 100:
+            Ball.balls.remove(self)
+            print('Ball count - %d' % len(Ball.balls))
+
         self.pos = x, y
         self.delta = dx, dy
     
