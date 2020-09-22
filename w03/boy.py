@@ -3,6 +3,7 @@ from pico2d import *
 import gfw_image
 from gobj import *
 from ball import Ball
+import helper
 
 class Boy:
     KEY_MAP = {
@@ -31,6 +32,9 @@ class Boy:
             self.action = 3
         self.delta = 0, 0
         self.fidx = random.randint(0, 7)
+        self.target = None
+        self.targets = []
+        self.speed = 1
         if Boy.image == None:
             Boy.image = gfw_image.load(RES_DIR + '/animation_sheet.png')
 
@@ -43,6 +47,17 @@ class Boy:
         x,y = self.pos
         dx,dy = self.delta
         self.pos = x+dx, y+dy
+
+        if self.target is not None:
+            helper.move_toward_obj(self)
+            if self.target == None:
+                print("Done")
+            #     print("Removing target: ", self.targets[0], " from %d target(s)." % len(self.targets))
+            #     del self.targets[0]
+            #     if len(self.targets) > 0:
+            #         helper.set_target(self, self.targets[0])
+            #     else:
+            #         self.speed = 0
         self.fidx = (self.fidx + 1) % 8
 
     def ballDelta(self):
@@ -68,9 +83,22 @@ class Boy:
                 2 if ddx > 0 else 3
         self.delta = dx, dy
 
+    def appendTarget(self, target):
+        if target == self.pos: return
+        # for t in self.targets:
+        #     if t == target: return
+
+        helper.set_target(self, target)
+
+        # self.targets.append(target)
+        # self.speed += 1
+        # print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
+        # helper.set_target(self, self.targets[0])
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Boy.KEY_MAP:
             self.updateDelta(*Boy.KEY_MAP[pair])
         elif pair == Boy.KEYDOWN_SPACE:
             self.fire()
+        elif e.type == SDL_MOUSEBUTTONDOWN:
+            self.appendTarget((e.x, get_canvas_height() - e.y - 1))
