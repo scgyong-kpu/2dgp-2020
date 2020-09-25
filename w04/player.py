@@ -34,28 +34,15 @@ class Player:
         self.image.clip_draw(sx, 0, 100, 100, *self.pos)
 
     def update(self):
-        x,y = self.pos
-        dx,dy = self.delta
-        self.pos = x+dx, y+dy
+        self.pos = point_add(self.pos, self.delta)
         self.fidx = (self.fidx + 1) % 5
 
     def fire(self):
         pass
 
-    def updateDelta(self, ddx, ddy):
-        dx,dy = self.delta
-        self.delta = dx+ddx, dy+ddy
-
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
-            if self.target is not None:
-                if e.type == SDL_KEYUP: return
-                self.updateAction(0, -self.delta[0])
-                self.target = None
-                self.delta = 0,0
-                self.targets = []
-                self.speed = 0
-            self.updateDelta(*Player.KEY_MAP[pair])
+            self.delta = point_add(self.delta, Player.KEY_MAP[pair])
         elif pair == Player.KEYDOWN_SPACE:
             self.fire()
