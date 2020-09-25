@@ -28,25 +28,45 @@ class Player:
         self.targets = []
         self.speed = 0
         self.time = 0
-        if Player.image == None:
-            Player.image = gfw_image.load(RES_DIR + '/ryu.png')
+        self.fires = False
+        self.image = gfw_image.load(RES_DIR + '/ryu.png')
+        self.image2 = gfw_image.load(RES_DIR + '/ryu_1.png')
 
     def draw(self):
-        sx = self.fidx * 100
-        self.image.clip_draw(sx, 0, 100, 100, *self.pos)
+        if self.fires:
+            width = 132
+            sx = self.fidx * width
+            x,y = self.pos
+            self.image2.clip_draw(sx, 0, width, 100, x + 16,y)
+        else:
+            width = 100
+            sx = self.fidx * width
+            self.image.clip_draw(sx, 0, width, 100, *self.pos)
 
     def update(self):
         self.time += gfw.delta_time
         self.pos = point_add(self.pos, self.delta)
-        frame = self.time * 10
-        self.fidx = int(frame) % 5
+
+        if self.fires:
+            frame = self.time * 5
+            print(frame)
+            if frame < 5:
+                self.fidx = int(frame)
+            else:
+                self.time = 0
+                self.fires = False
+        else:
+            frame = self.time * 15
+            self.fidx = int(frame) % 5
 
     def fire(self):
-        pass
+        self.time = 0
+        self.fires = True
 
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
             self.delta = point_add(self.delta, Player.KEY_MAP[pair])
         elif pair == Player.KEYDOWN_SPACE:
-            self.fire()
+            if not self.fires:
+                self.fire()
