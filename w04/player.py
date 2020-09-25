@@ -12,23 +12,32 @@ class IdleState:
             IdleState.singleton.player = player
         return IdleState.singleton
 
+    def __init__(self):
+        self.image = gfw_image.load(RES_DIR + '/ryu.png')
+
+    def enter(self):
+        self.time = 0
+        self.fidx = 0
+    def exit(self):
+        pass
     def draw(self):
         width = 100
-        sx = self.player.fidx * width
-        self.player.image.clip_draw(sx, 0, width, 100, *self.player.pos)
+        sx = self.fidx * width
+        self.image.clip_draw(sx, 0, width, 100, *self.player.pos)
 
     def update(self):
-        self.player.time += gfw.delta_time
-        self.player.pos = point_add(self.player.pos, self.player.delta)
-        frame = self.player.time * 15
-        self.player.fidx = int(frame) % 5
+        self.time += gfw.delta_time
+        # self.player.pos = point_add(self.player.pos, self.player.delta)
+        move_obj(self.player)
+        frame = self.time * 15
+        self.fidx = int(frame) % 5
 
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
             self.player.delta = point_add(self.player.delta, Player.KEY_MAP[pair])
         elif pair == Player.KEYDOWN_SPACE:
-            self.player.fire()
+            self.player.set_state(FireState)
 
 class FireState:
     @staticmethod
@@ -38,21 +47,28 @@ class FireState:
             FireState.singleton.player = player
         return FireState.singleton
 
+    def __init__(self):
+        self.image = gfw_image.load(RES_DIR + '/ryu_1.png')
+
+    def enter(self):
+        self.time = 0
+        self.fidx = 0
+    def exit(self):
+        pass
     def draw(self):
         width = 132
-        sx = self.player.fidx * width
+        sx = self.fidx * width
         x,y = self.player.pos
-        self.player.image2.clip_draw(sx, 0, width, 100, x + 16, y)
+        self.image.clip_draw(sx, 0, width, 100, x + 16, y)
 
     def update(self):
-        self.player.time += gfw.delta_time
-        frame = self.player.time * 5
+        self.time += gfw.delta_time
+        frame = self.time * 5
         print(frame)
         if frame < 5:
-            self.player.fidx = int(frame)
+            self.fidx = int(frame)
         else:
-            self.player.time = 0
-            self.player.state = IdleState.get(self.player)
+            self.player.set_state(IdleState)
 
     def handle_event(self, e):
         pass
@@ -81,9 +97,16 @@ class Player:
         self.targets = []
         self.speed = 0
         self.time = 0
-        self.state = IdleState.get(self)
+        self.state = None
+        self.set_state(IdleState)
         self.image = gfw_image.load(RES_DIR + '/ryu.png')
         self.image2 = gfw_image.load(RES_DIR + '/ryu_1.png')
+
+    def set_state(self, clazz):
+        if self.state != None:
+            self.state.exit()
+        self.state = clazz.get(self)
+        self.state.enter()
 
     def draw(self):
         self.state.draw()
@@ -93,7 +116,7 @@ class Player:
 
     def fire(self):
         self.time = 0
-        self.state = FireState.get(self)
+        self.set_state(FireState)
 
     def handle_event(self, e):
         self.state.handle_event(e)
