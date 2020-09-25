@@ -1,19 +1,19 @@
 import gfw
 from pico2d import *
-from boy import Boy
+from player import Player
 
 def enter():
-    global grass, boy
-    boy = Boy()
+    global grass, player
+    player = Player()
 
 def update():
-    boy.update()
+    player.update()
 
 def draw():
-    boy.draw()
+    player.draw()
 
 def handle_event(e):
-    global boy
+    global player
     # prev_dx = boy.dx
     if e.type == SDL_QUIT:
         gfw.quit()
@@ -21,7 +21,7 @@ def handle_event(e):
         if e.key == SDLK_ESCAPE:
             gfw.pop()
 
-    boy.handle_event(e)
+    player.handle_event(e)
 
 def exit():
     pass
