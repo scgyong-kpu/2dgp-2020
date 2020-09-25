@@ -1,5 +1,6 @@
 import random
 from pico2d import *
+import gfw
 import gfw_image
 from gobj import *
 
@@ -26,6 +27,7 @@ class Player:
         self.target = None
         self.targets = []
         self.speed = 0
+        self.time = 0
         if Player.image == None:
             Player.image = gfw_image.load(RES_DIR + '/ryu.png')
 
@@ -34,8 +36,10 @@ class Player:
         self.image.clip_draw(sx, 0, 100, 100, *self.pos)
 
     def update(self):
+        self.time += gfw.delta_time
         self.pos = point_add(self.pos, self.delta)
-        self.fidx = (self.fidx + 1) % 5
+        frame = self.time * 10
+        self.fidx = int(frame) % 5
 
     def fire(self):
         pass
