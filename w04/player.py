@@ -4,6 +4,59 @@ import gfw
 import gfw_image
 from gobj import *
 
+class IdleState:
+    @staticmethod
+    def get(player):
+        if not hasattr(IdleState, 'singleton'): 
+            IdleState.singleton = IdleState()
+            IdleState.singleton.player = player
+        return IdleState.singleton
+
+    def draw(self):
+        width = 100
+        sx = self.player.fidx * width
+        self.player.image.clip_draw(sx, 0, width, 100, *self.player.pos)
+
+    def update(self):
+        self.player.time += gfw.delta_time
+        self.player.pos = point_add(self.player.pos, self.player.delta)
+        frame = self.player.time * 15
+        self.player.fidx = int(frame) % 5
+
+    def handle_event(self, e):
+        pair = (e.type, e.key)
+        if pair in Player.KEY_MAP:
+            self.player.delta = point_add(self.player.delta, Player.KEY_MAP[pair])
+        elif pair == Player.KEYDOWN_SPACE:
+            self.player.fire()
+
+class FireState:
+    @staticmethod
+    def get(player):
+        if not hasattr(FireState, 'singleton'): 
+            FireState.singleton = FireState()
+            FireState.singleton.player = player
+        return FireState.singleton
+
+    def draw(self):
+        width = 132
+        sx = self.player.fidx * width
+        x,y = self.player.pos
+        self.player.image2.clip_draw(sx, 0, width, 100, x + 16, y)
+
+    def update(self):
+        self.player.time += gfw.delta_time
+        frame = self.player.time * 5
+        print(frame)
+        if frame < 5:
+            self.player.fidx = int(frame)
+        else:
+            self.player.time = 0
+            self.player.state = IdleState.get(self.player)
+
+    def handle_event(self, e):
+        pass
+
 class Player:
     KEY_MAP = {
         (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
@@ -28,45 +81,19 @@ class Player:
         self.targets = []
         self.speed = 0
         self.time = 0
-        self.fires = False
+        self.state = IdleState.get(self)
         self.image = gfw_image.load(RES_DIR + '/ryu.png')
         self.image2 = gfw_image.load(RES_DIR + '/ryu_1.png')
 
     def draw(self):
-        if self.fires:
-            width = 132
-            sx = self.fidx * width
-            x,y = self.pos
-            self.image2.clip_draw(sx, 0, width, 100, x + 16,y)
-        else:
-            width = 100
-            sx = self.fidx * width
-            self.image.clip_draw(sx, 0, width, 100, *self.pos)
+        self.state.draw()
 
     def update(self):
-        self.time += gfw.delta_time
-        self.pos = point_add(self.pos, self.delta)
-
-        if self.fires:
-            frame = self.time * 5
-            print(frame)
-            if frame < 5:
-                self.fidx = int(frame)
-            else:
-                self.time = 0
-                self.fires = False
-        else:
-            frame = self.time * 15
-            self.fidx = int(frame) % 5
+        self.state.update()
 
     def fire(self):
         self.time = 0
-        self.fires = True
+        self.state = FireState.get(self)
 
     def handle_event(self, e):
-        pair = (e.type, e.key)
-        if pair in Player.KEY_MAP:
-            self.delta = point_add(self.delta, Player.KEY_MAP[pair])
-        elif pair == Player.KEYDOWN_SPACE:
-            if not self.fires:
-                self.fire()
+        self.state.handle_event(e)
