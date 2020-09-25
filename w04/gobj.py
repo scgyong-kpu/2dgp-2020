@@ -6,5 +6,10 @@ RES_DIR = '../res'
 def rand(val):
     return val * random.uniform(0.9, 1.1)
 
+def point_add(point1, point2):
+    x1,y1 = point1
+    x2,y2 = point2
+    return x1+x2, y1+y2
+
 if __name__ == "__main__":
-	print("Running test code ^_^")
+	print("This file is not supposed to be executed directly.")
