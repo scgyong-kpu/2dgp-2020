@@ -1,5 +1,6 @@
 import gfw
 import gfw_world
+import gfw_font
 from pico2d import *
 from player import Player
 from bullet import LaserBullet
@@ -21,7 +22,7 @@ def enter():
     gfw_world.add(gfw.layer.ui, score)
 
     global font
-    font = load_font(gobj.RES_DIR + '/segoeprb.ttf', 40)
+    font = gfw_font.load(gobj.RES_DIR + '/segoeprb.ttf', 40)
 
 def check_enemy(e):
     if gobj.collides_box(player, e):
