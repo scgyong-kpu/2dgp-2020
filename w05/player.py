@@ -50,7 +50,7 @@ class Player:
     def fire(self):
         self.laser_time = 0
         bullet = LaserBullet(self.x, self.y, 5)
-        gfw_world.add(bullet)
+        gfw_world.add(1, bullet)
         # print('bullets = ', len(LaserBullet.bullets))
 
     def draw(self):
