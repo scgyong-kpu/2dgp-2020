@@ -20,6 +20,9 @@ def enter():
     score = Score(canvas_width - 20, canvas_height - 50)
     gfw_world.add(gfw.layer.ui, score)
 
+    global font
+    font = load_font(gobj.RES_DIR + '/segoeprb.ttf', 40)
+
 def check_enemy(e):
     if gobj.collides_box(player, e):
         print('Player Collision', e)
@@ -43,6 +46,7 @@ def update():
 def draw():
     gfw_world.draw()
     gobj.draw_collision_box()
+    font.draw(20, canvas_height - 45, 'Wave: %d' % enemy_gen.wave_index)
 
 def handle_event(e):
     global player
