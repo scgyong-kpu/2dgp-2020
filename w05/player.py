@@ -29,7 +29,7 @@ class Player:
         (621, 0, 42, 80),
         (689, 0, 42, 80),
     ]
-    MAX_ROLL = 2.0
+    MAX_ROLL = 0.4
     SPARK_OFFSET = 28
 
     #constructor
@@ -48,8 +48,6 @@ class Player:
         self.laser_time = 0
         self.roll_time = 0
 
-        self.prev_rect = self.src_rect
-
     def fire(self):
         self.laser_time = 0
         bullet = LaserBullet(self.x, self.y + Player.SPARK_OFFSET, 5)
@@ -57,20 +55,20 @@ class Player:
         # print('bullets = ', len(LaserBullet.bullets))
 
     def draw(self):
-        self.image.clip_draw(*self.src_rect, self.x, self.y + 200, 200, 200)
+        self.image.clip_draw(*self.src_rect, self.x, self.y)
         # if self.laser_time < Player.SPARK_INTERVAL:
         #     self.spark.draw(self.x, self.y + Player.SPARK_OFFSET)
 
     def update(self):
-        # self.x += self.dx * self.speed
+        self.x += self.dx * self.speed
         self.laser_time += gfw.delta_time
         if self.x < self.minx: self.x = self.minx
         elif self.x > self.maxx: self.x = self.maxx
 
         self.update_roll()
 
-        # if self.laser_time >= Player.LASER_INTERVAL:
-        #     self.fire()
+        if self.laser_time >= Player.LASER_INTERVAL:
+            self.fire()
 
     def update_roll(self):
         dx = self.dx
@@ -87,19 +85,16 @@ class Player:
 
         # if self.roll_time
         roll = int(self.roll_time * 5 / Player.MAX_ROLL)
-        # self.src_rect = Player.IMAGE_RECTS[roll + 5]
+        self.src_rect = Player.IMAGE_RECTS[roll + 5]
 
-        if self.src_rect != self.prev_rect:
-            print(roll, self.src_rect)
-            self.prev_rect = self.src_rect
+        # if self.src_rect != self.prev_rect:
+        #     print(roll, self.src_rect)
+        #     self.prev_rect = self.src_rect
 
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
             self.dx += Player.KEY_MAP[pair]
-        elif e.type == SDL_KEYDOWN:
-            if e.key >= SDLK_a and e.key <= SDLK_k:
-                self.src_rect = Player.IMAGE_RECTS[e.key - SDLK_a]
 
 
 if __name__ == "__main__":
