@@ -30,6 +30,7 @@ class Player:
         (689, 0, 42, 80),
     ]
     MAX_ROLL = 0.7
+    SPARK_OFFSET = 28
 
     #constructor
     def __init__(self):
@@ -49,14 +50,14 @@ class Player:
 
     def fire(self):
         self.laser_time = 0
-        bullet = LaserBullet(self.x, self.y, 5)
-        gfw_world.add(1, bullet)
+        bullet = LaserBullet(self.x, self.y + Player.SPARK_OFFSET, 5)
+        gfw_world.add(gfw.layer.bullet, bullet)
         # print('bullets = ', len(LaserBullet.bullets))
 
     def draw(self):
         self.image.clip_draw(*self.src_rect, self.x, self.y)
         if self.laser_time < Player.SPARK_INTERVAL:
-            self.spark.draw(self.x, self.y + 28)
+            self.spark.draw(self.x, self.y + Player.SPARK_OFFSET)
 
     def update(self):
         self.x += self.dx * self.speed
