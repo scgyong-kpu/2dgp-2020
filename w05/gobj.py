@@ -13,6 +13,17 @@ def point_add(point1, point2):
 
 def move_obj(obj):
     obj.pos = point_add(obj.pos, obj.delta)
-    
+
+def collides_box(a, b):
+	(la, ba, ra, ta) = a.get_bb()
+	(lb, bb, rb, tb) = b.get_bb()
+
+	if la > rb: return False
+	if ra < lb: return False
+	if ba > tb: return False
+	if ta < bb: return False
+
+	return True
+
 if __name__ == "__main__":
 	print("This file is not supposed to be executed directly.")

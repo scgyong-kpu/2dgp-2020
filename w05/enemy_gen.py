@@ -4,7 +4,7 @@ import gfw_world
 from pico2d import *
 from enemy import Enemy
 
-GEN_X = [ 50, 150, 250, 350, 450 ]
+GEN_X = [ 50, 150, 250, 350 ]#, 450 ]
 next_wave = 0
 wave_index = 0
 

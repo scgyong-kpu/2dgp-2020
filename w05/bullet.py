@@ -26,3 +26,7 @@ class LaserBullet:
     def remove(self):
         gfw_world.remove(self)
 
+    def get_bb(self):
+        hw = self.image.w // 2
+        hh = self.image.h // 2
+        return self.x - hw, self.y - hh, self.x + hw, self.y + hh

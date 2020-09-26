@@ -3,6 +3,7 @@ import gfw_world
 from pico2d import *
 from player import Player
 from bullet import LaserBullet
+import gobj
 import enemy_gen
 
 canvas_width = 500
@@ -17,6 +18,12 @@ def enter():
 def update():
     gfw_world.update()
     enemy_gen.update()
+    for e in gfw_world.objects_at(gfw.layer.enemy):
+        if gobj.collides_box(player, e):
+            print('Player Collision', e)
+        for b in gfw_world.objects_at(gfw.layer.bullet):
+            if gobj.collides_box(b, e):
+                print('Collision', e, b)
 
 def draw():
     gfw_world.draw()
