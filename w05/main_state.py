@@ -1,6 +1,7 @@
 import gfw
 from pico2d import *
 from player import Player
+from bullet import LaserBullet
 
 canvas_width = 500
 canvas_height = 800
@@ -11,8 +12,10 @@ def enter():
 
 def update():
     player.update()
+    for b in LaserBullet.bullets: b.update()
 
 def draw():
+    for b in LaserBullet.bullets: b.draw()
     player.draw()
 
 def handle_event(e):
