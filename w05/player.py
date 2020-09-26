@@ -2,6 +2,7 @@ import random
 from pico2d import *
 import gfw
 import gfw_image
+import gfw_world
 from gobj import *
 from bullet import *
 
@@ -49,8 +50,8 @@ class Player:
     def fire(self):
         self.laser_time = 0
         bullet = LaserBullet(self.x, self.y, 5)
-        LaserBullet.bullets.append(bullet)
-        print('bullets = ', len(LaserBullet.bullets))
+        gfw_world.add(bullet)
+        # print('bullets = ', len(LaserBullet.bullets))
 
     def draw(self):
         self.image.clip_draw(*self.src_rect, self.x, self.y)

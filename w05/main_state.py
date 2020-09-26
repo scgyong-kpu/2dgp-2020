@@ -1,5 +1,6 @@
 import random
 import gfw
+import gfw_world
 from pico2d import *
 from player import Player
 from bullet import LaserBullet
@@ -11,6 +12,7 @@ canvas_height = 800
 def enter():
     global grass, player
     player = Player()
+    gfw_world.add(player)
 
     set_next_enemy_gen_time()
 
@@ -25,24 +27,16 @@ def generate_enemy_if_timed_out():
 
     x = random.randint(0, get_canvas_width())
     e = Enemy(x, -1)
-    Enemy.enemies.append(e)
-    print('\t\tenemies = ', len(Enemy.enemies))
+    gfw_world.add(e)
+    # print('\t\tenemies = ', len(Enemy.enemies))
     set_next_enemy_gen_time()
 
 def update():
-    player.update()
-    for e in Enemy.enemies: e.update()
-    for b in LaserBullet.bullets: b.update()
+    gfw_world.update()
     generate_enemy_if_timed_out()
 
-    Enemy.empty_trashcan()
-    LaserBullet.empty_trashcan()
-
-
 def draw():
-    for e in Enemy.enemies: e.draw()
-    for b in LaserBullet.bullets: b.draw()
-    player.draw()
+    gfw_world.draw()
 
 def handle_event(e):
     global player
