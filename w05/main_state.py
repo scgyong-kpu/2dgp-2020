@@ -3,6 +3,7 @@ import gfw_world
 from pico2d import *
 from player import Player
 from bullet import LaserBullet
+from score import Score
 import gobj
 import enemy_gen
 
@@ -10,10 +11,14 @@ canvas_width = 500
 canvas_height = 800
 
 def enter():
-    gfw_world.init(['bg', 'enemy', 'bullet', 'player'])
+    gfw_world.init(['bg', 'enemy', 'bullet', 'player', 'ui'])
     global player
     player = Player()
     gfw_world.add(gfw.layer.player, player)
+
+    global score
+    score = Score(canvas_width - 20, canvas_height - 50)
+    gfw_world.add(gfw.layer.ui, score)
 
 def check_enemy(e):
     if gobj.collides_box(player, e):
@@ -24,6 +29,7 @@ def check_enemy(e):
     for b in gfw_world.objects_at(gfw.layer.bullet):
         if gobj.collides_box(b, e):
             print('Collision', e, b)
+            score.score += e.level * 10
             e.remove()
             return
 
