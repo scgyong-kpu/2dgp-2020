@@ -2,6 +2,9 @@ import gfw
 from pico2d import *
 from player import Player
 
+canvas_width = 500
+canvas_height = 800
+
 def enter():
     global grass, player
     player = Player()

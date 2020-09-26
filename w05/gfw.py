@@ -16,7 +16,11 @@ def run(start_state):
     running = True
     stack = [start_state]
 
-    open_canvas()
+    w,h = 800,600
+    if hasattr(start_state, 'canvas_width'): w = start_state.canvas_width
+    if hasattr(start_state, 'canvas_height'): h = start_state.canvas_height
+
+    open_canvas(w=w, h=h)
 
     start_state.enter()
 
