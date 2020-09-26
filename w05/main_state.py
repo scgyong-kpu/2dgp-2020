@@ -30,7 +30,7 @@ def check_enemy(e):
 
     for b in gfw.gfw.world.objects_at(gfw.layer.bullet):
         if gobj.collides_box(b, e):
-            print('Collision', e, b)
+            # print('Collision', e, b)
             score.score += e.level * 10
             e.remove()
             return
@@ -44,7 +44,7 @@ def update():
 
 def draw():
     gfw.world.draw()
-    gobj.draw_collision_box()
+    # gobj.draw_collision_box()
     font.draw(20, canvas_height - 45, 'Wave: %d' % enemy_gen.wave_index)
 
 def handle_event(e):
