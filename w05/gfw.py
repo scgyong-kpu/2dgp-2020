@@ -1,6 +1,7 @@
-# version 2020-0921
+# version 2020-0927
 import time
 from pico2d import *
+import random
 
 running = True
 stack = None
@@ -45,6 +46,7 @@ def run(start_state):
         stack[-1].draw()
         update_canvas()
 
+        frame_interval = random.random() / 5
         delay(frame_interval)
 
     while (len(stack) > 0):
