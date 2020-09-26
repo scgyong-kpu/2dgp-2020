@@ -56,7 +56,6 @@ class Player:
         if self.laser_time < Player.SPARK_INTERVAL:
             self.spark.draw(self.x, self.y + 28)
 
-
     def update(self):
         self.x += self.dx * self.speed
         self.laser_time += gfw.delta_time
