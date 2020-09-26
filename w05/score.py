@@ -1,7 +1,5 @@
 from pico2d import *
 import gfw
-import gfw_image
-import gfw_world
 from gobj import *
 
 class Score:
@@ -10,7 +8,7 @@ class Score:
     def __init__(self, right, y):
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
         self.right, self.y = right, y
-        self.image = gfw_image.load(RES_DIR + '/number_24x32.png')
+        self.image = gfw.image.load(RES_DIR + '/number_24x32.png')
         self.digit_width = self.image.w // 10
         self.score = 0
 
