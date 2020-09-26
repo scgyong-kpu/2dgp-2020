@@ -1,5 +1,6 @@
 import random
 from pico2d import *
+import gfw_world
 
 RES_DIR = './res'
 
@@ -24,6 +25,11 @@ def collides_box(a, b):
 	if ta < bb: return False
 
 	return True
+
+def draw_collision_box():
+	for obj in gfw_world.all_objects():
+		if hasattr(obj, 'get_bb'):
+			draw_rectangle(*obj.get_bb())
 
 if __name__ == "__main__":
 	print("This file is not supposed to be executed directly.")
