@@ -5,6 +5,7 @@ from gobj import *
 
 class Enemy:
     enemies = []
+    SIZE = 96
     def __init__(self, x, speed):
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
         self.x, self.y = x, get_canvas_height()
@@ -20,6 +21,12 @@ class Enemy:
     def update(self):
         self.time += gfw.delta_time
         self.fidx = int(self.time * 10 + 0.5) % 8
-        self.x += self.dx
+        # self.x += self.dx
         self.y += self.dy
+
+        if self.y < -Enemy.SIZE:
+            self.remove()
+    def remove(self):
+        Enemy.enemies.remove(self)
+        print('\t\t\t\tRemoving', self)
 
