@@ -46,7 +46,6 @@ def run(start_state):
         stack[-1].draw()
         update_canvas()
 
-        frame_interval = random.random() / 5
         delay(frame_interval)
 
     while (len(stack) > 0):
