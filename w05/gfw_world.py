@@ -1,3 +1,4 @@
+from functools import reduce
 import gfw
 from pico2d import *
 
@@ -25,13 +26,34 @@ def all_objects():
         for obj in layer_objects:
             yield obj
 
+def objects_at(layer_index):
+    for obj in objects[layer_index]:
+        yield obj
+
+def count_at(layer_index):
+    return len(objects[layer_index])
+
+def count():
+    return reduce(lambda sum, a: sum + len(a), objects, 0)
+
+def clear():
+    global objects
+    for o in all_objects():
+        del o
+    objects = []
+
+def clear_at(layer_index):
+    for o in objects[layer_index]:
+        del o
+    objects[layer_index] = []
+
 def update():
     for obj in all_objects():
         obj.update()
     if len(trashcan) > 0:
         empty_trashcan()
     counts = list(map(len, objects))
-    print('total objects count =', counts)
+    print('count:', counts, count())
 
 def draw():
     for obj in all_objects():
