@@ -3,7 +3,7 @@ import gfw_world
 from pico2d import *
 from player import Player
 from bullet import LaserBullet
-from enemy_gen import EnemyGenerator
+import enemy_gen
 
 canvas_width = 500
 canvas_height = 800
@@ -14,12 +14,9 @@ def enter():
     player = Player()
     gfw_world.add(gfw.layer.player, player)
 
-    global enemyGenerator
-    enemyGenerator = EnemyGenerator()
-
 def update():
     gfw_world.update()
-    enemyGenerator.update()
+    enemy_gen.update()
 
 def draw():
     gfw_world.draw()
