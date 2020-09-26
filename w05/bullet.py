@@ -1,6 +1,7 @@
 from pico2d import *
 import gfw
 import gfw_image
+import gfw_world
 from gobj import *
 
 class LaserBullet:
@@ -23,10 +24,5 @@ class LaserBullet:
             self.remove()
 
     def remove(self):
-        LaserBullet.trashcan.append(self)
+        gfw_world.remove(self)
 
-    @staticmethod
-    def empty_trashcan():
-        for b in LaserBullet.trashcan:
-            LaserBullet.bullets.remove(b)
-        LaserBullet.trashcan = []
