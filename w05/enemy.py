@@ -31,3 +31,7 @@ class Enemy:
     def remove(self):
         gfw_world.remove(self)
 
+    def get_bb(self):
+        half = Enemy.SIZE // 2
+        return self.x - half, self.y - half, self.x + half, self.y + half
+        
