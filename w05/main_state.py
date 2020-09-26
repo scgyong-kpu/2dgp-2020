@@ -16,7 +16,7 @@ def enter():
 
 def update():
     gfw_world.update()
-    enemy_gen.update()
+    # enemy_gen.update()
 
 def draw():
     gfw_world.draw()
