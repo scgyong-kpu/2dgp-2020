@@ -50,6 +50,7 @@ class Player:
         self.laser_time = 0
         bullet = LaserBullet(self.x, self.y, 5)
         LaserBullet.bullets.append(bullet)
+        print('bullets = ', len(LaserBullet.bullets))
 
     def draw(self):
         self.image.clip_draw(*self.src_rect, self.x, self.y)
