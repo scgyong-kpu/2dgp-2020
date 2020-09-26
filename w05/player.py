@@ -13,8 +13,8 @@ class Player:
         (SDL_KEYUP, SDLK_RIGHT):   -1,
     }
     KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
-    LASER_INTERVAL = 0.25
-    SPARK_INTERVAL = 0.05
+    LASER_INTERVAL = 0.15
+    SPARK_INTERVAL = 0.03
     IMAGE_RECTS = [
         (  7, 0, 42, 80),
         ( 77, 0, 42, 80),
@@ -28,7 +28,7 @@ class Player:
         (621, 0, 42, 80),
         (689, 0, 42, 80),
     ]
-    MAX_ROLL = 2.0
+    MAX_ROLL = 0.7
 
     #constructor
     def __init__(self):
@@ -63,6 +63,12 @@ class Player:
         if self.x < self.minx: self.x = self.minx
         elif self.x > self.maxx: self.x = self.maxx
 
+        self.update_roll()
+
+        if self.laser_time >= Player.LASER_INTERVAL:
+            self.fire()
+
+    def update_roll(self):
         dx = self.dx
         if dx == 0:
             if self.roll_time > 0:
@@ -79,8 +85,6 @@ class Player:
         roll = int(self.roll_time * 5 / Player.MAX_ROLL)
         self.src_rect = Player.IMAGE_RECTS[roll + 5]
 
-        if self.laser_time >= Player.LASER_INTERVAL:
-            self.fire()
 
     def handle_event(self, e):
         pair = (e.type, e.key)
