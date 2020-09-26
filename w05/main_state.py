@@ -27,6 +27,7 @@ def update():
 
 def draw():
     gfw_world.draw()
+    gobj.draw_collision_box()
 
 def handle_event(e):
     global player
