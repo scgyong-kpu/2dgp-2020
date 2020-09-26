@@ -22,12 +22,12 @@ class Player:
         self.image = gfw_image.load(RES_DIR + '/fighter.png')
 
     def draw(self):
-        self.image.draw(*self.pos)
+        self.iamge.draw(*self.pos)
 
     def update(self):
-        self.pos = point_add(self.pos, self.delta)
+        self.player.pos = point_add(self.player.pos, self.player.delta)
 
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
-            self.delta = point_add(self.delta, Player.KEY_MAP[pair])
+            self.player.delta = point_add(self.player.delta, Player.KEY_MAP[pair])
