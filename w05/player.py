@@ -38,7 +38,8 @@ class Player:
         self.speed = 3
         self.image = gfw_image.load(RES_DIR + '/fighters.png')
         self.spark = gfw_image.load(RES_DIR + '/laser_0.png')
-        half = self.image.w // 2
+        self.src_rect = Player.IMAGE_RECTS[5]
+        half = self.src_rect[2] // 2
         self.minx = half
         self.maxx = get_canvas_width() - half
 
@@ -51,7 +52,7 @@ class Player:
         LaserBullet.bullets.append(bullet)
 
     def draw(self):
-        self.image.draw(self.x, self.y)
+        self.image.clip_draw(*self.src_rect, self.x, self.y)
         if self.laser_time < Player.SPARK_INTERVAL:
             self.spark.draw(self.x, self.y + 28)
 
@@ -76,7 +77,7 @@ class Player:
 
         # if self.roll_time
         roll = int(self.roll_time * 5 / Player.MAX_ROLL)
-        print(roll)
+        self.src_rect = Player.IMAGE_RECTS[roll + 5]
 
         if self.laser_time >= Player.LASER_INTERVAL:
             self.fire()
