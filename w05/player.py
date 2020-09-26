@@ -1,8 +1,6 @@
 import random
 from pico2d import *
 import gfw
-import gfw_image
-import gfw_world
 from gobj import *
 from bullet import *
 
@@ -38,8 +36,8 @@ class Player:
         self.x, self.y = 250, 80
         self.dx = 0
         self.speed = 320
-        self.image = gfw_image.load(RES_DIR + '/fighters.png')
-        self.spark = gfw_image.load(RES_DIR + '/laser_0.png')
+        self.image = gfw.image.load(RES_DIR + '/fighters.png')
+        self.spark = gfw.image.load(RES_DIR + '/laser_0.png')
         self.src_rect = Player.IMAGE_RECTS[5]
         half = self.src_rect[2] // 2
         self.minx = half
@@ -51,7 +49,7 @@ class Player:
     def fire(self):
         self.laser_time = 0
         bullet = LaserBullet(self.x, self.y + Player.SPARK_OFFSET, 400)
-        gfw_world.add(gfw.layer.bullet, bullet)
+        gfw.world.add(gfw.layer.bullet, bullet)
         # print('bullets = ', len(LaserBullet.bullets))
 
     def draw(self):
