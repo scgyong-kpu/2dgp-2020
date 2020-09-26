@@ -37,7 +37,7 @@ class Player:
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
         self.x, self.y = 250, 80
         self.dx = 0
-        self.speed = 3
+        self.speed = 5
         self.image = gfw_image.load(RES_DIR + '/fighters.png')
         self.spark = gfw_image.load(RES_DIR + '/laser_0.png')
         self.src_rect = Player.IMAGE_RECTS[5]
