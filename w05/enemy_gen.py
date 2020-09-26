@@ -4,21 +4,21 @@ import gfw_world
 from pico2d import *
 from enemy import Enemy
 
-class EnemyGenerator:
-    GEN_X = [ 50, 150, 250, 350, 450 ]
-    def __init__(self):
-        self.next_wave = 0
-        self.wave_index = 0
+GEN_X = [ 50, 150, 250, 350, 450 ]
+next_wave = 0
+wave_index = 0
 
-    def update(self):
-        self.next_wave -= gfw.delta_time
-        if self.next_wave < 0:
-            self.generate_wave()
+def update():
+    global next_wave
+    next_wave -= gfw.delta_time
+    if next_wave < 0:
+        generate_wave()
 
-    def generate_wave(self):
-        for x in EnemyGenerator.GEN_X:
-            e = Enemy(x, -1)
-            gfw_world.add(gfw.layer.enemy, e)
+def generate_wave():
+    global wave_index, next_wave
+    for x in GEN_X:
+        e = Enemy(x, -1)
+        gfw_world.add(gfw.layer.enemy, e)
 
-        self.wave_index += 1
-        self.next_wave = random.uniform(5, 6)
+    wave_index += 1
+    next_wave = random.uniform(5, 6)
