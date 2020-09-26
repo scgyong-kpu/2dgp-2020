@@ -98,6 +98,10 @@ class Player:
         if pair in Player.KEY_MAP:
             self.dx += Player.KEY_MAP[pair]
 
+    def get_bb(self):
+        hw = 40
+        hh = 40
+        return self.x - hw, self.y - hh, self.x + hw, self.y + hh
 
 if __name__ == "__main__":
     for (l,t,r,b) in Player.IMAGE_RECTS:
