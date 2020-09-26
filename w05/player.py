@@ -62,8 +62,7 @@ class Player:
     def update(self):
         self.x += self.dx * self.speed * gfw.delta_time
         self.laser_time += gfw.delta_time
-        if self.x < self.minx: self.x = self.minx
-        elif self.x > self.maxx: self.x = self.maxx
+        self.x = clamp(self.minx, self.x, self.maxx)
 
         self.update_roll()
 
@@ -78,12 +77,13 @@ class Player:
             elif self.roll_time < 0:
                 dx = 1
         self.roll_time += dx * gfw.delta_time
-        if (dx < 0 and self.roll_time > 0) or (dx > 0 and self.roll_time < 0):
-            self.roll_time = 0
-        if self.roll_time < -Player.MAX_ROLL:
-            self.roll_time = -Player.MAX_ROLL
-        elif self.roll_time > Player.MAX_ROLL:
-            self.roll_time = Player.MAX_ROLL
+        if self.dx == 0:
+            if dx < 0 and self.roll_time < 0:
+                self.roll_time = 0
+            if dx > 0 and self.roll_time > 0:
+                self.roll_time = 0
+
+        self.roll_time = clamp(-Player.MAX_ROLL, self.roll_time, Player.MAX_ROLL)
 
         # if self.roll_time
         roll = int(self.roll_time * 5 / Player.MAX_ROLL)
