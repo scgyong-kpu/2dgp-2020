@@ -1,8 +1,18 @@
 import gfw
 from pico2d import *
 
-objects = [[],[],[],[]]
+objects = []
 trashcan = []
+
+def init(layer_names):
+    global objects
+    objects = []
+    gfw.layer = lambda: None
+    layerIndex = 0
+    for name in layer_names:
+        objects.append([])
+        gfw.layer.__dict__[name] = layerIndex
+        layerIndex += 1
 
 def add(layer_index, obj):
     objects[layer_index].append(obj)
