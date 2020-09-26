@@ -37,7 +37,7 @@ class Player:
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
         self.x, self.y = 250, 80
         self.dx = 0
-        self.speed = 5
+        self.speed = 320
         self.image = gfw_image.load(RES_DIR + '/fighters.png')
         self.spark = gfw_image.load(RES_DIR + '/laser_0.png')
         self.src_rect = Player.IMAGE_RECTS[5]
@@ -60,7 +60,7 @@ class Player:
         #     self.spark.draw(self.x, self.y + Player.SPARK_OFFSET)
 
     def update(self):
-        self.x += self.dx * self.speed
+        self.x += self.dx * self.speed * gfw.delta_time
         self.laser_time += gfw.delta_time
         if self.x < self.minx: self.x = self.minx
         elif self.x > self.maxx: self.x = self.maxx
