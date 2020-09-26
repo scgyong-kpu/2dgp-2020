@@ -1,6 +1,6 @@
 import random
 from pico2d import *
-import gfw_world
+import gfw
 
 RES_DIR = './res'
 
@@ -27,7 +27,7 @@ def collides_box(a, b):
 	return True
 
 def draw_collision_box():
-	for obj in gfw_world.all_objects():
+	for obj in gfw.world.all_objects():
 		if hasattr(obj, 'get_bb'):
 			draw_rectangle(*obj.get_bb())
 
