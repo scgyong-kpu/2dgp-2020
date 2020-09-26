@@ -18,7 +18,7 @@ class LaserBullet:
         self.image.draw(self.x, self.y)
 
     def update(self):
-        self.y += self.dy
+        self.y += self.dy * gfw.delta_time
 
         if self.y > get_canvas_height() + LaserBullet.SIZE:
             self.remove()
