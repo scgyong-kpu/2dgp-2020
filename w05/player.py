@@ -17,13 +17,13 @@ class Player:
     LASER_INTERVAL = 0.15
     SPARK_INTERVAL = 0.03
     IMAGE_RECTS = [
-        (  9, 0, 42, 80),
-        ( 78, 0, 42, 80),
-        (143, 0, 50, 80),
-        (207, 0, 56, 80),
-        (271, 0, 62, 80),
-        (335, 0, 70, 80),
-        (407, 0, 62, 80),
+        (  8, 0, 42, 80),
+        ( 76, 0, 42, 80),
+        (140, 0, 50, 80),
+        (205, 0, 56, 80),
+        (270, 0, 62, 80),
+        (334, 0, 70, 80),
+        (406, 0, 62, 80),
         (477, 0, 56, 80),
         (549, 0, 48, 80),
         (621, 0, 42, 80),
@@ -69,8 +69,8 @@ class Player:
 
         self.update_roll()
 
-        if self.laser_time >= Player.LASER_INTERVAL:
-            self.fire()
+        # if self.laser_time >= Player.LASER_INTERVAL:
+        #     self.fire()
 
     def update_roll(self):
         dx = self.dx
@@ -87,7 +87,7 @@ class Player:
 
         # if self.roll_time
         roll = int(self.roll_time * 5 / Player.MAX_ROLL)
-        self.src_rect = Player.IMAGE_RECTS[roll + 5]
+        # self.src_rect = Player.IMAGE_RECTS[roll + 5]
 
         if self.src_rect != self.prev_rect:
             print(roll, self.src_rect)
@@ -97,6 +97,9 @@ class Player:
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
             self.dx += Player.KEY_MAP[pair]
+        elif e.type == SDL_KEYDOWN:
+            if e.key >= SDLK_a and e.key <= SDLK_k:
+                self.src_rect = Player.IMAGE_RECTS[e.key - SDLK_a]
 
 
 if __name__ == "__main__":
