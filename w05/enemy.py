@@ -23,7 +23,7 @@ class Enemy:
         self.time += gfw.delta_time
         self.fidx = int(self.time * 10 + 0.5) % 8
         # self.x += self.dx
-        self.y += self.dy
+        self.y += self.dy * gfw.delta_time
 
         if self.y < -Enemy.SIZE:
             self.remove()
