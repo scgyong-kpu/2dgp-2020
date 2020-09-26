@@ -35,6 +35,9 @@ def update():
     for b in LaserBullet.bullets: b.update()
     generate_enemy_if_timed_out()
 
+    Enemy.empty_trashcan()
+    LaserBullet.empty_trashcan()
+
 
 def draw():
     for e in Enemy.enemies: e.draw()
