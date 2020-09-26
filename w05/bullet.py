@@ -5,6 +5,7 @@ from gobj import *
 
 class LaserBullet:
     bullets = []
+    SIZE = 40
     def __init__(self, x, y, speed):
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
         self.x, self.y = x, y
@@ -16,3 +17,10 @@ class LaserBullet:
 
     def update(self):
         self.y += self.dy
+
+        if self.y > get_canvas_height() + LaserBullet.SIZE:
+            self.remove()
+
+    def remove(self):
+        LaserBullet.bullets.remove(self)
+        print('\t\t\t\t\t\tRemoving', self)
