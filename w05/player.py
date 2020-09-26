@@ -99,8 +99,8 @@ class Player:
             self.dx += Player.KEY_MAP[pair]
 
     def get_bb(self):
-        hw = 40
-        hh = 40
+        hw = self.src_rect[2] / 2
+        hh = self.src_rect[3] / 2
         return self.x - hw, self.y - hh, self.x + hw, self.y + hh
 
 if __name__ == "__main__":
