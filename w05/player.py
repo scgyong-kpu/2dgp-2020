@@ -78,6 +78,8 @@ class Player:
             elif self.roll_time < 0:
                 dx = 1
         self.roll_time += dx * gfw.delta_time
+        if (dx < 0 and self.roll_time > 0) or (dx > 0 and self.roll_time < 0):
+            self.roll_time = 0
         if self.roll_time < -Player.MAX_ROLL:
             self.roll_time = -Player.MAX_ROLL
         elif self.roll_time > Player.MAX_ROLL:
