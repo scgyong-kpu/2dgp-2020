@@ -5,6 +5,7 @@ from gobj import *
 
 class LaserBullet:
     bullets = []
+    trashcan = []
     SIZE = 40
     def __init__(self, x, y, speed):
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
@@ -22,5 +23,10 @@ class LaserBullet:
             self.remove()
 
     def remove(self):
-        LaserBullet.bullets.remove(self)
-        print('\t\t\t\t\t\tRemoving', self)
+        LaserBullet.trashcan.append(self)
+
+    @staticmethod
+    def empty_trashcan():
+        for b in LaserBullet.trashcan:
+            LaserBullet.bullets.remove(b)
+        LaserBullet.trashcan = []

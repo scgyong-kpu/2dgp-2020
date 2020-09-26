@@ -5,6 +5,7 @@ from gobj import *
 
 class Enemy:
     enemies = []
+    trashcan = []
     SIZE = 96
     def __init__(self, x, speed):
         # self.pos = get_canvas_width() // 2, get_canvas_height() // 2
@@ -26,7 +27,16 @@ class Enemy:
 
         if self.y < -Enemy.SIZE:
             self.remove()
-    def remove(self):
-        Enemy.enemies.remove(self)
-        print('\t\t\t\tRemoving', self)
 
+    def remove(self):
+        Enemy.trashcan.append(self)
+
+    @staticmethod
+    def empty_trashcan():
+        if len(Enemy.trashcan) == 0:
+            return
+        for b in Enemy.trashcan:
+            print(b)
+            Enemy.enemies.remove(b)
+            print('removed')
+        Enemy.trashcan = []
