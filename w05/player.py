@@ -3,6 +3,7 @@ from pico2d import *
 import gfw
 import gfw_image
 from gobj import *
+from bullet import *
 
 class Player:
     KEY_MAP = {
@@ -31,6 +32,8 @@ class Player:
 
     def fire(self):
         self.laser_time = 0
+        bullet = LaserBullet(self.x, self.y, 5)
+        LaserBullet.bullets.append(bullet)
 
     def draw(self):
         self.image.draw(self.x, self.y)
