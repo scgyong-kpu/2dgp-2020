@@ -26,6 +26,7 @@ def generate_enemy_if_timed_out():
     x = random.randint(0, get_canvas_width())
     e = Enemy(x, -1)
     Enemy.enemies.append(e)
+    print('\t\tenemies = ', len(Enemy.enemies))
     set_next_enemy_gen_time()
 
 def update():
