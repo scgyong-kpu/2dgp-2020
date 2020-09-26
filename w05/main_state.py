@@ -12,7 +12,7 @@ canvas_height = 800
 def enter():
     global grass, player
     player = Player()
-    gfw_world.add(player)
+    gfw_world.add(3, player)
 
     set_next_enemy_gen_time()
 
@@ -27,7 +27,7 @@ def generate_enemy_if_timed_out():
 
     x = random.randint(0, get_canvas_width())
     e = Enemy(x, -1)
-    gfw_world.add(e)
+    gfw_world.add(2, e)
     # print('\t\tenemies = ', len(Enemy.enemies))
     set_next_enemy_gen_time()
 
