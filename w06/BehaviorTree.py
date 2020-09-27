@@ -25,6 +25,9 @@ class BehaviorTree:
     def print(self):
         self.root.print()
 
+    @staticmethod
+    def build(dict):
+        return BehaviorTree(build_node(dict))
 
 class Node:
     def add_child(self, child):
@@ -106,3 +109,16 @@ class LeafNode(Node):
         print("LEAF NODE: " + self.name)
 
 
+def build_node(dict):
+    name = dict["name"]
+    clazz = dict["class"]
+    if clazz == LeafNode:
+        func = dict["function"]
+        return clazz(name, func)
+
+    node = clazz(name)
+    children = dict["children"]
+    for child in children:
+        node.add_child(build_node(child))
+
+    return node
