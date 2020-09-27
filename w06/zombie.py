@@ -13,9 +13,8 @@ class Zombie:
     FPS = 12
     # FCOUNT = 10
     def __init__(self):
-        # if len(Zombie.images) == 0:
-        #     self.load_images('male')
-        #     self.load_images('female')
+        if len(Zombie.images) == 0:
+            Zombie.load_all_images()
 
         self.pos = (
             random.randint(0, get_canvas_width()),
@@ -24,7 +23,7 @@ class Zombie:
         self.delta = 0.1, 0.1
         self.find_nearest_pos()
         char = random.choice(['male', 'female'])
-        self.load_images(char)
+        self.images = Zombie.load_images(char)
         self.action = 'Walk'
         self.speed = 200
         self.fidx = 0
@@ -62,28 +61,34 @@ class Zombie:
         self.delta = dx / distance, dy / distance
         # print(x,y, tx,ty, dx,dy, '/',distance, dx/distance, dy/distance, 'target=', self.target, ' delta=', self.delta)
 
-    def load_images(self, char):
+    @staticmethod
+    def load_all_images():
+        Zombie.load_images('male')
+        Zombie.load_images('female')
+
+    @staticmethod
+    def load_images(char):
         if char in Zombie.images:
-            self.images = Zombie.images[char]
-            return
+            return Zombie.images[char]
+
         images = {}
         count = 0
         file_fmt = '%s/zombiefiles/%s/%s (%d).png'
         for action in Zombie.ACTIONS:
             action_images = []
-            count = 0
+            n = 0
             while True:
-                n = count + 1
+                n += 1
                 fn = file_fmt % (gobj.RES_DIR, char, action, n)
-                try:
+                if os.path.isfile(fn):
                     action_images.append(gfw.image.load(fn))
-                except IOError:
+                else:
                     break
-                count = n
+                count += 1
             images[action] = action_images
-        self.images = images
-        print('%d images loaded for %s' % (count, char))
         Zombie.images[char] = images
+        print('%d images loaded for %s' % (count, char))
+        return images
 
     def update(self):
         self.time += gfw.delta_time
