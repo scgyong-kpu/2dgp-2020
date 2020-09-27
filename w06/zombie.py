@@ -2,6 +2,7 @@ import random
 from pico2d import *
 import gfw
 import gobj
+from BehaviorTree import BehaviorTree, SelectorNode, SequenceNode, LeafNode
 
 class Zombie:
     PAT_POSITIONS = [
@@ -21,13 +22,15 @@ class Zombie:
             random.randint(0, get_canvas_height())
         )
         self.delta = 0.1, 0.1
-        self.find_nearest_pos()
+        # self.find_nearest_pos()
         char = random.choice(['male', 'female'])
         self.images = Zombie.load_images(char)
         self.action = 'Walk'
         self.speed = 200
         self.fidx = 0
         self.time = 0
+        self.patrol_order = -1
+        self.build_behavior_tree()
 
     def find_nearest_pos(self):
         x, y = self.pos
@@ -46,9 +49,13 @@ class Zombie:
         self.set_patrol_target()
 
     def set_patrol_target(self):
+        if self.patrol_order < 0:
+            self.find_nearest_pos()
+            return BehaviorTree.SUCCESS
         self.set_target(Zombie.PAT_POSITIONS[self.patrol_order])
         # print('pos=', self.pos, "patrol order = ", self.patrol_order, " target =", self.target)
         self.patrol_order = (self.patrol_order + 1) % len(Zombie.PAT_POSITIONS)
+        return BehaviorTree.SUCCESS
 
     def set_target(self, target):
         x,y = self.pos
@@ -91,6 +98,9 @@ class Zombie:
         return images
 
     def update(self):
+        self.bt.run()
+
+    def update_position(self):
         self.time += gfw.delta_time
         self.fidx = round(self.time * Zombie.FPS)
 
@@ -113,11 +123,20 @@ class Zombie:
         self.pos = x,y
 
         if done:
-            self.set_patrol_target()
-
+            return BehaviorTree.SUCCESS
+        else:
+            return BehaviorTree.RUNNING
 
     def draw(self):
         images = self.images[self.action]
         image = images[self.fidx % len(images)]
         flip = 'h' if self.delta[0] < 0 else ''
         image.composite_draw(0, flip, *self.pos, 100, 100)
+
+    def build_behavior_tree(self):
+        node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
+        node_mtt = LeafNode("Move to Target", self.update_position)
+        patrol_node = SequenceNode("Patrol")
+        patrol_node.add_children(node_gnp, node_mtt)
+        self.bt = BehaviorTree(patrol_node)
+
