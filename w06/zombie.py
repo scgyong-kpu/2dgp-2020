@@ -10,7 +10,7 @@ class Zombie:
         (235, 927), (575, 740), (1050, 430), (1118, 210)
     ]
     ACTIONS = ['Attack', 'Dead', 'Idle', 'Walk']
-    CHASE_DISTANCE_SQ = 200 ** 2
+    CHASE_DISTANCE_SQ = 250 ** 2
     images = {}
     FPS = 12
     # FCOUNT = 10
@@ -74,9 +74,12 @@ class Zombie:
     def find_player(self):
         dist_sq = gobj.distance_sq(self.player.pos, self.pos)
         if dist_sq < Zombie.CHASE_DISTANCE_SQ:
-            self.patrol_order = -1
+            if self.patrol_order >= 0:
+                self.patrol_order = -1
+                self.action = 'Attack'
             return BehaviorTree.SUCCESS
         else:
+            self.action = 'Walk'
             return BehaviorTree.FAIL
 
     def move_to_player(self):
@@ -161,10 +164,8 @@ class Zombie:
         image.composite_draw(0, flip, *self.pos, 100, 100)
 
     def get_bb(self):
-        hw = 50
-        hh = 50
         x,y = self.pos
-        return x - hw, y - hh, x + hw, y + hh
+        return x - 40, y - 50, x + 40, y + 40
 
     def build_behavior_tree(self):
         # node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
