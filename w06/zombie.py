@@ -10,6 +10,7 @@ class Zombie:
         (235, 927), (575, 740), (1050, 430), (1118, 210)
     ]
     ACTIONS = ['Attack', 'Dead', 'Idle', 'Walk']
+    CHASE_DISTANCE_SQ = 200 ** 2
     images = {}
     FPS = 12
     # FCOUNT = 10
@@ -26,9 +27,11 @@ class Zombie:
         char = random.choice(['male', 'female'])
         self.images = Zombie.load_images(char)
         self.action = 'Walk'
-        self.speed = random.randint(100, 300)
+        self.speed = random.randint(100, 150)
         self.fidx = 0
         self.time = 0
+        layer = list(gfw.world.objects_at(gfw.layer.player))
+        self.player = layer[0]
         self.patrol_order = -1
         self.build_behavior_tree()
 
@@ -67,6 +70,30 @@ class Zombie:
         self.target = target
         self.delta = dx / distance, dy / distance
         # print(x,y, tx,ty, dx,dy, '/',distance, dx/distance, dy/distance, 'target=', self.target, ' delta=', self.delta)
+
+    def find_player(self):
+        dist_sq = gobj.distance_sq(self.player.pos, self.pos)
+        if dist_sq < Zombie.CHASE_DISTANCE_SQ:
+            self.patrol_order = -1
+            return BehaviorTree.SUCCESS
+        else:
+            return BehaviorTree.FAIL
+
+    def move_to_player(self):
+        self.set_target(self.player.pos)
+        self.update_position()
+
+        collides = gobj.collides_box(self, self.player)
+        if collides:
+            self.remove()
+        return BehaviorTree.SUCCESS
+
+    def follow_patrol_positions(self):
+        if self.patrol_order < 0:
+            self.find_nearest_pos()
+        done = self.update_position()
+        if done:
+            self.set_patrol_target()
 
     @staticmethod
     def load_all_images():
@@ -122,16 +149,22 @@ class Zombie:
 
         self.pos = x,y
 
-        if done:
-            return BehaviorTree.SUCCESS
-        else:
-            return BehaviorTree.RUNNING
+        return done
+
+    def remove(self):
+        gfw.world.remove(self)
 
     def draw(self):
         images = self.images[self.action]
         image = images[self.fidx % len(images)]
         flip = 'h' if self.delta[0] < 0 else ''
         image.composite_draw(0, flip, *self.pos, 100, 100)
+
+    def get_bb(self):
+        hw = 50
+        hh = 50
+        x,y = self.pos
+        return x - hw, y - hh, x + hw, y + hh
 
     def build_behavior_tree(self):
         # node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
@@ -141,18 +174,29 @@ class Zombie:
         # self.bt = BehaviorTree(patrol_node)
 
         self.bt = BehaviorTree.build({
-            "name": "Patrol",
-            "class": SequenceNode,
+            "name": "PatrolChase",
+            "class": SelectorNode,
             "children": [
                 {
-                    "class": LeafNode,
-                    "name": "Get Next Position",
-                    "function": self.set_patrol_target,
+                    "name": "Chase",
+                    "class": SequenceNode,
+                    "children": [
+                        {
+                            "class": LeafNode,
+                            "name": "Find Player",
+                            "function": self.find_player,
+                        },
+                        {
+                            "class": LeafNode,
+                            "name": "Move to Player",
+                            "function": self.move_to_player,
+                        },
+                    ],
                 },
                 {
                     "class": LeafNode,
-                    "name": "Move to Target",
-                    "function": self.update_position,
+                    "name": "Follow Patrol positions",
+                    "function": self.follow_patrol_positions,
                 },
             ],
         })
