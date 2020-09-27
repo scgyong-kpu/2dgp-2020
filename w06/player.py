@@ -32,6 +32,17 @@ class Player:
         self.action = 2
         self.mag = 1
 
+    def set_target(self, target):
+        x,y = self.pos
+        tx,ty = target
+        dx, dy = tx - x, ty - y
+        distance = math.sqrt(dx**2 + dy**2)
+        if distance == 0: return
+
+        self.target = target
+        self.delta = dx / distance, dy / distance
+        self.action = 0 if dx < 0 else 1
+
     def draw(self):
         width,height = 100,100
         sx = self.fidx * width
@@ -43,10 +54,22 @@ class Player:
         dx,dy = self.delta
         x += dx * self.speed * self.mag * gfw.delta_time
         y += dy * self.speed * self.mag * gfw.delta_time
-        self.pos = x,y
 
+        done = False
         if self.target is not None:
-            helper.move_toward_obj(self)
+            tx,ty = self.target
+            if dx > 0 and x >= tx or dx < 0 and x <= tx:
+                x = tx
+                done = True
+            if dy > 0 and y >= ty or y < 0 and y <= ty:
+                y = ty
+                done = True
+
+        if done:
+            self.target = None
+            self.delta = 0, 0
+            self.action = 2 if dx < 0 else 3
+        self.pos = x,y
 
         self.time += gfw.delta_time
         frame = self.time * 15
@@ -55,6 +78,9 @@ class Player:
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
+            if self.target is not None:
+                self.target = None
+                self.delta = 0, 0
             pdx = self.delta[0]
             self.delta = gobj.point_add(self.delta, Player.KEY_MAP[pair])
             dx = self.delta[0]
@@ -67,3 +93,9 @@ class Player:
             self.mag *= 2
         elif pair == Player.KEYUP_LSHIFT:
             self.mag //= 2
+
+        if e.type == SDL_MOUSEBUTTONDOWN:
+            self.set_target((e.x, get_canvas_height() - e.y - 1))
+        elif e.type == SDL_MOUSEMOTION:
+            if self.target is not None:
+                self.set_target((e.x, get_canvas_height() - e.y - 1))
