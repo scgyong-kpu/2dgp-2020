@@ -15,7 +15,9 @@ class Player:
         (SDL_KEYUP, SDLK_DOWN):    ( 0,  1),
         (SDL_KEYUP, SDLK_UP):      ( 0, -1),
     }
-    KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
+    KEYDOWN_SPACE  = (SDL_KEYDOWN, SDLK_SPACE)
+    KEYDOWN_LSHIFT = (SDL_KEYDOWN, SDLK_LSHIFT)
+    KEYUP_LSHIFT   = (SDL_KEYUP,   SDLK_LSHIFT)
     image = None
 
     #constructor
@@ -28,6 +30,7 @@ class Player:
         self.time = 0
         self.fidx = 0
         self.action = 2
+        self.mag = 1
 
     def draw(self):
         width,height = 100,100
@@ -38,8 +41,8 @@ class Player:
     def update(self):
         x,y = self.pos
         dx,dy = self.delta
-        x += dx * self.speed * gfw.delta_time
-        y += dy * self.speed * gfw.delta_time
+        x += dx * self.speed * self.mag * gfw.delta_time
+        y += dy * self.speed * self.mag * gfw.delta_time
         self.pos = x,y
 
         if self.target is not None:
@@ -60,3 +63,7 @@ class Player:
                 1 if dx > 0 else \
                 2 if pdx < 0 else 3
             # print(dx, pdx, self.action)
+        elif pair == Player.KEYDOWN_LSHIFT:
+            self.mag *= 2
+        elif pair == Player.KEYUP_LSHIFT:
+            self.mag //= 2

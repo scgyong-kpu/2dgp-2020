@@ -32,11 +32,11 @@ def draw_collision_box():
 			draw_rectangle(*obj.get_bb())
 
 class ImageObject:
-	def __init__(self, imageName, x, y):
+	def __init__(self, imageName, pos):
 		self.image = gfw.image.load(RES_DIR + '/' + imageName)
-		self.x, self.y = x, y
+		self.pos = pos
 	def draw(self):
-		self.image.draw(self.x, self.y)
+		self.image.draw(*self.pos)
 	def update(self):
 		pass
 
