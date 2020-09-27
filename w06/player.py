@@ -99,3 +99,9 @@ class Player:
         elif e.type == SDL_MOUSEMOTION:
             if self.target is not None:
                 self.set_target((e.x, get_canvas_height() - e.y - 1))
+
+    def get_bb(self):
+        hw = 20
+        hh = 40
+        x,y = self.pos
+        return x - hw, y - hh, x + hw, y + hh
