@@ -12,7 +12,7 @@ def enter():
     player = Player()
     gfw.world.add(gfw.layer.player, player)
 
-    bg = gobj.ImageObject('kpu_1280x960.png', canvas_width // 2, canvas_height // 2)
+    bg = gobj.ImageObject('kpu_1280x960.png', (canvas_width // 2, canvas_height // 2))
     gfw.world.add(gfw.layer.bg, bg)
 
 def update():
