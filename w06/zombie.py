@@ -188,7 +188,7 @@ class Zombie:
         images = self.images[self.action]
         image = images[self.fidx % len(images)]
         flip = 'h' if self.delta[0] < 0 else ''
-        image.composite_draw(0, flip, *self.pos, 100, 100)
+        image.composite_draw(0, flip, *self.pos, image.w // 5, image.h // 5)
         # x,y = self.pos
         # Zombie.font.draw(x-40, y+50, self.action + str(round(self.time * 100) / 100))
 
