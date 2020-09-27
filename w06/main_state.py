@@ -19,6 +19,8 @@ def enter():
     global zombie_time
     zombie_time = 1
 
+    Zombie.load_all_images()
+
 def update():
     gfw.world.update()
 
