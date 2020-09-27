@@ -128,7 +128,7 @@ class Zombie:
     def load_all_images():
         Zombie.load_images('male')
         Zombie.load_images('female')
-        Zombie.font = gfw.font.load(gobj.RES_DIR + '/ENCR10B.TTF', 20)
+        # Zombie.font = gfw.font.load(gobj.RES_DIR + '/ENCR10B.TTF', 20)
 
     @staticmethod
     def load_images(char):
@@ -189,8 +189,8 @@ class Zombie:
         image = images[self.fidx % len(images)]
         flip = 'h' if self.delta[0] < 0 else ''
         image.composite_draw(0, flip, *self.pos, 100, 100)
-        x,y = self.pos
-        Zombie.font.draw(x-40, y+50, self.action + str(round(self.time * 100) / 100))
+        # x,y = self.pos
+        # Zombie.font.draw(x-40, y+50, self.action + str(round(self.time * 100) / 100))
 
     def get_bb(self):
         x,y = self.pos
