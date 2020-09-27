@@ -9,7 +9,7 @@ wave_index = 0
 
 def update():
     global next_wave
-    next_wave -= gfw.delta_time
+    next_wave -= gfw.delta_time * 10
     if next_wave < 0:
         generate_wave()
 
