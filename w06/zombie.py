@@ -26,7 +26,7 @@ class Zombie:
         char = random.choice(['male', 'female'])
         self.images = Zombie.load_images(char)
         self.action = 'Walk'
-        self.speed = 200
+        self.speed = random.randint(100, 300)
         self.fidx = 0
         self.time = 0
         self.patrol_order = -1
@@ -134,9 +134,25 @@ class Zombie:
         image.composite_draw(0, flip, *self.pos, 100, 100)
 
     def build_behavior_tree(self):
-        node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
-        node_mtt = LeafNode("Move to Target", self.update_position)
-        patrol_node = SequenceNode("Patrol")
-        patrol_node.add_children(node_gnp, node_mtt)
-        self.bt = BehaviorTree(patrol_node)
+        # node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
+        # node_mtt = LeafNode("Move to Target", self.update_position)
+        # patrol_node = SequenceNode("Patrol")
+        # patrol_node.add_children(node_gnp, node_mtt)
+        # self.bt = BehaviorTree(patrol_node)
 
+        self.bt = BehaviorTree.build({
+            "name": "Patrol",
+            "class": SequenceNode,
+            "children": [
+                {
+                    "class": LeafNode,
+                    "name": "Get Next Position",
+                    "function": self.set_patrol_target,
+                },
+                {
+                    "class": LeafNode,
+                    "name": "Move to Target",
+                    "function": self.update_position,
+                },
+            ],
+        })
