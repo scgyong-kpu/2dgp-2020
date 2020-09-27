@@ -10,11 +10,15 @@ class Score:
         self.right, self.y = right, y
         self.image = gfw.image.load(RES_DIR + '/number_24x32.png')
         self.digit_width = self.image.w // 10
+        self.reset()
+
+    def reset(self):
         self.score = 0
+        self.display = 0
 
     def draw(self):
         x = self.right
-        score = self.score
+        score = self.display
         while score > 0:
             digit = score % 10
             sx = digit * self.digit_width
@@ -24,4 +28,5 @@ class Score:
             score //= 10
 
     def update(self):
-    	pass
+    	if self.display < self.score:
+            self.display += 1
