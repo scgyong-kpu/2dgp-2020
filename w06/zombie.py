@@ -11,6 +11,7 @@ class Zombie:
     ]
     ACTIONS = ['Attack', 'Dead', 'Idle', 'Walk']
     CHASE_DISTANCE_SQ = 250 ** 2
+    IDLE_INTERVAL = 2.0
     images = {}
     FPS = 12
     # FCOUNT = 10
@@ -26,7 +27,7 @@ class Zombie:
         # self.find_nearest_pos()
         char = random.choice(['male', 'female'])
         self.images = Zombie.load_images(char)
-        self.action = 'Walk'
+        self.action = 'Idle'
         self.speed = random.randint(100, 150)
         self.fidx = 0
         self.time = 0
@@ -79,7 +80,11 @@ class Zombie:
                 self.action = 'Attack'
             return BehaviorTree.SUCCESS
         else:
-            self.action = 'Walk'
+            if self.action == 'Attack':
+                self.action = 'Idle'
+            else:
+                self.action = 'Walk'
+            self.time = 0
             return BehaviorTree.FAIL
 
     def move_to_player(self):
@@ -88,7 +93,8 @@ class Zombie:
 
         collides = gobj.collides_box(self, self.player)
         if collides:
-            self.remove()
+            self.action = 'Dead'
+            self.time = 0
         return BehaviorTree.SUCCESS
 
     def follow_patrol_positions(self):
@@ -97,6 +103,26 @@ class Zombie:
         done = self.update_position()
         if done:
             self.set_patrol_target()
+
+    def do_idle(self):
+        if self.action != 'Idle':
+            return BehaviorTree.FAIL
+        self.time += gfw.delta_time
+        self.fidx = round(self.time * Zombie.FPS)
+        if self.time >= Zombie.IDLE_INTERVAL:
+            self.action = 'Walk'
+            return BehaviorTree.FAIL
+        return BehaviorTree.SUCCESS
+
+    def do_dead(self):
+        if self.action != 'Dead':
+            return BehaviorTree.FAIL
+        self.time += gfw.delta_time
+        self.fidx = round(self.time * Zombie.FPS)
+        if self.fidx >= len(self.images['Dead']):
+            self.remove()
+
+        return BehaviorTree.SUCCESS
 
     @staticmethod
     def load_all_images():
@@ -178,6 +204,16 @@ class Zombie:
             "name": "PatrolChase",
             "class": SelectorNode,
             "children": [
+                {
+                    "class": LeafNode,
+                    "name": "Idle",
+                    "function": self.do_idle,
+                },
+                {
+                    "class": LeafNode,
+                    "name": "Dead",
+                    "function": self.do_dead,
+                },
                 {
                     "name": "Chase",
                     "class": SequenceNode,
