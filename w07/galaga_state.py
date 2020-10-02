@@ -1,13 +1,15 @@
 import json
 import gfw
 from pico2d import *
+from gobj import *
+from galaga_sprite import Sprite
 
 canvas_width = 500
 canvas_height = 800
 
 class ImageObject:
     def __init__(self, imageName, pos):
-        self.image = gfw.image.load('./res/' + imageName)
+        self.image = gfw.image.load(res(imageName))
         self.pos = pos
     def draw(self):
         self.image.draw(*self.pos)
@@ -18,6 +20,7 @@ def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
     gfw.world.add(gfw.layer.bg, ImageObject('space.png', (250,400)))
+    gfw.world.add(gfw.layer.player, Sprite((0,640,60,64), (250, 50)))
 
 def update():
     gfw.world.update()
