@@ -44,6 +44,29 @@ def handle_event(e):
         if e.key == SDLK_ESCAPE:
             gfw.pop()
 
+    if handle_mouse(e):
+        return
+
+# capture 가 설정되면 모든 마우스 이벤트는 capture 에게 전달된다
+capture = None 
+
+# 이벤트가 처리되었으면 True, 아니면 False 를 리턴한다
+def handle_mouse(e):
+    global capture
+    if capture is not None:
+        # capture 가 풀리기를 원하면 False 가 리턴된다
+        holding = capture.handle_event(e)
+        if not holding:
+            capture = None
+        return True
+
+    for enemy in gfw.world.objects_at(gfw.layer.enemy):
+        if enemy.handle_event(e):
+            capture = enemy
+            return True
+
+    return False
+
 def exit():
     pass
 

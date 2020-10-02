@@ -6,6 +6,9 @@ from gobj import *
 galaga_image = None
 sprite_rects = {}
 
+LBTN_DOWN = (SDL_MOUSEBUTTONDOWN, SDL_BUTTON_LEFT)
+LBTN_UP   = (SDL_MOUSEBUTTONUP,   SDL_BUTTON_LEFT)
+
 def load():
     global galaga_image
     if galaga_image is None:
@@ -23,6 +26,8 @@ class Sprite:
         self.rect = sprite_rects[name]
         self.pos = pos
         self.animates = animates
+        self.mouse_point = None
+        self.hw, self.hh = self.rect[2] // 2, self.rect[3] // 2
         if animates:
             self.time = get_time()
 
@@ -36,5 +41,32 @@ class Sprite:
                 galaga_image.clip_draw(l+w, b, w, h, *self.pos)
         else:
             galaga_image.clip_draw(*self.rect, *self.pos)
+
+    def handle_event(self, e):
+        pair = (e.type, e.button)
+        if self.mouse_point is None:
+            if pair == LBTN_DOWN:
+                if pt_in_rect(mouse_xy(e), self.get_bb()):
+                    self.mouse_point = mouse_xy(e)
+                    return True
+            return False
+
+        if pair == LBTN_UP:
+            self.mouse_point = None
+            return False
+
+        if e.type == SDL_MOUSEMOTION:
+            x,y = self.pos
+            mx,my = mouse_xy(e)
+            px,py = self.mouse_point
+            self.pos = x + mx - px, y + my - py
+            # print((x,y), (mx,my), (px,py), self.pos)
+            self.mouse_point = mx,my
+        return True
+
     def update(self):
         pass
+
+    def get_bb(self):
+        x,y = self.pos
+        return x - self.hw, y - self.hh, x + self.hw, y + self.hh
