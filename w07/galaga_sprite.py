@@ -8,6 +8,7 @@ sprite_rects = {}
 
 LBTN_DOWN = (SDL_MOUSEBUTTONDOWN, SDL_BUTTON_LEFT)
 LBTN_UP   = (SDL_MOUSEBUTTONUP,   SDL_BUTTON_LEFT)
+TEXT_COLOR = (255, 255, 255)
 
 def load():
     global galaga_image
@@ -17,6 +18,9 @@ def load():
             data = json.load(f)
             for name in data:
                 sprite_rects[name] = tuple(data[name])
+
+    global pos_font
+    pos_font = gfw.font.load(res('ENCR10B.TTF'), 15)
 
 class Sprite:
     FPS = 3
@@ -41,6 +45,14 @@ class Sprite:
                 galaga_image.clip_draw(l+w, b, w, h, *self.pos)
         else:
             galaga_image.clip_draw(*self.rect, *self.pos)
+
+    def draw_position(self):
+        draw_rectangle(*self.get_bb())
+        x,y = self.pos
+        x -= 2 * self.hw
+        y -= 2 * self.hh
+        pos_font.draw(x, y, str(self.pos), TEXT_COLOR)
+
 
     def handle_event(self, e):
         pair = (e.type, e.button)

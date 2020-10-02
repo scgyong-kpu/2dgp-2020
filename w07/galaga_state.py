@@ -35,6 +35,8 @@ def update():
 def draw():
     gfw.world.draw()
     # gobj.draw_collision_box()
+    if capture is not None:
+        capture.draw_position()
 
 def handle_event(e):
     # prev_dx = boy.dx
