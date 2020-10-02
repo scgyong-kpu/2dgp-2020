@@ -42,11 +42,16 @@ def handle_event(e):
     # prev_dx = boy.dx
     if e.type == SDL_QUIT:
         gfw.quit()
+        return
     elif e.type == SDL_KEYDOWN:
         if e.key == SDLK_ESCAPE:
             gfw.pop()
+            return
 
     if handle_mouse(e):
+        return
+
+    if handle_command(e):
         return
 
 # capture 가 설정되면 모든 마우스 이벤트는 capture 에게 전달된다
@@ -69,8 +74,35 @@ def handle_mouse(e):
 
     return False
 
+def handle_command(e):
+    if e.type == SDL_KEYDOWN:
+        if e.key == SDLK_s:
+            save_enemies()
+        elif e.key >= SDLK_1 and e.key <= SDLK_4:
+            create_enemy(e.key - SDLK_1)
+
 def exit():
     pass
+
+SPRITE_NAMES = [ 
+    "commander_green", 
+    "commander_blue", 
+    "butterfly", 
+    "bee_yellow"
+]
+
+def create_enemy(index):
+    name = SPRITE_NAMES[index]
+    print(name)
+    pos = get_canvas_width() // 2, get_canvas_height() // 2
+    gfw.world.add(gfw.layer.enemy, Sprite(name, pos, True))
+
+def save_enemies():
+    enemies = gfw.world.objects_at(gfw.layer.enemy)
+    js_enemies = [e.dictionary() for e in enemies]
+
+    with open('enemies.json', 'w') as f:
+        json.dump(js_enemies, f, indent=2)
 
 if __name__ == '__main__':
     gfw.run_main()

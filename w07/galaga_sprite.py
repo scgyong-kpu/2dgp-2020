@@ -8,6 +8,8 @@ sprite_rects = {}
 
 LBTN_DOWN = (SDL_MOUSEBUTTONDOWN, SDL_BUTTON_LEFT)
 LBTN_UP   = (SDL_MOUSEBUTTONUP,   SDL_BUTTON_LEFT)
+RBTN_DOWN = (SDL_MOUSEBUTTONDOWN, SDL_BUTTON_RIGHT)
+KEYDN_DEL = (SDL_KEYDOWN, SDLK_DELETE)
 TEXT_COLOR = (255, 255, 255)
 
 def load():
@@ -74,6 +76,10 @@ class Sprite:
             self.pos = x + mx - px, y + my - py
             # print((x,y), (mx,my), (px,py), self.pos)
             self.mouse_point = mx,my
+        elif (e.type, e.key) == KEYDN_DEL or (e.type, e.button) == RBTN_DOWN:
+            gfw.world.remove(self)
+            return False
+
         return True
 
     def update(self):
@@ -82,3 +88,7 @@ class Sprite:
     def get_bb(self):
         x,y = self.pos
         return x - self.hw, y - self.hh, x + self.hw, y + self.hh
+
+    def dictionary(self):
+        x,y = self.pos
+        return { "name": self.name, "x": x, "y": y }
