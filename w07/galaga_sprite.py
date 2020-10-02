@@ -13,11 +13,10 @@ def load():
         with open(res('all.json')) as f:
             data = json.load(f)
             for name in data:
-                print(name)
                 sprite_rects[name] = tuple(data[name])
 
 class Sprite:
-    def __init__(self, name, pos):
+    def __init__(self, name, pos, animates=False):
         load()
         self.name = name
         self.rect = sprite_rects[name]
