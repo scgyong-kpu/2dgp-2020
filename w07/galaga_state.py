@@ -20,12 +20,13 @@ def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
     gfw.world.add(gfw.layer.bg, ImageObject('space.png', (250,400)))
-    gfw.world.add(gfw.layer.player, Sprite((0,640,60,64), (250, 50)))
-    gfw.world.add(gfw.layer.enemy, Sprite((0,512,60,64), (90, 297)))
-    gfw.world.add(gfw.layer.enemy, Sprite((0,344,52,40), (381, 469)))
-    gfw.world.add(gfw.layer.enemy, Sprite((0,344,52,40), (281, 369)))
-    gfw.world.add(gfw.layer.enemy, Sprite((0,408,52,40), (317, 602)))
-    gfw.world.add(gfw.layer.enemy, Sprite((0,408,52,40), (217, 502)))
+
+    gfw.world.add(gfw.layer.player, Sprite('player', (250, 50)))
+    gfw.world.add(gfw.layer.enemy, Sprite('commander_green', (90, 297)))
+    gfw.world.add(gfw.layer.enemy, Sprite('bee_yellow', (381, 469)))
+    gfw.world.add(gfw.layer.enemy, Sprite('bee_yellow', (281, 369)))
+    gfw.world.add(gfw.layer.enemy, Sprite('butterfly', (317, 602)))
+    gfw.world.add(gfw.layer.enemy, Sprite('butterfly', (217, 502)))
 
 def update():
     gfw.world.update()
