@@ -15,8 +15,7 @@ def enter():
     global player
 
     if load():
-        objs = gfw.world.objects_at(gfw.layer.player)
-        player = list(objs)[0]
+        player = gfw.world.object(gfw.layer.player, 0)
     else:
         player = Player()
         gfw.world.add(gfw.layer.player, player)

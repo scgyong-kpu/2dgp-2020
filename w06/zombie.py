@@ -31,11 +31,8 @@ class Zombie:
         self.speed = random.randint(100, 150)
         self.fidx = 0
         self.time = 0
-        layer = list(gfw.world.objects_at(gfw.layer.player))
-        if len(layer) > 0:
-            self.player = layer[0]
-        else:
-            print('No player yet')
+        if gfw.world.count_at(gfw.layer.player) > 0:
+            self.player = gfw.world.object(gfw.layer.player, 0)
         self.patrol_order = -1
         self.build_behavior_tree()
 
@@ -209,7 +206,6 @@ class Zombie:
         self.__init__()
         self.__dict__.update(dict)
         self.images = Zombie.load_images(self.char)
-        print(self.player)
 
     def build_behavior_tree(self):
         # node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
