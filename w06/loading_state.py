@@ -131,7 +131,19 @@ def update():
 
 def draw():
     back.draw(center_x, center_y)
-    print(index, FILES[index - 1])
+    progress = index / len(FILES)
+    draw_progress(center_x, 300, 680, progress)
+
+def draw_progress(x, y, width, rate):
+    l = x - width // 2
+    b = y - bg.h // 2
+    draw_3(bg, l, b, width, 3)
+    draw_3(fg, l, b, round(width * rate), 3)
+
+def draw_3(img, l, b, width, edge):
+    img.clip_draw_to_origin(0, 0, edge, img.h, l, b, edge, img.h)
+    img.clip_draw_to_origin(edge, 0, img.w - 2 * edge, img.h, l+edge, b, width - 2 * edge, img.h)
+    img.clip_draw_to_origin(img.w - edge, 0, edge, img.h, l+width-edge, b, edge, img.h)
 
 def handle_event(e):
     global player
