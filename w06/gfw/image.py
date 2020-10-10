@@ -7,7 +7,7 @@ def load(file):
     if file in images:
         return images[file]
 
-    print("Loading:", file)
+    # print("Loading:", file)
     image = load_image(file)
     images[file] = image
     return image
@@ -15,5 +15,5 @@ def load(file):
 def unload(file):
     global images
     if file in images:
-        print("Unloading:", file, "Count=", len(images))
+        # print("Unloading:", file, "Count=", len(images))
         del images[file]

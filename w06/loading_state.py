@@ -22,7 +22,7 @@ def enter():
 
     global frame_interval
     frame_interval = gfw.frame_interval
-    gfw.frame_interval = 0.1
+    gfw.frame_interval = 0
 
 def exit():
     global back, bg, fg
@@ -34,8 +34,7 @@ def exit():
     del fg
 
     global frame_interval
-    gfw.frame_interal = frame_interval
-    print("Exiting loading_state")
+    gfw.frame_interval = frame_interval
 
 def update():
     global index, display

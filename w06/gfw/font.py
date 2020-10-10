@@ -8,7 +8,7 @@ def load(file, size):
     if key in fonts:
         return fonts[key]
 
-    print("Loading font:", file, size)
+    # print("Loading font:", file, size)
     font = load_font(file, size)
     fonts[key] = font
     return font
