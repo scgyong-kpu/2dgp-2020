@@ -6,7 +6,68 @@ from gobj import res
 canvas_width = main_state.canvas_width
 canvas_height = main_state.canvas_height
 
-FILES = [
+center_x = canvas_width // 2
+center_y = canvas_height // 2
+
+def enter():
+    global back, bg, fg, index, file
+    back = gfw.image.load(res('loading_1280x960.png'))
+    bg = gfw.image.load(res('progress_bg.png'))
+    fg = gfw.image.load(res('progress_fg.png'))
+    index = 0
+
+    global frame_interval
+    frame_interval = gfw.frame_interval
+    gfw.frame_interval = 0
+
+def exit():
+    global back, bg, fg
+    gfw.image.unload(res('loading_1280x960.png'))
+    gfw.image.unload(res('progress_bg.png'))
+    gfw.image.unload(res('progress_fg.png'))
+    del back
+    del bg
+    del fg
+
+    global frame_interval
+    gfw.frame_interal = frame_interval
+    print("Exiting loading_state")
+
+def update():
+    global index
+    if index >= len(IMAGE_FILES):
+        gfw.change(main_state)
+        return
+    file = IMAGE_FILES[index]
+    gfw.image.load(file)
+    index += 1
+
+def draw():
+    back.draw(center_x, center_y)
+    progress = index / len(IMAGE_FILES)
+    draw_progress(center_x, 300, 680, progress)
+
+def draw_progress(x, y, width, rate):
+    l = x - width // 2
+    b = y - bg.h // 2
+    draw_3(bg, l, b, width, 3)
+    draw_3(fg, l, b, round(width * rate), 3)
+
+def draw_3(img, l, b, width, edge):
+    img.clip_draw_to_origin(0, 0, edge, img.h, l, b, edge, img.h)
+    img.clip_draw_to_origin(edge, 0, img.w - 2 * edge, img.h, l+edge, b, width - 2 * edge, img.h)
+    img.clip_draw_to_origin(img.w - edge, 0, edge, img.h, l+width-edge, b, edge, img.h)
+
+def handle_event(e):
+    global player
+    # prev_dx = boy.dx
+    if e.type == SDL_QUIT:
+        gfw.quit()
+    elif e.type == SDL_KEYDOWN:
+        if e.key == SDLK_ESCAPE:
+            gfw.pop()
+
+IMAGE_FILES = [
     "res/kpu_1280x960.png",
     "res/animation_sheet.png",
     "res/zombiefiles/female/Attack (1).png",
@@ -103,66 +164,6 @@ FILES = [
     "res/zombiefiles/male/Walk (10).png",
 ]
 
-center_x = canvas_width // 2
-center_y = canvas_height // 2
-
-def enter():
-    global back, bg, fg, index, file
-    back = gfw.image.load(res('loading_1280x960.png'))
-    bg = gfw.image.load(res('progress_bg.png'))
-    fg = gfw.image.load(res('progress_fg.png'))
-    index = 0
-
-    global frame_interval
-    frame_interval = gfw.frame_interval
-    gfw.frame_interval = 0
-
-def exit():
-    global back, bg, fg
-    gfw.image.unload(res('loading_1280x960.png'))
-    gfw.image.unload(res('progress_bg.png'))
-    gfw.image.unload(res('progress_fg.png'))
-    del back
-    del bg
-    del fg
-
-    global frame_interval
-    gfw.frame_interal = frame_interval
-    print("Exiting loading_state")
-
-def update():
-    global index
-    if index >= len(FILES):
-        gfw.change(main_state)
-        return
-    file = FILES[index]
-    gfw.image.load(file)
-    index += 1
-
-def draw():
-    back.draw(center_x, center_y)
-    progress = index / len(FILES)
-    draw_progress(center_x, 300, 680, progress)
-
-def draw_progress(x, y, width, rate):
-    l = x - width // 2
-    b = y - bg.h // 2
-    draw_3(bg, l, b, width, 3)
-    draw_3(fg, l, b, round(width * rate), 3)
-
-def draw_3(img, l, b, width, edge):
-    img.clip_draw_to_origin(0, 0, edge, img.h, l, b, edge, img.h)
-    img.clip_draw_to_origin(edge, 0, img.w - 2 * edge, img.h, l+edge, b, width - 2 * edge, img.h)
-    img.clip_draw_to_origin(img.w - edge, 0, edge, img.h, l+width-edge, b, edge, img.h)
-
-def handle_event(e):
-    global player
-    # prev_dx = boy.dx
-    if e.type == SDL_QUIT:
-        gfw.quit()
-    elif e.type == SDL_KEYDOWN:
-        if e.key == SDLK_ESCAPE:
-            gfw.pop()
 
 if __name__ == '__main__':
     gfw.run_main()
