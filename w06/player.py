@@ -112,4 +112,6 @@ class Player:
         return dict
 
     def __setstate__(self, dict):
+        self.__init__()
         self.__dict__.update(dict)
+        print('Player self:', self)

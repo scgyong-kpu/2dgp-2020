@@ -41,6 +41,7 @@ def draw_collision_box():
 
 class ImageObject:
     def __init__(self, imageName, pos):
+        self.imageName = imageName
         self.image = gfw.image.load(RES_DIR + '/' + imageName)
         self.pos = pos
     def draw(self):
@@ -53,6 +54,7 @@ class ImageObject:
         return dict
     def __setstate__(self, dict):
         self.__dict__.update(dict)
+        self.image = gfw.image.load(RES_DIR + '/' + self.imageName)
 
 if __name__ == "__main__":
     print("This file is not supposed to be executed directly.")

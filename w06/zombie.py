@@ -25,14 +25,17 @@ class Zombie:
         )
         self.delta = 0.1, 0.1
         # self.find_nearest_pos()
-        char = random.choice(['male', 'female'])
-        self.images = Zombie.load_images(char)
+        self.char = random.choice(['male', 'female'])
+        self.images = Zombie.load_images(self.char)
         self.action = 'Idle'
         self.speed = random.randint(100, 150)
         self.fidx = 0
         self.time = 0
         layer = list(gfw.world.objects_at(gfw.layer.player))
-        self.player = layer[0]
+        if len(layer) > 0:
+            self.player = layer[0]
+        else:
+            print('No player yet')
         self.patrol_order = -1
         self.build_behavior_tree()
 
@@ -199,10 +202,14 @@ class Zombie:
     def __getstate__(self):
         dict = self.__dict__.copy()
         del dict['images']
+        # del dict['player']
         return dict
 
     def __setstate__(self, dict):
+        self.__init__()
         self.__dict__.update(dict)
+        self.images = Zombie.load_images(self.char)
+        print(self.player)
 
     def build_behavior_tree(self):
         # node_gnp = LeafNode("Get Next Position", self.set_patrol_target)

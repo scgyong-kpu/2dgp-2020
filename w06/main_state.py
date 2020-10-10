@@ -34,6 +34,7 @@ def load():
         return False
 
     gfw.world.load(SAVE_FILENAME)
+    print('Loaded from:', SAVE_FILENAME)
     return True
 
 def update():
@@ -62,6 +63,7 @@ def handle_event(e):
 
     if e.type == SDL_KEYDOWN and e.key == SDLK_s:
         gfw.world.save(SAVE_FILENAME)
+        print('Saved to:', SAVE_FILENAME)
 
 def exit():
     pass
