@@ -2,7 +2,8 @@ import gfw
 from pico2d import *
 from gobj import *
 from player import Player
-from background import Background
+# from background import Background
+from background import FixedBackground as Background
 
 def enter():
     gfw.world.init(['bg', 'enemy', 'player'])

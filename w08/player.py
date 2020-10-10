@@ -52,7 +52,8 @@ class Player:
         width,height = 100,100
         sx = self.fidx * width
         sy = self.action * height
-        self.image.clip_draw(sx, sy, width, 100, center_x, center_y)
+        pos = self.bg.to_screen(self.pos)
+        self.image.clip_draw(sx, sy, width, 100, *pos)
 
     def update(self):
         x,y = self.pos
