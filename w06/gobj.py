@@ -47,6 +47,10 @@ class ImageObject:
         self.image.draw(*self.pos)
     def update(self):
         pass
+    def __getstate__(self):
+        dict = self.__dict__.copy()
+        del dict['image']
+        return dict
 
 if __name__ == "__main__":
     print("This file is not supposed to be executed directly.")

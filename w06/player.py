@@ -105,3 +105,8 @@ class Player:
         hh = 40
         x,y = self.pos
         return x - hw, y - hh, x + hw, y + hh
+
+    def __getstate__(self):
+        dict = self.__dict__.copy()
+        del dict['image']
+        return dict
