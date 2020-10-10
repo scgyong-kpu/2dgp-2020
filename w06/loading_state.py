@@ -113,6 +113,10 @@ def enter():
     fg = gfw.image.load(res('progress_fg.png'))
     index = 0
 
+    global frame_interval
+    frame_interval = gfw.frame_interval
+    gfw.frame_interval = 0
+
 def exit():
     global back, bg, fg
     gfw.image.unload(res('loading_1280x960.png'))
@@ -121,6 +125,10 @@ def exit():
     del back
     del bg
     del fg
+
+    global frame_interval
+    gfw.frame_interal = frame_interval
+    print("Exiting loading_state")
 
 def update():
     global index

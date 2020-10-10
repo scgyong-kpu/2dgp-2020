@@ -2,7 +2,7 @@ import random
 from pico2d import *
 import gfw
 
-RES_DIR = './res'
+RES_DIR = 'res'
 
 def res(file):
     return RES_DIR + '/' + file
