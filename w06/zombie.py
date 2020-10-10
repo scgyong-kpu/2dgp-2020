@@ -203,7 +203,7 @@ class Zombie:
         return dict
 
     def __setstate__(self, dict):
-        self.__init__()
+        # self.__init__()
         self.__dict__.update(dict)
         self.images = Zombie.load_images(self.char)
 

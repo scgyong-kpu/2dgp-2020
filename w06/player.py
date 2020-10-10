@@ -112,5 +112,6 @@ class Player:
         return dict
 
     def __setstate__(self, dict):
-        self.__init__()
+        # self.__init__()
         self.__dict__.update(dict)
+        self.image = gfw.image.load(gobj.RES_DIR + '/animation_sheet.png')

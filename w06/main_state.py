@@ -12,6 +12,8 @@ SAVE_FILENAME = 'zombies.pickle'
 
 def enter():
     gfw.world.init(['bg', 'zombie', 'player'])
+    Zombie.load_all_images()
+
     global player
 
     if load():
@@ -25,8 +27,6 @@ def enter():
 
     global zombie_time
     zombie_time = 1
-
-    Zombie.load_all_images()
 
 def load():
     if not os.path.isfile(SAVE_FILENAME):
