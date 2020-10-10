@@ -51,6 +51,8 @@ class ImageObject:
         dict = self.__dict__.copy()
         del dict['image']
         return dict
+    def __setstate__(self, dict):
+        self.__dict__.update(dict)
 
 if __name__ == "__main__":
     print("This file is not supposed to be executed directly.")

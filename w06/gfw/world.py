@@ -78,5 +78,7 @@ def save(fn='world.pickle'):
         pickle.dump(objects, f)
 
 def load(fn='world.pickle'):
+    global objects
     with open(fn, 'rb') as f:
         objects = pickle.load(f)
+        print(objects)

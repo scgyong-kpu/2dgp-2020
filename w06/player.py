@@ -110,3 +110,6 @@ class Player:
         dict = self.__dict__.copy()
         del dict['image']
         return dict
+
+    def __setstate__(self, dict):
+        self.__dict__.update(dict)

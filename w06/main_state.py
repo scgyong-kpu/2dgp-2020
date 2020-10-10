@@ -1,3 +1,4 @@
+import os.path
 import gfw
 from pico2d import *
 from player import Player
@@ -7,19 +8,33 @@ import gobj
 canvas_width = 1280
 canvas_height = 960
 
+SAVE_FILENAME = 'zombies.pickle'
+
 def enter():
     gfw.world.init(['bg', 'zombie', 'player'])
     global player
-    player = Player()
-    gfw.world.add(gfw.layer.player, player)
 
-    bg = gobj.ImageObject('kpu_1280x960.png', (canvas_width // 2, canvas_height // 2))
-    gfw.world.add(gfw.layer.bg, bg)
+    if load():
+        objs = gfw.world.objects_at(gfw.layer.player)
+        player = list(objs)[0]
+    else:
+        player = Player()
+        gfw.world.add(gfw.layer.player, player)
+
+        bg = gobj.ImageObject('kpu_1280x960.png', (canvas_width // 2, canvas_height // 2))
+        gfw.world.add(gfw.layer.bg, bg)
 
     global zombie_time
     zombie_time = 1
 
     Zombie.load_all_images()
+
+def load():
+    if not os.path.isfile(SAVE_FILENAME):
+        return False
+
+    gfw.world.load(SAVE_FILENAME)
+    return True
 
 def update():
     gfw.world.update()
@@ -46,7 +61,7 @@ def handle_event(e):
     player.handle_event(e)
 
     if e.type == SDL_KEYDOWN and e.key == SDLK_s:
-        gfw.world.save('zombies.pickle')
+        gfw.world.save(SAVE_FILENAME)
 
 def exit():
     pass

@@ -201,6 +201,9 @@ class Zombie:
         del dict['images']
         return dict
 
+    def __setstate__(self, dict):
+        self.__dict__.update(dict)
+
     def build_behavior_tree(self):
         # node_gnp = LeafNode("Get Next Position", self.set_patrol_target)
         # node_mtt = LeafNode("Move to Target", self.update_position)
