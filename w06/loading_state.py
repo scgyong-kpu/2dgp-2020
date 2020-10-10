@@ -7,6 +7,8 @@ canvas_width = main_state.canvas_width
 canvas_height = main_state.canvas_height
 
 FILES = [
+    "res/kpu_1280x960.png",
+    "res/animation_sheet.png",
     "res/zombiefiles/female/Attack (1).png",
     "res/zombiefiles/female/Attack (2).png",
     "res/zombiefiles/female/Attack (3).png",
