@@ -16,9 +16,13 @@ def enter():
     fg = gfw.image.load(res('progress_fg.png'))
     index = 0
 
+    global font, display
+    font = gfw.font.load(res('ENCR10B.TTF'), 30)
+    display = ''
+
     global frame_interval
     frame_interval = gfw.frame_interval
-    gfw.frame_interval = 0
+    gfw.frame_interval = 0.1
 
 def exit():
     global back, bg, fg
@@ -34,15 +38,17 @@ def exit():
     print("Exiting loading_state")
 
 def update():
-    global index
+    global index, display
     image_count = len(IMAGE_FILES)
     font_count = len(FONT_PAIRS)
     if index < image_count:
         file = IMAGE_FILES[index]
         gfw.image.load(file)
+        display = file
     elif index - image_count < font_count:
         file, size = FONT_PAIRS[index - image_count]
         gfw.font.load(file, size)
+        display = '%s %dpt' % (file, size)
     else:
         gfw.change(main_state)
         return
@@ -50,8 +56,14 @@ def update():
 
 def draw():
     back.draw(center_x, center_y)
-    progress = index / len(IMAGE_FILES)
+    image_count = len(IMAGE_FILES)
+    font_count = len(FONT_PAIRS)
+    progress = index / (image_count + font_count)
     draw_progress(center_x, 300, 680, progress)
+
+    global display
+    font.draw(300, 250, display)
+    font.draw(300, 350, '%.1f%%' % (progress * 100))
 
 def draw_progress(x, y, width, rate):
     l = x - width // 2
