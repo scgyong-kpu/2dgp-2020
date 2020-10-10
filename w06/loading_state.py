@@ -35,11 +35,17 @@ def exit():
 
 def update():
     global index
-    if index >= len(IMAGE_FILES):
+    image_count = len(IMAGE_FILES)
+    font_count = len(FONT_PAIRS)
+    if index < image_count:
+        file = IMAGE_FILES[index]
+        gfw.image.load(file)
+    elif index - image_count < font_count:
+        file, size = FONT_PAIRS[index - image_count]
+        gfw.font.load(file, size)
+    else:
         gfw.change(main_state)
         return
-    file = IMAGE_FILES[index]
-    gfw.image.load(file)
     index += 1
 
 def draw():
@@ -164,6 +170,11 @@ IMAGE_FILES = [
     "res/zombiefiles/male/Walk (10).png",
 ]
 
+FONT_PAIRS = [
+    ("res/ENCR10B.TTF", 10),
+    ("res/ENCR10B.TTF", 20),
+    ("res/ENCR10B.TTF", 30),
+]
 
 if __name__ == '__main__':
     gfw.run_main()
