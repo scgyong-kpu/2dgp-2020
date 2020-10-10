@@ -2,17 +2,19 @@ import gfw
 from pico2d import *
 from gobj import *
 from player import Player
+from background import Background
 
 def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
-    bg = ImageObject('futsal_court.png', center)
+    bg = Background('futsal_court.png')
     gfw.world.add(gfw.layer.bg, bg)
 
     global player
     player = Player()
-    player.bg = bg
+    player.pos = bg.center
+    bg.target = player
     gfw.world.add(gfw.layer.player, player)
 
 

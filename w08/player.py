@@ -75,7 +75,7 @@ class Player:
             self.action = 2 if dx < 0 else 3
         self.pos = x,y
 
-        self.bg.pos = 2 * center_x - x, 2 * center_y - y
+        # self.bg.pos = 2 * center_x - x, 2 * center_y - y
 
         self.time += gfw.delta_time
         frame = self.time * 15
