@@ -7,10 +7,12 @@ def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
-    gfw.world.add(gfw.layer.bg, ImageObject('futsal_court.png', center))
+    bg = ImageObject('futsal_court.png', center)
+    gfw.world.add(gfw.layer.bg, bg)
 
     global player
     player = Player()
+    player.bg = bg
     gfw.world.add(gfw.layer.player, player)
 
 

@@ -32,6 +32,10 @@ class Player:
         self.action = 2
         self.mag = 1
 
+        global center_x, center_y
+        center_x = get_canvas_width() // 2
+        center_y = get_canvas_height() // 2
+
     def set_target(self, target):
         x,y = self.pos
         tx,ty = target
@@ -47,7 +51,7 @@ class Player:
         width,height = 100,100
         sx = self.fidx * width
         sy = self.action * height
-        self.image.clip_draw(sx, sy, width, 100, *self.pos)
+        self.image.clip_draw(sx, sy, width, 100, center_x, center_y)
 
     def update(self):
         x,y = self.pos
@@ -70,6 +74,8 @@ class Player:
             self.delta = 0, 0
             self.action = 2 if dx < 0 else 3
         self.pos = x,y
+
+        self.bg.pos = 2 * center_x - x, 2 * center_y - y
 
         self.time += gfw.delta_time
         frame = self.time * 15
