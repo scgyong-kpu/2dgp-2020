@@ -45,6 +45,9 @@ def handle_event(e):
 
     player.handle_event(e)
 
+    if e.type == SDL_KEYDOWN and e.key == SDLK_s:
+        gfw.world.save('zombies.pickle')
+
 def exit():
     pass
 

@@ -1,3 +1,4 @@
+import pickle
 from functools import reduce
 import gfw
 from pico2d import *
@@ -72,5 +73,10 @@ def empty_trashcan():
                 pass
     trashcan = []
 
+def save(fn='world.pickle'):
+    with open(fn, 'wb') as f:
+        pickle.dump(objects, f)
 
-
+def load(fn='world.pickle'):
+    with open(fn, 'rb') as f:
+        objects = pickle.load(f)
