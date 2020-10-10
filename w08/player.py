@@ -39,6 +39,7 @@ class Player:
     def set_target(self, target):
         x,y = self.pos
         tx,ty = target
+
         dx, dy = tx - x, ty - y
         distance = math.sqrt(dx**2 + dy**2)
         if distance == 0: return
@@ -58,6 +59,12 @@ class Player:
         dx,dy = self.delta
         x += dx * self.speed * self.mag * gfw.delta_time
         y += dy * self.speed * self.mag * gfw.delta_time
+
+        px,py = x,y
+        bg_l, bg_b, bg_r, bg_t = self.bg.get_boundary()
+        x = clamp(bg_l, x, bg_r)
+        y = clamp(bg_b, y, bg_t)
+        # print("update():", (px,py),(x,y))
 
         done = False
         if self.target is not None:
@@ -101,10 +108,12 @@ class Player:
             self.mag //= 2
 
         if e.type == SDL_MOUSEBUTTONDOWN:
-            self.set_target((e.x, get_canvas_height() - e.y - 1))
+            target = self.bg.translate(gobj.mouse_xy(e))
+            self.set_target(target)
         elif e.type == SDL_MOUSEMOTION:
             if self.target is not None:
-                self.set_target((e.x, get_canvas_height() - e.y - 1))
+                target = self.bg.translate(gobj.mouse_xy(e))
+                self.set_target(target)
 
     def get_bb(self):
         hw = 20

@@ -14,6 +14,7 @@ def enter():
     global player
     player = Player()
     player.pos = bg.center
+    player.bg = bg
     bg.target = player
     gfw.world.add(gfw.layer.player, player)
 
