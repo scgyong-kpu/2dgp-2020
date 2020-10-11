@@ -26,7 +26,8 @@ class Player:
         self.delta = 0, 0
         self.target = None
         self.speed = 200
-        self.image = gfw.image.load(gobj.RES_DIR + '/animation_sheet.png')
+        self.image = gfw.image.load(gobj.res('animation_sheet.png'))
+        self.target_image = gfw.image.load(gobj.res('target.png'))
         self.time = 0
         self.fidx = 0
         self.action = 2
@@ -49,6 +50,9 @@ class Player:
         self.action = 0 if dx < 0 else 1
 
     def draw(self):
+        if self.target is not None:
+            target = self.bg.to_screen(self.target)
+            self.target_image.draw(*target)
         width,height = 100,100
         sx = self.fidx * width
         sy = self.action * height
