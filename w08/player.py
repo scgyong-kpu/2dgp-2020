@@ -3,8 +3,6 @@ from pico2d import *
 import gfw
 import gobj
 
-debug = False
-
 class Player:
     KEY_MAP = {
         (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
@@ -60,16 +58,6 @@ class Player:
         pos = self.bg.to_screen(self.pos)
         self.image.clip_draw(sx, sy, width, 100, *pos)
 
-        font = gfw.font.load(gobj.res('ENCR10B.TTF'), 20)
-        if self.target is None:
-            debug_x,debug_y = self.pos
-            dstr = "%.1f,%.1f" % (debug_x,debug_y)
-        else:
-            debug_x,debug_y = self.pos
-            debug_tx,debug_ty = self.target
-            dstr = "%.1f,%.1f - %.1f,%.1f" % (debug_x,debug_y,debug_tx,debug_ty)
-        font.draw(*pos, dstr)
-
     def update(self):
         x,y = self.pos
         dx,dy = self.delta
@@ -80,22 +68,14 @@ class Player:
         bg_l, bg_b, bg_r, bg_t = self.bg.get_boundary()
         x = clamp(bg_l, x, bg_r)
         y = clamp(bg_b, y, bg_t)
-        # print("update():", )
-        # debug_x,debug_y = self.pos
-        # debug_tx,debug_ty = self.target
-        if debug and (dx != 0 or dy != 0):
-            dstr = "%.1f,%.1f - %.1f,%.1f" % (px,py,x,y)
-            print(dstr)
 
         done = False
         if self.target is not None:
             tx,ty = self.target
             if dx > 0 and x >= tx or dx < 0 and x <= tx:
-                print('x', dx, x, tx)
                 x = tx
                 done = True
             if dy > 0 and y >= ty or dy < 0 and y <= ty:
-                print('y', dy, y, ty, dy > 0,y >= ty,y < 0 , y <= ty)
                 y = ty
                 done = True
 
@@ -124,19 +104,14 @@ class Player:
                 0 if dx < 0 else \
                 1 if dx > 0 else \
                 2 if pdx < 0 else 3
-            # print(dx, pdx, self.action)
         elif pair == Player.KEYDOWN_LSHIFT:
             self.mag *= 2
         elif pair == Player.KEYUP_LSHIFT:
             self.mag //= 2
-        elif pair == (SDL_KEYDOWN, SDLK_d):
-            global debug
-            debug = not debug
 
         if e.type == SDL_MOUSEBUTTONDOWN:
             target = self.bg.translate(gobj.mouse_xy(e))
             self.set_target(target)
-            print(gobj.mouse_xy(e), target)
         elif e.type == SDL_MOUSEMOTION:
             if self.target is not None:
                 target = self.bg.translate(gobj.mouse_xy(e))
