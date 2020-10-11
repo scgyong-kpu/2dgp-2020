@@ -94,7 +94,7 @@ class Player:
                 print('x', dx, x, tx)
                 x = tx
                 done = True
-            if dy > 0 and y >= ty or y < 0 and y <= ty:
+            if dy > 0 and y >= ty or dy < 0 and y <= ty:
                 print('y', dy, y, ty, dy > 0,y >= ty,y < 0 , y <= ty)
                 y = ty
                 done = True
