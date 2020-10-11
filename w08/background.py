@@ -70,3 +70,60 @@ class FixedBackground(Background):
         sb = clamp(0, round(ty - self.ch / 2), self.image.h - self.ch)
         self.win_rect = sl, sb, self.cw, self.ch
 
+class InfiniteBackground(Background):
+    def __init__(self, imageName):
+        super().__init__(imageName)
+        self.boundary = (-sys.maxsize, -sys.maxsize, sys.maxsize, sys.maxsize)
+    def update(self):
+        if self.target is None:
+            return
+        tx, ty = self.target.pos
+
+        # quadrant 3
+        q3l = round(tx - self.cw / 2) % self.image.w
+        q3b = round(ty - self.ch / 2) % self.image.h
+        q3w = clamp(0, self.image.w - q3l, self.image.w)
+        q3h = clamp(0, self.image.h - q3b, self.image.h)
+        self.q3rect = q3l, q3b, q3w, q3h
+
+        # quadrant 2
+        q2l = q3l
+        q2b = 0
+        q2w = q3w
+        q2h = self.ch - q3h
+        self.q2rect = q2l, q2b, q2w, q2h
+        self.q2origin = 0, q3h
+
+        # quadrant 4
+        q4l = 0
+        q4b = q3b
+        q4w = self.cw - q3w
+        q4h = q3h
+        self.q4rect = q4l, q4b, q4w, q4h
+        self.q4origin = q3w, 0
+
+        # quadrant 1
+        q1l = 0
+        q1b = 0
+        q1w = self.cw - q3w
+        q1h = self.ch - q3h
+        self.q1rect = q1l, q1b, q1w, q1h
+        self.q1origin = q3w, q3h
+
+    def draw(self):
+        self.image.clip_draw_to_origin(*self.q3rect, 0, 0)
+        self.image.clip_draw_to_origin(*self.q2rect, *self.q2origin)
+        self.image.clip_draw_to_origin(*self.q4rect, *self.q4origin)
+        self.image.clip_draw_to_origin(*self.q1rect, *self.q1origin)
+
+    def to_screen(self, point):
+        x, y = point
+        tx, ty = self.target.pos
+        return self.cw // 2 + x - tx, self.ch // 2 + y - ty
+
+    def translate(self, point):
+        x, y = point
+        tx, ty = self.target.pos
+        dx, dy = x - self.cw // 2, y - self.ch // 2
+        return tx + dx, ty + dy
+
