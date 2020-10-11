@@ -11,6 +11,7 @@ def enter():
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
     bg = Background('futsal_court.png')
+    bg.set_fixed_pos(100, 100)
     gfw.world.add(gfw.layer.bg, bg)
 
     global player

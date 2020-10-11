@@ -74,14 +74,17 @@ class InfiniteBackground(Background):
     def __init__(self, imageName):
         super().__init__(imageName)
         self.boundary = (-sys.maxsize, -sys.maxsize, sys.maxsize, sys.maxsize)
+        self.fix_x, self.fix_y = self.cw // 2, self.ch // 2
+    def set_fixed_pos(self, x, y):
+        self.fix_x, self.fix_y = x, y
     def update(self):
         if self.target is None:
             return
         tx, ty = self.target.pos
 
         # quadrant 3
-        q3l = round(tx - self.cw / 2) % self.image.w
-        q3b = round(ty - self.ch / 2) % self.image.h
+        q3l = round(tx - self.fix_x) % self.image.w
+        q3b = round(ty - self.fix_y) % self.image.h
         q3w = clamp(0, self.image.w - q3l, self.image.w)
         q3h = clamp(0, self.image.h - q3b, self.image.h)
         self.q3rect = q3l, q3b, q3w, q3h
@@ -104,11 +107,11 @@ class InfiniteBackground(Background):
     def to_screen(self, point):
         x, y = point
         tx, ty = self.target.pos
-        return self.cw // 2 + x - tx, self.ch // 2 + y - ty
+        return self.fix_x + x - tx, self.fix_y + y - ty
 
     def translate(self, point):
         x, y = point
         tx, ty = self.target.pos
-        dx, dy = x - self.cw // 2, y - self.ch // 2
+        dx, dy = x - self.fix_x, y - self.fix_y
         return tx + dx, ty + dy
 
