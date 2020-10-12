@@ -26,3 +26,6 @@ class Platform:
         return self.left, self.bottom, self.left + self.width, self.bottom + self.height
     def move(self, dx):
         self.left += dx
+        if self.left + self.width < 0:
+            print('count was:', gfw.world.count_at(gfw.layer.platform))
+            gfw.world.remove(self)
