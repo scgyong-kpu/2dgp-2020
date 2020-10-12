@@ -19,6 +19,12 @@ class Player:
         self.FPS = 10
         self.state = Player.RUNNING
 
+    @property
+    def state(self):
+        return self.__state
+    @state.setter
+    def state(self, state):
+        self.__state = state
     def draw(self):
         fidx = round(self.time * self.FPS) % len(self.anim)
         sprite_num = self.anim[fidx]
