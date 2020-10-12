@@ -60,7 +60,7 @@ def handle_event(e):
             gfw.pop()
             return
         elif e.key == SDLK_a:
-            player.pos = 150,650
+            # player.pos = 150,650
             # for x, y in [(100,400),(400,300),(650,250),(900,200)]:
             for i in range(10):
                 x = random.randint(100, 900)

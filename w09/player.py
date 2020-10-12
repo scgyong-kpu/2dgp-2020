@@ -5,8 +5,9 @@ import gobj
 
 class Player:
     KEYDOWN_SPACE  = (SDL_KEYDOWN, SDLK_SPACE)
-    RUNNING, FALLING = range(2)
-    GRAVITY = 400
+    RUNNING, FALLING, JUMPING, DOUBLE_JUMP = range(4)
+    GRAVITY = 3000
+    JUMP = 1000
 
     #constructor
     def __init__(self):
@@ -26,9 +27,18 @@ class Player:
         y = y * 272 + 2
         self.image.clip_draw(x, y, 270, 270, *self.pos)
 
+    def jump(self):
+        if self.state == Player.FALLING: return
+        if self.state == Player.DOUBLE_JUMP: return
+        if self.state == Player.RUNNING:
+            self.state = Player.JUMPING
+        elif self.state == Player.JUMPING:
+            self.state = Player.DOUBLE_JUMP
+        self.jump_speed = Player.JUMP
     def update(self):
         self.time += gfw.delta_time
         if self.state != Player.RUNNING:
+            # print('jump speed:', self.jump_speed)
             self.move((0, self.jump_speed * gfw.delta_time))
             self.jump_speed -= Player.GRAVITY * gfw.delta_time
         _,foot,_,_ = self.get_bb()
@@ -36,17 +46,16 @@ class Player:
         if platform is not None:
             l,b,r,t = platform.get_bb()
             if self.state == Player.RUNNING:
-                print('running', t, foot)
                 if foot > t:
                     self.state = Player.FALLING
                     self.jump_speed = 0
-            elif self.state == Player.FALLING:
+            elif self.state != Player.RUNNING:
                 print('falling', t, foot)
                 if self.jump_speed < 0 and int(foot) <= t:
                     self.move((0, t - foot))
                     self.state = Player.RUNNING
                     self.jump_speed = 0
-                    print('Stops')
+                    print('Now running', t, foot)
 
     def get_platform(self, foot):
         selected = None
@@ -73,7 +82,7 @@ class Player:
     def handle_event(self, e):
         pair = (e.type, e.key)
         if pair == Player.KEYDOWN_SPACE:
-            pass
+            self.jump()
 
     def get_bb(self):
         l,b,r,t = -60,-135,60,0
