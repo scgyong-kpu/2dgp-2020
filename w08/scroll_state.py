@@ -2,15 +2,13 @@ import gfw
 from pico2d import *
 from gobj import *
 from player import Player
-# from background import Background
-# from background import FixedBackground as Background
-from background import InfiniteBackground as Background
+from background import InfiniteBackground
 
 def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
-    bg = Background('futsal_court.png')
+    bg = InfiniteBackground('futsal_court.png', 1000, 600)
     bg.set_fixed_pos(100, 100)
     gfw.world.add(gfw.layer.bg, bg)
 

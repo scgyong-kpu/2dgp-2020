@@ -71,10 +71,15 @@ class FixedBackground(Background):
         self.win_rect = sl, sb, self.cw, self.ch
 
 class InfiniteBackground(Background):
-    def __init__(self, imageName):
+    def __init__(self, imageName, width=0, height=0):
         super().__init__(imageName)
         self.boundary = (-sys.maxsize, -sys.maxsize, sys.maxsize, sys.maxsize)
         self.fix_x, self.fix_y = self.cw // 2, self.ch // 2
+        if width == 0:
+            width = self.image.w
+        if height == 0:
+            height = self.image.h
+        self.w, self.h = width, height
     def set_fixed_pos(self, x, y):
         self.fix_x, self.fix_y = x, y
     def update(self):
