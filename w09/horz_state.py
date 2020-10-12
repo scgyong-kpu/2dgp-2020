@@ -3,12 +3,13 @@ from pico2d import *
 from gobj import *
 from player import Player
 from background import HorzScrollBackground
+from platform import Platform
 
 canvas_width = 1120
 canvas_height = 630
 
 def enter():
-    gfw.world.init(['bg', 'enemy', 'player'])
+    gfw.world.init(['bg', 'enemy', 'platform', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
 
@@ -22,6 +23,13 @@ def enter():
     player.bg = bg
     gfw.world.add(gfw.layer.player, player)
 
+    x = 0
+    cw = get_canvas_width()
+    while x < cw:
+        t = random.choice([Platform.T_10x2, Platform.T_2x2])
+        pf = Platform(t, x, 0)
+        gfw.world.add(gfw.layer.platform, pf)
+        x += pf.width
 
 def update():
     gfw.world.update()
