@@ -6,6 +6,13 @@ import gobj
 class Player:
     KEYDOWN_SPACE  = (SDL_KEYDOWN, SDLK_SPACE)
     RUNNING, FALLING, JUMPING, DOUBLE_JUMP = range(4)
+    ANIMS = [
+        [ 0x40, 0x41, 0x42, 0x43 ], # RUNNING
+        [ 0x50 ],                   # FALLING
+        [ 0x57, 0x58 ],             # JUMPING
+        [ 0x51, 0x52, 0x53, 0x54 ], # DOUBLE_JUMP
+
+    ]
     GRAVITY = 3000
     JUMP = 1000
 
@@ -15,7 +22,6 @@ class Player:
         self.delta = 0, 0
         self.image = gfw.image.load(gobj.res('cookie.png'))
         self.time = 0
-        self.anim = [ 0x40, 0x41, 0x42, 0x43 ]
         self.FPS = 10
         self.state = Player.RUNNING
 
@@ -25,6 +31,7 @@ class Player:
     @state.setter
     def state(self, state):
         self.__state = state
+        self.anim = Player.ANIMS[state]
     def draw(self):
         fidx = round(self.time * self.FPS) % len(self.anim)
         sprite_num = self.anim[fidx]
