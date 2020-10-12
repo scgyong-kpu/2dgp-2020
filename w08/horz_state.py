@@ -4,6 +4,9 @@ from gobj import *
 from player import Player
 from background import HorzScrollBackground
 
+canvas_width = 800
+canvas_height = 450
+
 def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
