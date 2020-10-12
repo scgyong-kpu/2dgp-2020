@@ -42,7 +42,7 @@ def move_platform():
         t = random.choice([Platform.T_10x2, Platform.T_2x2])
         pf = Platform(t, x, 0)
         gfw.world.add(gfw.layer.platform, pf)
-        print('adding platform:', gfw.world.count_at(gfw.layer.platform))
+        # print('adding platform:', gfw.world.count_at(gfw.layer.platform))
         x += pf.width
 
 def draw():
