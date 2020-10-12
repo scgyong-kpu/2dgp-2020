@@ -1,6 +1,7 @@
+import random
 import gfw
 from pico2d import *
-from gobj import *
+import gobj
 from player import Player
 from background import HorzScrollBackground
 from platform import Platform
@@ -46,7 +47,7 @@ def move_platform():
 
 def draw():
     gfw.world.draw()
-    # gobj.draw_collision_box()
+    gobj.draw_collision_box()
 
 def handle_event(e):
     # prev_dx = boy.dx
