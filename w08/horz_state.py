@@ -8,9 +8,11 @@ def enter():
     gfw.world.init(['bg', 'enemy', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
-    bg = HorzScrollBackground('cookie_run_bg_1.png')
-    bg.speed = 10
-    gfw.world.add(gfw.layer.bg, bg)
+
+    for n, speed in [(1,10), (2,100), (3,150)]:
+        bg = HorzScrollBackground('cookie_run_bg_%d.png' % n)
+        bg.speed = speed
+        gfw.world.add(gfw.layer.bg, bg)
 
     global player
     player = Player()
