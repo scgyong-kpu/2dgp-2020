@@ -23,21 +23,26 @@ def enter():
     player.bg = bg
     gfw.world.add(gfw.layer.player, player)
 
-    x = 0
-    cw = 2 * get_canvas_width()
-    while x < cw:
-        t = random.choice([Platform.T_10x2, Platform.T_2x2])
-        pf = Platform(t, x, 0)
-        gfw.world.add(gfw.layer.platform, pf)
-        x += pf.width
-
 def update():
     gfw.world.update()
 
+    move_platform()
+
+def move_platform():
+    x = 0
     dx = -200 * gfw.delta_time
     for layer in range(gfw.layer.enemy, gfw.layer.item + 1):
         for obj in gfw.world.objects_at(layer):
             obj.move(dx)
+            x = obj.right()
+
+    cw = get_canvas_width()
+    while x < cw:
+        t = random.choice([Platform.T_10x2, Platform.T_2x2])
+        pf = Platform(t, x, 0)
+        gfw.world.add(gfw.layer.platform, pf)
+        print('adding platform:', gfw.world.count_at(gfw.layer.platform))
+        x += pf.width
 
 def draw():
     gfw.world.draw()
