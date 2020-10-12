@@ -9,7 +9,7 @@ canvas_width = 1120
 canvas_height = 630
 
 def enter():
-    gfw.world.init(['bg', 'enemy', 'platform', 'player'])
+    gfw.world.init(['bg', 'enemy', 'platform', 'item', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
 
@@ -24,7 +24,7 @@ def enter():
     gfw.world.add(gfw.layer.player, player)
 
     x = 0
-    cw = get_canvas_width()
+    cw = 2 * get_canvas_width()
     while x < cw:
         t = random.choice([Platform.T_10x2, Platform.T_2x2])
         pf = Platform(t, x, 0)
@@ -33,6 +33,11 @@ def enter():
 
 def update():
     gfw.world.update()
+
+    dx = -200 * gfw.delta_time
+    for layer in range(gfw.layer.enemy, gfw.layer.item + 1):
+        for obj in gfw.world.objects_at(layer):
+            obj.move(dx)
 
 def draw():
     gfw.world.draw()
