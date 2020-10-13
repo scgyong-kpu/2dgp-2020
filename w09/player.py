@@ -83,7 +83,8 @@ class Player:
         for platform in gfw.world.objects_at(gfw.layer.platform):
             l,b,r,t = platform.get_bb()
             if x < l or x > r: continue
-            if foot < b: continue
+            mid = (b + t) // 2
+            if foot < mid: continue
             if selected is None:
                 selected = platform
                 sel_top = t
