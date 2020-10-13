@@ -44,8 +44,8 @@ def create_object(ch, x, y):
         gfw.world.add(gfw.layer.item, obj)
         # print('creating Jelly', x, y)
     elif ch in ['O','P','Q']:
-        dy = 1 if ch == 'Q' else 3
-        y -= dy * BLOCK_SIZE // 2
+        dy = 1 if ch == 'Q' else 3.8
+        y -= int(dy * BLOCK_SIZE) // 2
         x -= BLOCK_SIZE // 2
         obj = Platform(ord(ch) - ord('O'), x, y)
         gfw.world.add(gfw.layer.platform, obj)
