@@ -5,6 +5,7 @@ import gobj
 from player import Player
 from background import HorzScrollBackground
 from platform import Platform
+from jelly import Jelly
 
 canvas_width = 1120
 canvas_height = 630
@@ -35,14 +36,18 @@ def move_platform():
     for layer in range(gfw.layer.enemy, gfw.layer.item + 1):
         for obj in gfw.world.objects_at(layer):
             obj.move(dx)
-            r = obj.right
-            if x < r: x = r
+            if hasattr(obj, 'right'):
+                r = obj.right
+                if x < r: x = r
 
     cw = get_canvas_width()
     while x < cw:
         t = random.choice([Platform.T_10x2, Platform.T_2x2])
         pf = Platform(t, x, 0)
         gfw.world.add(gfw.layer.platform, pf)
+
+        jelly = Jelly(Jelly.TYPE_R, x + pf.width // 2, random.randint(200, 500))
+        gfw.world.add(gfw.layer.item, jelly)
         # print('adding platform:', gfw.world.count_at(gfw.layer.platform))
         x += pf.width
 
