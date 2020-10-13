@@ -11,8 +11,14 @@ class Player:
         [ 0x50 ],                   # FALLING
         [ 0x57, 0x58 ],             # JUMPING
         [ 0x51, 0x52, 0x53, 0x54 ], # DOUBLE_JUMP
-
     ]
+    BB_DIFFS = [
+        (-60,-135,60,0),   # RUNNING
+        (-60,-135,60,10),  # FALLING
+        (-60,-135,60,-20), # JUMPING
+        (-60,-135,60,-20), # DOUBLE_JUMP
+    ]
+
     GRAVITY = 3000
     JUMP = 1000
 
@@ -98,7 +104,7 @@ class Player:
             self.jump()
 
     def get_bb(self):
-        l,b,r,t = -60,-135,60,0
+        l,b,r,t = Player.BB_DIFFS[self.state]
         x,y = self.pos
         return x + l, y + b, x + r, y + t
 

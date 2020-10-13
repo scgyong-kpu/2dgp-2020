@@ -28,7 +28,10 @@ def enter():
 
     stage_gen.load(gobj.res('stage_01.txt'))
 
+paused = False
 def update():
+    if paused:
+        return
     gfw.world.update()
 
     dx = -250 * gfw.delta_time
@@ -60,6 +63,9 @@ def handle_event(e):
                 y = random.randint(200, 400)
                 pf = Platform(Platform.T_3x1, x, y)
                 gfw.world.add(gfw.layer.platform, pf)
+        elif e.key == SDLK_p:
+            global paused
+            paused = not paused
 
     if player.handle_event(e):
         return
