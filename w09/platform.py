@@ -13,7 +13,6 @@ INFO = [
 class Platform:
     T_10x2, T_2x2, T_3x1 = range(3)
     SIZES = [ (10,2), (2,2), (3,1) ]
-    UNIT = 60
     def __init__(self, type, left, bottom):
         self.left = left
         self.bottom = bottom
