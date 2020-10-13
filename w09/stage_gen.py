@@ -36,20 +36,20 @@ def create_column():
         y += BLOCK_SIZE
     current_x += BLOCK_SIZE
     map_index += 1
-    print('map_index:', map_index)
+    # print('map_index:', map_index)
 
 def create_object(ch, x, y):
     if ch in ['1','2','3','4']:
         obj = Jelly(ord(ch) - ord('1'), x, y)
         gfw.world.add(gfw.layer.item, obj)
-        print('creating Jelly', x, y)
+        # print('creating Jelly', x, y)
     elif ch in ['O','P','Q']:
         dy = 1 if ch == 'Q' else 3
         y -= dy * BLOCK_SIZE // 2
         x -= BLOCK_SIZE // 2
         obj = Platform(ord(ch) - ord('O'), x, y)
         gfw.world.add(gfw.layer.platform, obj)
-        print('creating Platform', x, y)
+        # print('creating Platform', x, y)
 
 def get(x, y):
     col = x % UNIT_PER_LINE
@@ -58,14 +58,14 @@ def get(x, y):
 
 def test_gen():
     load(gobj.res('stage_01.txt'))
-    print('count=', count())
+    # print('count=', count())
     line = 0
     for x in range(200):
         s = ''
         for y in range(10):
             s += get(x,y)
         line += 1
-        print('%03d:' % line, s)
+        # print('%03d:' % line, s)
 
 def test_gen_2():
     open_canvas()

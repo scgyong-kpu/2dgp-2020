@@ -63,12 +63,12 @@ class Player:
                     self.state = Player.FALLING
                     self.jump_speed = 0
             elif self.state != Player.RUNNING:
-                print('falling', t, foot)
+                # print('falling', t, foot)
                 if self.jump_speed < 0 and int(foot) <= t:
                     self.move((0, t - foot))
                     self.state = Player.RUNNING
                     self.jump_speed = 0
-                    print('Now running', t, foot)
+                    # print('Now running', t, foot)
 
     def get_platform(self, foot):
         selected = None
