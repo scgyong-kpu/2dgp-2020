@@ -5,19 +5,23 @@ import gobj
 
 class Player:
     KEYDOWN_SPACE  = (SDL_KEYDOWN, SDLK_SPACE)
-    RUNNING, FALLING, JUMPING, DOUBLE_JUMP = range(4)
+    KEYDOWN_ENTER  = (SDL_KEYDOWN, SDLK_RETURN)
+    RUNNING, FALLING, JUMPING, DOUBLE_JUMP, SLIDING = range(5)
     ANIMS = [
         [ 0x40, 0x41, 0x42, 0x43 ], # RUNNING
         [ 0x50 ],                   # FALLING
         [ 0x57, 0x58 ],             # JUMPING
         [ 0x51, 0x52, 0x53, 0x54 ], # DOUBLE_JUMP
+        [ 0x59, 0x5A ],             # SLIDING
     ]
     BB_DIFFS = [
         (-60,-135,60,0),   # RUNNING
         (-60,-135,60,10),  # FALLING
         (-60,-135,60,-20), # JUMPING
         (-60,-135,60,-20), # DOUBLE_JUMP
+        (-80,-135,80,-68), # SLIDING
     ]
+    SLIDE_DURATION = 1.0
 
     GRAVITY = 3000
     JUMP = 1000
@@ -47,16 +51,22 @@ class Player:
         self.image.clip_draw(x, y, 270, 270, *self.pos)
 
     def jump(self):
-        if self.state == Player.FALLING: return
-        if self.state == Player.DOUBLE_JUMP: return
+        if self.state in [Player.FALLING, Player.DOUBLE_JUMP, Player.SLIDING]: 
+            return
         if self.state == Player.RUNNING:
             self.state = Player.JUMPING
         elif self.state == Player.JUMPING:
             self.state = Player.DOUBLE_JUMP
         self.jump_speed = Player.JUMP
+    def slide(self):
+        if self.state != Player.RUNNING: return
+        self.state = Player.SLIDING
+        self.time = 0.0
     def update(self):
         self.time += gfw.delta_time
-        if self.state != Player.RUNNING:
+        if self.state == Player.SLIDING and self.time > Player.SLIDE_DURATION:
+            self.state = Player.RUNNING
+        if self.state in [Player.JUMPING, Player.DOUBLE_JUMP, Player.FALLING]:
             # print('jump speed:', self.jump_speed)
             self.move((0, self.jump_speed * gfw.delta_time))
             self.jump_speed -= Player.GRAVITY * gfw.delta_time
@@ -64,11 +74,11 @@ class Player:
         platform = self.get_platform(foot)
         if platform is not None:
             l,b,r,t = platform.get_bb()
-            if self.state == Player.RUNNING:
+            if self.state in [Player.RUNNING, Player.SLIDING]:
                 if foot > t:
                     self.state = Player.FALLING
                     self.jump_speed = 0
-            elif self.state != Player.RUNNING:
+            else:
                 # print('falling', t, foot)
                 if self.jump_speed < 0 and int(foot) <= t:
                     self.move((0, t - foot))
@@ -103,6 +113,8 @@ class Player:
         pair = (e.type, e.key)
         if pair == Player.KEYDOWN_SPACE:
             self.jump()
+        elif pair == Player.KEYDOWN_ENTER:
+            self.slide()
 
     def get_bb(self):
         l,b,r,t = Player.BB_DIFFS[self.state]
