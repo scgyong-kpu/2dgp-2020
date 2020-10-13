@@ -40,7 +40,15 @@ def update():
         for obj in gfw.world.objects_at(layer):
             obj.move(dx)
 
+    check_items()
+
     stage_gen.update(dx)
+
+def check_items():
+    for item in gfw.world.objects_at(gfw.layer.item):
+        if gobj.collides_box(player, item):
+            gfw.world.remove(item)
+            break
 
 def draw():
     gfw.world.draw()
