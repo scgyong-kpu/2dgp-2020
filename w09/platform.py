@@ -16,6 +16,7 @@ class Platform:
     def __init__(self, type, left, bottom):
         self.left = left
         self.bottom = bottom
+        self.can_pass = type >= Platform.T_3x1
         self.width, self.height, fn = INFO[type]
         self.image = gfw.image.load(gobj.res(fn))
     def update(self): pass

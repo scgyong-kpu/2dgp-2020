@@ -6,9 +6,6 @@ import gobj
 PLAYER_SIZE = 270
 
 class Player:
-    KEYDOWN_SPACE  = (SDL_KEYDOWN, SDLK_SPACE)
-    KEYDOWN_ENTER  = (SDL_KEYDOWN, SDLK_RETURN)
-    KEYDOWN_m  = (SDL_KEYDOWN, SDLK_m)
     RUNNING, FALLING, JUMPING, DOUBLE_JUMP, SLIDING = range(5)
     ANIMS = [
         [ 0x40, 0x41, 0x42, 0x43 ], # RUNNING
@@ -122,6 +119,17 @@ class Player:
         #     print(l,b,r,t, selected)
         return selected
 
+    def move_down_from_platform(self):
+        if self.state != Player.RUNNING: return
+        _,foot,_,_ = self.get_bb()
+        platform = self.get_platform(foot)
+        print('can pass:', platform.can_pass)
+        if not platform.can_pass: return
+
+        x,y = self.pos
+        y -= platform.height / 2 + 1
+        self.pos = x,y
+
     def update_mag(self):
         if self.mag_speed == 0: return
 
@@ -145,16 +153,18 @@ class Player:
         self.pos = gobj.point_add(self.pos, diff)
 
     def handle_event(self, e):
-        pair = (e.type, e.key)
-        if pair == Player.KEYDOWN_SPACE:
-            self.jump()
-        elif pair == Player.KEYDOWN_ENTER:
-            self.slide()
-        elif pair == Player.KEYDOWN_m:
-            if self.mag == 2 or self.mag_speed > 0:
-                self.reduce()
-            else:
-                self.magnify()
+        if e.type == SDL_KEYDOWN:
+            if e.key == SDLK_RETURN:
+                self.slide()
+            elif e.key == SDLK_SPACE or e.key == SDLK_UP:
+                self.jump()
+            elif e.key == SDLK_DOWN:
+                self.move_down_from_platform()
+            elif e.key == SDLK_m:
+                if self.mag == 2 or self.mag_speed > 0:
+                    self.reduce()
+                else:
+                    self.magnify()
 
     def get_bb(self):
         l,b,r,t = Player.BB_DIFFS[self.state]
