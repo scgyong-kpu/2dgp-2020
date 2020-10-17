@@ -56,7 +56,7 @@ class Player:
         x = x * (PLAYER_SIZE + 2) + 2
         y = y * (PLAYER_SIZE + 2) + 2
         size = PLAYER_SIZE * self.mag, PLAYER_SIZE * self.mag
-        self.image.clip_draw(x, y, 270, 270, *self.pos, *size)
+        self.image.clip_draw(x, y, PLAYER_SIZE, PLAYER_SIZE, *self.pos, *size)
 
     def magnify(self):
         self.mag_speed = 1.0
@@ -202,4 +202,6 @@ class Player:
         cookie = self.cookie_chars[self.cookie_index]
         sheet = '../w09-res/out/%s_sheet.png' % cookie["id"]
         self.image = gfw.image.load(sheet)
+        global PLAYER_SIZE
+        PLAYER_SIZE = cookie["size"]
         print(cookie)

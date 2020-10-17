@@ -1,734 +1,877 @@
 [
   {
     "id": "107566",
-    "name": "Brave Cookie"
+    "name": "Brave Cookie",
+    "size": 270
   },
   {
     "id": "107567",
-    "name": "Bright Cookie"
+    "name": "Bright Cookie",
+    "size": 288
   },
   {
     "id": "107571",
-    "name": "Buttercream Choco Cookie"
+    "name": "Buttercream Choco Cookie",
+    "size": 320
   },
   {
     "id": "107570",
-    "name": "Cloud Cookie"
+    "name": "Cloud Cookie",
+    "size": 320
   },
   {
     "id": "107569",
-    "name": "Cream Cookie"
+    "name": "Cream Cookie",
+    "size": 469
   },
   {
     "id": "107568",
-    "name": "Strawberry Cookie"
+    "name": "Strawberry Cookie",
+    "size": 320
   },
   {
     "id": "107573",
-    "name": "Boarder Cookie"
+    "name": "Boarder Cookie",
+    "size": 491
   },
   {
     "id": "107572",
-    "name": "Coffee Cookie"
+    "name": "Coffee Cookie",
+    "size": 378
   },
   {
     "id": "107582",
-    "name": "Ginger Claus"
+    "name": "Ginger Claus",
+    "size": 393
   },
   {
     "id": "107575",
-    "name": "Knight Cookie"
+    "name": "Knight Cookie",
+    "size": 437
   },
   {
     "id": "107576",
-    "name": "Muscle Cookie"
+    "name": "Muscle Cookie",
+    "size": 364
   },
   {
     "id": "107574",
-    "name": "Princess Cookie"
+    "name": "Princess Cookie",
+    "size": 407
   },
   {
     "id": "107577",
-    "name": "Zombie Cookie"
+    "name": "Zombie Cookie",
+    "size": 437
   },
   {
     "id": "107809",
-    "name": "Adventurer Cookie"
+    "name": "Adventurer Cookie",
+    "size": 364
   },
   {
     "id": "107805",
-    "name": "Alchemist Cookie"
+    "name": "Alchemist Cookie",
+    "size": 484
   },
   {
     "id": "107578",
-    "name": "Angel Cookie"
+    "name": "Angel Cookie",
+    "size": 437
   },
   {
     "id": "107807",
-    "name": "Apple Cookie"
+    "name": "Apple Cookie",
+    "size": 471
   },
   {
     "id": "107844",
-    "name": "Banana Cookie"
+    "name": "Banana Cookie",
+    "size": 530
   },
   {
     "id": "107813",
-    "name": "Blackberry Cookie"
+    "name": "Blackberry Cookie",
+    "size": 491
   },
   {
     "id": "107785",
-    "name": "Carol Cookie"
+    "name": "Carol Cookie",
+    "size": 473
   },
   {
     "id": "107774",
-    "name": "Cheerleader Cookie"
+    "name": "Cheerleader Cookie",
+    "size": 530
   },
   {
     "id": "107808",
-    "name": "Cheesecake Cookie"
+    "name": "Cheesecake Cookie",
+    "size": 430
   },
   {
     "id": "107822",
-    "name": "Cherry Blossom Cookie"
+    "name": "Cherry Blossom Cookie",
+    "size": 497
   },
   {
     "id": "107784",
-    "name": "Cherry Cookie"
+    "name": "Cherry Cookie",
+    "size": 546
   },
   {
     "id": "107833",
-    "name": "Cinnamon Cookie"
+    "name": "Cinnamon Cookie",
+    "size": 514
   },
   {
     "id": "107816",
-    "name": "Cocoa Cookie"
+    "name": "Cocoa Cookie",
+    "size": 498
   },
   {
     "id": "107841",
-    "name": "Cotton Candy Cookie"
+    "name": "Cotton Candy Cookie",
+    "size": 425
   },
   {
     "id": "107819",
-    "name": "Cream Puff Cookie"
+    "name": "Cream Puff Cookie",
+    "size": 630
   },
   {
     "id": "107778",
-    "name": "Devil Cookie"
+    "name": "Devil Cookie",
+    "size": 463
   },
   {
     "id": "107838",
-    "name": "Dino-Sour Cookie"
+    "name": "Dino-Sour Cookie",
+    "size": 575
   },
   {
     "id": "107839",
-    "name": "Dino-Sour Cookie (Giant Jelly Dinosaur)"
+    "name": "Dino-Sour Cookie (Giant Jelly Dinosaur)",
+    "size": 553
   },
   {
     "id": "107782",
-    "name": "Fairy Cookie"
+    "name": "Fairy Cookie",
+    "size": 497
   },
   {
     "id": "107829",
-    "name": "General Jujube Cookie"
+    "name": "General Jujube Cookie",
+    "size": 425
   },
   {
     "id": "107830",
-    "name": "General Jujube Cookie (Red Jujube Horse)"
+    "name": "General Jujube Cookie (Red Jujube Horse)",
+    "size": 283
   },
   {
     "id": "107821",
-    "name": "Gumball Cookie"
+    "name": "Gumball Cookie",
+    "size": 597
   },
   {
     "id": "107836",
-    "name": "Herb Cookie"
+    "name": "Herb Cookie",
+    "size": 505
   },
   {
     "id": "107837",
-    "name": "Herb Cookie (Umbrella)"
+    "name": "Herb Cookie (Umbrella)",
+    "size": 505
   },
   {
     "id": "107773",
-    "name": "Hero Cookie"
+    "name": "Hero Cookie",
+    "size": 497
   },
   {
     "id": "107814",
-    "name": "Kiwi Biker Cookie / Kiwi Cookie"
+    "name": "Kiwi Biker Cookie / Kiwi Cookie",
+    "size": 425
   },
   {
     "id": "107823",
-    "name": "Lemon Cookie"
+    "name": "Lemon Cookie",
+    "size": 633
   },
   {
     "id": "107825",
-    "name": "Lime Cookie"
+    "name": "Lime Cookie",
+    "size": 512
   },
   {
     "id": "107826",
-    "name": "Lime Cookie (No Ball)"
+    "name": "Lime Cookie (No Ball)",
+    "size": 409
   },
   {
     "id": "107832",
-    "name": "Macaron Cookie"
+    "name": "Macaron Cookie",
+    "size": 497
   },
   {
     "id": "107817",
-    "name": "Mint Choco Cookie"
+    "name": "Mint Choco Cookie",
+    "size": 630
   },
   {
     "id": "107847",
-    "name": "Moon Rabbit Cookie"
+    "name": "Moon Rabbit Cookie",
+    "size": 437
   },
   {
     "id": "107818",
-    "name": "Muay Thai Cookie / Red Pepper Cookie"
+    "name": "Muay Thai Cookie / Red Pepper Cookie",
+    "size": 490
   },
   {
     "id": "107780",
-    "name": "Ninetales Cookie / Kumiho Cookie (Cookie)"
+    "name": "Ninetales Cookie / Kumiho Cookie (Cookie)",
+    "size": 465
   },
   {
     "id": "107779",
-    "name": "Ninetales Cookie / Kumiho Cookie (Fox)"
+    "name": "Ninetales Cookie / Kumiho Cookie (Fox)",
+    "size": 497
   },
   {
     "id": "107579",
-    "name": "Ninja Cookie"
+    "name": "Ninja Cookie",
+    "size": 320
   },
   {
     "id": "107831",
-    "name": "Onion Cookie"
+    "name": "Onion Cookie",
+    "size": 458
   },
   {
     "id": "107824",
-    "name": "Orange Cookie"
+    "name": "Orange Cookie",
+    "size": 498
   },
   {
     "id": "107845",
-    "name": "Pancake Cookie"
+    "name": "Pancake Cookie",
+    "size": 363
   },
   {
     "id": "107828",
-    "name": "Peach Cookie"
+    "name": "Peach Cookie",
+    "size": 630
   },
   {
     "id": "107827",
-    "name": "Peppermint Cookie"
+    "name": "Peppermint Cookie",
+    "size": 703
   },
   {
     "id": "107802",
-    "name": "Pink Choco Cookie"
+    "name": "Pink Choco Cookie",
+    "size": 345
   },
   {
     "id": "107580",
-    "name": "Pirate Cookie"
+    "name": "Pirate Cookie",
+    "size": 425
   },
   {
     "id": "107581",
-    "name": "Pirate Cookie (Ghost Pirate)"
+    "name": "Pirate Cookie (Ghost Pirate)",
+    "size": 425
   },
   {
     "id": "107804",
-    "name": "Pistachio Cookie"
+    "name": "Pistachio Cookie",
+    "size": 400
   },
   {
     "id": "107803",
-    "name": "Prophet Cookie"
+    "name": "Prophet Cookie",
+    "size": 546
   },
   {
     "id": "107776",
-    "name": "Rebel Cookie"
+    "name": "Rebel Cookie",
+    "size": 473
   },
   {
     "id": "107777",
-    "name": "Rebel Cookie (Cloud Alter Ego)"
+    "name": "Rebel Cookie (Cloud Alter Ego)",
+    "size": 473
   },
   {
     "id": "107834",
-    "name": "Red Bean Cookie"
+    "name": "Red Bean Cookie",
+    "size": 484
   },
   {
     "id": "107783",
-    "name": "Rockstar Cookie"
+    "name": "Rockstar Cookie",
+    "size": 582
   },
   {
     "id": "107842",
-    "name": "Roll Cake Cookie"
+    "name": "Roll Cake Cookie",
+    "size": 623
   },
   {
     "id": "107843",
-    "name": "Roll Cake Cookie (Road Roller)"
+    "name": "Roll Cake Cookie (Road Roller)",
+    "size": 766
   },
   {
     "id": "107772",
-    "name": "Skating Queen Cookie"
+    "name": "Skating Queen Cookie",
+    "size": 497
   },
   {
     "id": "107786",
-    "name": "Snow Sugar Cookie"
+    "name": "Snow Sugar Cookie",
+    "size": 450
   },
   {
     "id": "107810",
-    "name": "Soda Cookie"
+    "name": "Soda Cookie",
+    "size": 356
   },
   {
     "id": "107775",
-    "name": "Special Force Cookie"
+    "name": "Special Force Cookie",
+    "size": 563
   },
   {
     "id": "107806",
-    "name": "Vampire Cookie"
+    "name": "Vampire Cookie",
+    "size": 497
   },
   {
     "id": "107815",
-    "name": "Werewolf Cookie"
+    "name": "Werewolf Cookie",
+    "size": 557
   },
   {
     "id": "107835",
-    "name": "White Choco Cookie"
+    "name": "White Choco Cookie",
+    "size": 366
   },
   {
     "id": "107781",
-    "name": "Wizard Cookie"
+    "name": "Wizard Cookie",
+    "size": 663
   },
   {
     "id": "107812",
-    "name": "Fire Spirit Cookie"
+    "name": "Fire Spirit Cookie",
+    "size": 717
   },
   {
     "id": "107820",
-    "name": "Moonlight Cookie"
+    "name": "Moonlight Cookie",
+    "size": 588
   },
   {
     "id": "107840",
-    "name": "Sea Fairy Cookie"
+    "name": "Sea Fairy Cookie",
+    "size": 708
   },
   {
     "id": "107849",
-    "name": "Tiger Lily Cookie"
+    "name": "Tiger Lily Cookie",
+    "size": 497
   },
   {
     "id": "107811",
-    "name": "Tiger Lily Cookie (No Spear)"
+    "name": "Tiger Lily Cookie (No Spear)",
+    "size": 497
   },
   {
     "id": "107846",
-    "name": "Wind Archer Cookie"
+    "name": "Wind Archer Cookie",
+    "size": 463
   },
   {
     "id": "107857",
-    "name": "Cheeseberry"
+    "name": "Cheeseberry",
+    "size": 101
   },
   {
     "id": "107859",
-    "name": "Double Bubble"
+    "name": "Double Bubble",
+    "size": 112
   },
   {
     "id": "107970",
-    "name": "Drop of Choco"
+    "name": "Drop of Choco",
+    "size": 101
   },
   {
     "id": "107863",
-    "name": "Forgotten Stocking"
+    "name": "Forgotten Stocking",
+    "size": 86
   },
   {
     "id": "107858",
-    "name": "Hand of Liker"
+    "name": "Hand of Liker",
+    "size": 72
   },
   {
     "id": "107862",
-    "name": "Rainbow's End"
+    "name": "Rainbow's End",
+    "size": 72
   },
   {
     "id": "107869",
-    "name": "Cozy Yarn"
+    "name": "Cozy Yarn",
+    "size": 144
   },
   {
     "id": "107860",
-    "name": "Dust Unicorn"
+    "name": "Dust Unicorn",
+    "size": 72
   },
   {
     "id": "107864",
-    "name": "Electric Beat"
+    "name": "Electric Beat",
+    "size": 72
   },
   {
     "id": "107861",
-    "name": "Hat of Santa"
+    "name": "Hat of Santa",
+    "size": 134
   },
   {
     "id": "107874",
-    "name": "Mocha Delight"
+    "name": "Mocha Delight",
+    "size": 90
   },
   {
     "id": "107865",
-    "name": "Rare Garlic"
+    "name": "Rare Garlic",
+    "size": 101
   },
   {
     "id": "107876",
-    "name": "Witty Dumbbell"
+    "name": "Witty Dumbbell",
+    "size": 143
   },
   {
     "id": "107873",
-    "name": "Brain Gum"
+    "name": "Brain Gum",
+    "size": 79
   },
   {
     "id": "107936",
-    "name": "Brown Balloon (LINE Exclusive)"
+    "name": "Brown Balloon (LINE Exclusive)",
+    "size": 115
   },
   {
     "id": "107937",
-    "name": "Cony Balloon (LINE Exclusive)"
+    "name": "Cony Balloon (LINE Exclusive)",
+    "size": 115
   },
   {
     "id": "107872",
-    "name": "Dragon's Tail"
+    "name": "Dragon's Tail",
+    "size": 275
   },
   {
     "id": "107866",
-    "name": "Flowercopter"
+    "name": "Flowercopter",
+    "size": 134
   },
   {
     "id": "107886",
-    "name": "Luck-o'-Lantern"
+    "name": "Luck-o'-Lantern",
+    "size": 101
   },
   {
     "id": "107870",
-    "name": "Lucky Dice"
+    "name": "Lucky Dice",
+    "size": 98
   },
   {
     "id": "107875",
-    "name": "Wishing Star"
+    "name": "Wishing Star",
+    "size": 115
   },
   {
     "id": "107881",
-    "name": "AWOL Cracker"
+    "name": "AWOL Cracker",
+    "size": 115
   },
   {
     "id": "107902",
-    "name": "Backpacky"
+    "name": "Backpacky",
+    "size": 115
   },
   {
     "id": "107887",
-    "name": "Book of Wizdom"
+    "name": "Book of Wizdom",
+    "size": 101
   },
   {
     "id": "107925",
-    "name": "Castanets"
+    "name": "Castanets",
+    "size": 107
   },
   {
     "id": "107926",
-    "name": "Cinnamon Bunny"
+    "name": "Cinnamon Bunny",
+    "size": 101
   },
   {
     "id": "107897",
-    "name": "Coin Scale"
+    "name": "Coin Scale",
+    "size": 115
   },
   {
     "id": "107931",
-    "name": "Cotton Candy Birdie"
+    "name": "Cotton Candy Birdie",
+    "size": 112
   },
   {
     "id": "107930",
-    "name": "Dino-Egg"
+    "name": "Dino-Egg",
+    "size": 119
   },
   {
     "id": "107916",
-    "name": "Electro Lemon"
+    "name": "Electro Lemon",
+    "size": 130
   },
   {
     "id": "107871",
-    "name": "Enchanted Locket"
+    "name": "Enchanted Locket",
+    "size": 74
   },
   {
     "id": "107882",
-    "name": "Flame Bat"
+    "name": "Flame Bat",
+    "size": 115
   },
   {
     "id": "107901",
-    "name": "Fluffy Cheese Cat"
+    "name": "Fluffy Cheese Cat",
+    "size": 123
   },
   {
     "id": "107885",
-    "name": "Foxy Bead"
+    "name": "Foxy Bead",
+    "size": 115
   },
   {
     "id": "107921",
-    "name": "Frozen Wave Drop"
+    "name": "Frozen Wave Drop",
+    "size": 101
   },
   {
     "id": "107907",
-    "name": "Furball Pup"
+    "name": "Furball Pup",
+    "size": 123
   },
   {
     "id": "107905",
-    "name": "Ghost Butler"
+    "name": "Ghost Butler",
+    "size": 130
   },
   {
     "id": "107867",
-    "name": "Ginger Ghost"
+    "name": "Ginger Ghost",
+    "size": 72
   },
   {
     "id": "107880",
-    "name": "Glitter Ball"
+    "name": "Glitter Ball",
+    "size": 115
   },
   {
     "id": "107883",
-    "name": "Gold Drop"
+    "name": "Gold Drop",
+    "size": 152
   },
   {
     "id": "107900",
-    "name": "Green Apple Rabbit"
+    "name": "Green Apple Rabbit",
+    "size": 115
   },
   {
     "id": "107929",
-    "name": "Herb Teapot"
+    "name": "Herb Teapot",
+    "size": 104
   },
   {
     "id": "107898",
-    "name": "Jelly Scale"
+    "name": "Jelly Scale",
+    "size": 115
   },
   {
     "id": "107878",
-    "name": "Jellyco Cube"
+    "name": "Jellyco Cube",
+    "size": 464
   },
   {
     "id": "107906",
-    "name": "Kiwi Bird"
+    "name": "Kiwi Bird",
+    "size": 130
   },
   {
     "id": "107904",
-    "name": "Lemon Slice"
+    "name": "Lemon Slice",
+    "size": 130
   },
   {
     "id": "107932",
-    "name": "Light Bros."
+    "name": "Light Bros.",
+    "size": 101
   },
   {
     "id": "107893",
-    "name": "Lucky Bag (Kakao Exclusive)"
+    "name": "Lucky Bag (Kakao Exclusive)",
+    "size": 79
   },
   {
     "id": "107888",
-    "name": "Magic Pod"
+    "name": "Magic Pod",
+    "size": 81
   },
   {
     "id": "107909",
-    "name": "Marshmallow Hamster"
+    "name": "Marshmallow Hamster",
+    "size": 112
   },
   {
     "id": "107913",
-    "name": "Mini Jackson No. 2"
+    "name": "Mini Jackson No. 2",
+    "size": 126
   },
   {
     "id": "107917",
-    "name": "Mini Orange Mouse"
+    "name": "Mini Orange Mouse",
+    "size": 86
   },
   {
     "id": "107935",
-    "name": "Moon Mortar"
+    "name": "Moon Mortar",
+    "size": 181
   },
   {
     "id": "107911",
-    "name": "Mr. Fa-Sol-La-Si"
+    "name": "Mr. Fa-Sol-La-Si",
+    "size": 79
   },
   {
     "id": "107919",
-    "name": "Mr. Limeguard"
+    "name": "Mr. Limeguard",
+    "size": 119
   },
   {
     "id": "107910",
-    "name": "Ms. Do-Re-Mi"
+    "name": "Ms. Do-Re-Mi",
+    "size": 79
   },
   {
     "id": "107899",
-    "name": "Oak Barrel / Wooden Barrel"
+    "name": "Oak Barrel / Wooden Barrel",
+    "size": 115
   },
   {
     "id": "107924",
-    "name": "Onion Fish"
+    "name": "Onion Fish",
+    "size": 108
   },
   {
     "id": "107912",
-    "name": "Owlcorn"
+    "name": "Owlcorn",
+    "size": 101
   },
   {
     "id": "107934",
-    "name": "Pancake Frisbee"
+    "name": "Pancake Frisbee",
+    "size": 110
   },
   {
     "id": "107922",
-    "name": "Panda Dumpling"
+    "name": "Panda Dumpling",
+    "size": 101
   },
   {
     "id": "107920",
-    "name": "Paper Boat Sailor"
+    "name": "Paper Boat Sailor",
+    "size": 101
   },
   {
     "id": "107908",
-    "name": "Paprika Punching Bag"
+    "name": "Paprika Punching Bag",
+    "size": 123
   },
   {
     "id": "107894",
-    "name": "Pink Candy"
+    "name": "Pink Candy",
+    "size": 130
   },
   {
     "id": "107868",
-    "name": "Pirate's Bomb"
+    "name": "Pirate's Bomb",
+    "size": 86
   },
   {
     "id": "107896",
-    "name": "Pistachio Firefly"
+    "name": "Pistachio Firefly",
+    "size": 83
   },
   {
     "id": "107928",
-    "name": "Pocket Watch Referee"
+    "name": "Pocket Watch Referee",
+    "size": 126
   },
   {
     "id": "107895",
-    "name": "Purple Candle"
+    "name": "Purple Candle",
+    "size": 144
   },
   {
     "id": "107890",
-    "name": "Rocket Firecracker"
+    "name": "Rocket Firecracker",
+    "size": 114
   },
   {
     "id": "107933",
-    "name": "Savannahna Lion"
+    "name": "Savannahna Lion",
+    "size": 86
   },
   {
     "id": "107877",
-    "name": "Snow Blossom"
+    "name": "Snow Blossom",
+    "size": 115
   },
   {
     "id": "107892",
-    "name": "Snow Globe"
+    "name": "Snow Globe",
+    "size": 115
   },
   {
     "id": "107889",
-    "name": "Spotlight Fan"
+    "name": "Spotlight Fan",
+    "size": 123
   },
   {
     "id": "107927",
-    "name": "Sweet Rice Seal"
+    "name": "Sweet Rice Seal",
+    "size": 112
   },
   {
     "id": "107914",
-    "name": "Tea Cup"
+    "name": "Tea Cup",
+    "size": 123
   },
   {
     "id": "107923",
-    "name": "Uncooling Teacup"
+    "name": "Uncooling Teacup",
+    "size": 101
   },
   {
     "id": "107918",
-    "name": "White Gold Drop"
+    "name": "White Gold Drop",
+    "size": 174
   },
   {
     "id": "107884",
-    "name": "Windy"
+    "name": "Windy",
+    "size": 115
   },
   {
     "id": "107891",
-    "name": "Yule Log Cake"
+    "name": "Yule Log Cake",
+    "size": 115
   },
   {
     "id": "107903",
-    "name": "King Choco Drop"
+    "name": "King Choco Drop",
+    "size": 110
   },
   {
     "id": "107915",
-    "name": "Bean Drop Duo"
-  },
-  {
-    "id": "107966",
-    "name": "Episode 1 - Escape from the Oven"
-  },
-  {
-    "id": "107965",
-    "name": "Episode 2 - Primeval Jungle"
-  },
-  {
-    "id": "107964",
-    "name": "Episode 3 - Dragon's Valley"
-  },
-  {
-    "id": "107963",
-    "name": "Episode 4 - The City of Wizards"
-  },
-  {
-    "id": "108121",
-    "name": "Episode 5 - Dessert Paradise"
-  },
-  {
-    "id": "107962",
-    "name": "Special Episode 1 - Ghost Pirate's Island of Coins"
-  },
-  {
-    "id": "107961",
-    "name": "Special Episode 2 - Tower of Frozen Waves"
+    "name": "Bean Drop Duo",
+    "size": 128
   },
   {
     "id": "107943",
-    "name": "Bonus Time"
+    "name": "Bonus Time",
+    "size": 243
   },
   {
     "id": "107944",
-    "name": "Episode 1 - Escape from the Oven"
+    "name": "Episode 1 - Escape from the Oven",
+    "size": 287
   },
   {
     "id": "107945",
-    "name": "Episode 2 - Primeval Jungle"
+    "name": "Episode 2 - Primeval Jungle",
+    "size": 340
   },
   {
     "id": "107946",
-    "name": "Episode 3 - Dragon's Valley"
+    "name": "Episode 3 - Dragon's Valley",
+    "size": 359
   },
   {
     "id": "107947",
-    "name": "Episode 4 - The City of Wizards"
+    "name": "Episode 4 - The City of Wizards",
+    "size": 350
   },
   {
     "id": "107969",
-    "name": "Episode 5 - Dessert Paradise"
+    "name": "Episode 5 - Dessert Paradise",
+    "size": 548
   },
   {
     "id": "107968",
-    "name": "Special Episode 1 - Ghost Pirate's Island of Coins"
+    "name": "Special Episode 1 - Ghost Pirate's Island of Coins",
+    "size": 191
   },
   {
     "id": "107967",
-    "name": "Special Episode 2 - Tower of Frozen Waves"
-  },
-  {
-    "id": "108122",
-    "name": "Cookie Skill Effects and Jellies"
+    "name": "Special Episode 2 - Tower of Frozen Waves",
+    "size": 326
   },
   {
     "id": "107939",
-    "name": "Event Jellies"
+    "name": "Event Jellies",
+    "size": 187
   },
   {
     "id": "107940",
-    "name": "General Effects"
+    "name": "General Effects",
+    "size": 258
   },
   {
     "id": "107938",
-    "name": "General Jellies"
+    "name": "General Jellies",
+    "size": 218
   },
   {
     "id": "107941",
-    "name": "Miscellaneous Effects"
+    "name": "Miscellaneous Effects",
+    "size": 447
   },
   {
     "id": "107942",
-    "name": "Pet Skill Effects and Jellies"
+    "name": "Pet Skill Effects and Jellies",
+    "size": 334
   },
   {
     "id": "107583",
-    "name": "ch17"
+    "name": "ch17",
+    "size": 182
   },
   {
     "id": "107879",
-    "name": "pet25"
+    "name": "pet25",
+    "size": 39
   }
 ]
