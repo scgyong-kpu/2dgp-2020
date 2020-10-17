@@ -2,6 +2,7 @@ import random
 from pico2d import *
 import gfw
 import gobj
+import json
 
 PLAYER_SIZE = 270
 
@@ -165,6 +166,10 @@ class Player:
                     self.reduce()
                 else:
                     self.magnify()
+            elif e.key == SDLK_LEFTBRACKET:
+                self.change_image(-1)
+            elif e.key == SDLK_RIGHTBRACKET:
+                self.change_image(1)
 
     def get_bb(self):
         l,b,r,t = Player.BB_DIFFS[self.state]
@@ -185,3 +190,16 @@ class Player:
         # self.__init__()
         self.__dict__.update(dict)
         self.image = gfw.image.load(gobj.RES_DIR + '/animation_sheet.png')
+
+    def change_image(self, diff):
+        if not hasattr(self, 'cookie_chars'):
+            with open(gobj.res('cookies.json'), 'r') as f:
+                self.cookie_chars = json.load(f)
+            self.cookie_index = 0
+        else:
+            self.cookie_index = (self.cookie_index + diff) % len(self.cookie_chars)
+
+        cookie = self.cookie_chars[self.cookie_index]
+        sheet = '../w09-res/out/%s_sheet.png' % cookie["id"]
+        self.image = gfw.image.load(sheet)
+        print(cookie)

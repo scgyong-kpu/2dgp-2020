@@ -1,0 +1,734 @@
+[
+  {
+    "id": "107566",
+    "name": "Brave Cookie"
+  },
+  {
+    "id": "107567",
+    "name": "Bright Cookie"
+  },
+  {
+    "id": "107571",
+    "name": "Buttercream Choco Cookie"
+  },
+  {
+    "id": "107570",
+    "name": "Cloud Cookie"
+  },
+  {
+    "id": "107569",
+    "name": "Cream Cookie"
+  },
+  {
+    "id": "107568",
+    "name": "Strawberry Cookie"
+  },
+  {
+    "id": "107573",
+    "name": "Boarder Cookie"
+  },
+  {
+    "id": "107572",
+    "name": "Coffee Cookie"
+  },
+  {
+    "id": "107582",
+    "name": "Ginger Claus"
+  },
+  {
+    "id": "107575",
+    "name": "Knight Cookie"
+  },
+  {
+    "id": "107576",
+    "name": "Muscle Cookie"
+  },
+  {
+    "id": "107574",
+    "name": "Princess Cookie"
+  },
+  {
+    "id": "107577",
+    "name": "Zombie Cookie"
+  },
+  {
+    "id": "107809",
+    "name": "Adventurer Cookie"
+  },
+  {
+    "id": "107805",
+    "name": "Alchemist Cookie"
+  },
+  {
+    "id": "107578",
+    "name": "Angel Cookie"
+  },
+  {
+    "id": "107807",
+    "name": "Apple Cookie"
+  },
+  {
+    "id": "107844",
+    "name": "Banana Cookie"
+  },
+  {
+    "id": "107813",
+    "name": "Blackberry Cookie"
+  },
+  {
+    "id": "107785",
+    "name": "Carol Cookie"
+  },
+  {
+    "id": "107774",
+    "name": "Cheerleader Cookie"
+  },
+  {
+    "id": "107808",
+    "name": "Cheesecake Cookie"
+  },
+  {
+    "id": "107822",
+    "name": "Cherry Blossom Cookie"
+  },
+  {
+    "id": "107784",
+    "name": "Cherry Cookie"
+  },
+  {
+    "id": "107833",
+    "name": "Cinnamon Cookie"
+  },
+  {
+    "id": "107816",
+    "name": "Cocoa Cookie"
+  },
+  {
+    "id": "107841",
+    "name": "Cotton Candy Cookie"
+  },
+  {
+    "id": "107819",
+    "name": "Cream Puff Cookie"
+  },
+  {
+    "id": "107778",
+    "name": "Devil Cookie"
+  },
+  {
+    "id": "107838",
+    "name": "Dino-Sour Cookie"
+  },
+  {
+    "id": "107839",
+    "name": "Dino-Sour Cookie (Giant Jelly Dinosaur)"
+  },
+  {
+    "id": "107782",
+    "name": "Fairy Cookie"
+  },
+  {
+    "id": "107829",
+    "name": "General Jujube Cookie"
+  },
+  {
+    "id": "107830",
+    "name": "General Jujube Cookie (Red Jujube Horse)"
+  },
+  {
+    "id": "107821",
+    "name": "Gumball Cookie"
+  },
+  {
+    "id": "107836",
+    "name": "Herb Cookie"
+  },
+  {
+    "id": "107837",
+    "name": "Herb Cookie (Umbrella)"
+  },
+  {
+    "id": "107773",
+    "name": "Hero Cookie"
+  },
+  {
+    "id": "107814",
+    "name": "Kiwi Biker Cookie / Kiwi Cookie"
+  },
+  {
+    "id": "107823",
+    "name": "Lemon Cookie"
+  },
+  {
+    "id": "107825",
+    "name": "Lime Cookie"
+  },
+  {
+    "id": "107826",
+    "name": "Lime Cookie (No Ball)"
+  },
+  {
+    "id": "107832",
+    "name": "Macaron Cookie"
+  },
+  {
+    "id": "107817",
+    "name": "Mint Choco Cookie"
+  },
+  {
+    "id": "107847",
+    "name": "Moon Rabbit Cookie"
+  },
+  {
+    "id": "107818",
+    "name": "Muay Thai Cookie / Red Pepper Cookie"
+  },
+  {
+    "id": "107780",
+    "name": "Ninetales Cookie / Kumiho Cookie (Cookie)"
+  },
+  {
+    "id": "107779",
+    "name": "Ninetales Cookie / Kumiho Cookie (Fox)"
+  },
+  {
+    "id": "107579",
+    "name": "Ninja Cookie"
+  },
+  {
+    "id": "107831",
+    "name": "Onion Cookie"
+  },
+  {
+    "id": "107824",
+    "name": "Orange Cookie"
+  },
+  {
+    "id": "107845",
+    "name": "Pancake Cookie"
+  },
+  {
+    "id": "107828",
+    "name": "Peach Cookie"
+  },
+  {
+    "id": "107827",
+    "name": "Peppermint Cookie"
+  },
+  {
+    "id": "107802",
+    "name": "Pink Choco Cookie"
+  },
+  {
+    "id": "107580",
+    "name": "Pirate Cookie"
+  },
+  {
+    "id": "107581",
+    "name": "Pirate Cookie (Ghost Pirate)"
+  },
+  {
+    "id": "107804",
+    "name": "Pistachio Cookie"
+  },
+  {
+    "id": "107803",
+    "name": "Prophet Cookie"
+  },
+  {
+    "id": "107776",
+    "name": "Rebel Cookie"
+  },
+  {
+    "id": "107777",
+    "name": "Rebel Cookie (Cloud Alter Ego)"
+  },
+  {
+    "id": "107834",
+    "name": "Red Bean Cookie"
+  },
+  {
+    "id": "107783",
+    "name": "Rockstar Cookie"
+  },
+  {
+    "id": "107842",
+    "name": "Roll Cake Cookie"
+  },
+  {
+    "id": "107843",
+    "name": "Roll Cake Cookie (Road Roller)"
+  },
+  {
+    "id": "107772",
+    "name": "Skating Queen Cookie"
+  },
+  {
+    "id": "107786",
+    "name": "Snow Sugar Cookie"
+  },
+  {
+    "id": "107810",
+    "name": "Soda Cookie"
+  },
+  {
+    "id": "107775",
+    "name": "Special Force Cookie"
+  },
+  {
+    "id": "107806",
+    "name": "Vampire Cookie"
+  },
+  {
+    "id": "107815",
+    "name": "Werewolf Cookie"
+  },
+  {
+    "id": "107835",
+    "name": "White Choco Cookie"
+  },
+  {
+    "id": "107781",
+    "name": "Wizard Cookie"
+  },
+  {
+    "id": "107812",
+    "name": "Fire Spirit Cookie"
+  },
+  {
+    "id": "107820",
+    "name": "Moonlight Cookie"
+  },
+  {
+    "id": "107840",
+    "name": "Sea Fairy Cookie"
+  },
+  {
+    "id": "107849",
+    "name": "Tiger Lily Cookie"
+  },
+  {
+    "id": "107811",
+    "name": "Tiger Lily Cookie (No Spear)"
+  },
+  {
+    "id": "107846",
+    "name": "Wind Archer Cookie"
+  },
+  {
+    "id": "107857",
+    "name": "Cheeseberry"
+  },
+  {
+    "id": "107859",
+    "name": "Double Bubble"
+  },
+  {
+    "id": "107970",
+    "name": "Drop of Choco"
+  },
+  {
+    "id": "107863",
+    "name": "Forgotten Stocking"
+  },
+  {
+    "id": "107858",
+    "name": "Hand of Liker"
+  },
+  {
+    "id": "107862",
+    "name": "Rainbow's End"
+  },
+  {
+    "id": "107869",
+    "name": "Cozy Yarn"
+  },
+  {
+    "id": "107860",
+    "name": "Dust Unicorn"
+  },
+  {
+    "id": "107864",
+    "name": "Electric Beat"
+  },
+  {
+    "id": "107861",
+    "name": "Hat of Santa"
+  },
+  {
+    "id": "107874",
+    "name": "Mocha Delight"
+  },
+  {
+    "id": "107865",
+    "name": "Rare Garlic"
+  },
+  {
+    "id": "107876",
+    "name": "Witty Dumbbell"
+  },
+  {
+    "id": "107873",
+    "name": "Brain Gum"
+  },
+  {
+    "id": "107936",
+    "name": "Brown Balloon (LINE Exclusive)"
+  },
+  {
+    "id": "107937",
+    "name": "Cony Balloon (LINE Exclusive)"
+  },
+  {
+    "id": "107872",
+    "name": "Dragon's Tail"
+  },
+  {
+    "id": "107866",
+    "name": "Flowercopter"
+  },
+  {
+    "id": "107886",
+    "name": "Luck-o'-Lantern"
+  },
+  {
+    "id": "107870",
+    "name": "Lucky Dice"
+  },
+  {
+    "id": "107875",
+    "name": "Wishing Star"
+  },
+  {
+    "id": "107881",
+    "name": "AWOL Cracker"
+  },
+  {
+    "id": "107902",
+    "name": "Backpacky"
+  },
+  {
+    "id": "107887",
+    "name": "Book of Wizdom"
+  },
+  {
+    "id": "107925",
+    "name": "Castanets"
+  },
+  {
+    "id": "107926",
+    "name": "Cinnamon Bunny"
+  },
+  {
+    "id": "107897",
+    "name": "Coin Scale"
+  },
+  {
+    "id": "107931",
+    "name": "Cotton Candy Birdie"
+  },
+  {
+    "id": "107930",
+    "name": "Dino-Egg"
+  },
+  {
+    "id": "107916",
+    "name": "Electro Lemon"
+  },
+  {
+    "id": "107871",
+    "name": "Enchanted Locket"
+  },
+  {
+    "id": "107882",
+    "name": "Flame Bat"
+  },
+  {
+    "id": "107901",
+    "name": "Fluffy Cheese Cat"
+  },
+  {
+    "id": "107885",
+    "name": "Foxy Bead"
+  },
+  {
+    "id": "107921",
+    "name": "Frozen Wave Drop"
+  },
+  {
+    "id": "107907",
+    "name": "Furball Pup"
+  },
+  {
+    "id": "107905",
+    "name": "Ghost Butler"
+  },
+  {
+    "id": "107867",
+    "name": "Ginger Ghost"
+  },
+  {
+    "id": "107880",
+    "name": "Glitter Ball"
+  },
+  {
+    "id": "107883",
+    "name": "Gold Drop"
+  },
+  {
+    "id": "107900",
+    "name": "Green Apple Rabbit"
+  },
+  {
+    "id": "107929",
+    "name": "Herb Teapot"
+  },
+  {
+    "id": "107898",
+    "name": "Jelly Scale"
+  },
+  {
+    "id": "107878",
+    "name": "Jellyco Cube"
+  },
+  {
+    "id": "107906",
+    "name": "Kiwi Bird"
+  },
+  {
+    "id": "107904",
+    "name": "Lemon Slice"
+  },
+  {
+    "id": "107932",
+    "name": "Light Bros."
+  },
+  {
+    "id": "107893",
+    "name": "Lucky Bag (Kakao Exclusive)"
+  },
+  {
+    "id": "107888",
+    "name": "Magic Pod"
+  },
+  {
+    "id": "107909",
+    "name": "Marshmallow Hamster"
+  },
+  {
+    "id": "107913",
+    "name": "Mini Jackson No. 2"
+  },
+  {
+    "id": "107917",
+    "name": "Mini Orange Mouse"
+  },
+  {
+    "id": "107935",
+    "name": "Moon Mortar"
+  },
+  {
+    "id": "107911",
+    "name": "Mr. Fa-Sol-La-Si"
+  },
+  {
+    "id": "107919",
+    "name": "Mr. Limeguard"
+  },
+  {
+    "id": "107910",
+    "name": "Ms. Do-Re-Mi"
+  },
+  {
+    "id": "107899",
+    "name": "Oak Barrel / Wooden Barrel"
+  },
+  {
+    "id": "107924",
+    "name": "Onion Fish"
+  },
+  {
+    "id": "107912",
+    "name": "Owlcorn"
+  },
+  {
+    "id": "107934",
+    "name": "Pancake Frisbee"
+  },
+  {
+    "id": "107922",
+    "name": "Panda Dumpling"
+  },
+  {
+    "id": "107920",
+    "name": "Paper Boat Sailor"
+  },
+  {
+    "id": "107908",
+    "name": "Paprika Punching Bag"
+  },
+  {
+    "id": "107894",
+    "name": "Pink Candy"
+  },
+  {
+    "id": "107868",
+    "name": "Pirate's Bomb"
+  },
+  {
+    "id": "107896",
+    "name": "Pistachio Firefly"
+  },
+  {
+    "id": "107928",
+    "name": "Pocket Watch Referee"
+  },
+  {
+    "id": "107895",
+    "name": "Purple Candle"
+  },
+  {
+    "id": "107890",
+    "name": "Rocket Firecracker"
+  },
+  {
+    "id": "107933",
+    "name": "Savannahna Lion"
+  },
+  {
+    "id": "107877",
+    "name": "Snow Blossom"
+  },
+  {
+    "id": "107892",
+    "name": "Snow Globe"
+  },
+  {
+    "id": "107889",
+    "name": "Spotlight Fan"
+  },
+  {
+    "id": "107927",
+    "name": "Sweet Rice Seal"
+  },
+  {
+    "id": "107914",
+    "name": "Tea Cup"
+  },
+  {
+    "id": "107923",
+    "name": "Uncooling Teacup"
+  },
+  {
+    "id": "107918",
+    "name": "White Gold Drop"
+  },
+  {
+    "id": "107884",
+    "name": "Windy"
+  },
+  {
+    "id": "107891",
+    "name": "Yule Log Cake"
+  },
+  {
+    "id": "107903",
+    "name": "King Choco Drop"
+  },
+  {
+    "id": "107915",
+    "name": "Bean Drop Duo"
+  },
+  {
+    "id": "107966",
+    "name": "Episode 1 - Escape from the Oven"
+  },
+  {
+    "id": "107965",
+    "name": "Episode 2 - Primeval Jungle"
+  },
+  {
+    "id": "107964",
+    "name": "Episode 3 - Dragon's Valley"
+  },
+  {
+    "id": "107963",
+    "name": "Episode 4 - The City of Wizards"
+  },
+  {
+    "id": "108121",
+    "name": "Episode 5 - Dessert Paradise"
+  },
+  {
+    "id": "107962",
+    "name": "Special Episode 1 - Ghost Pirate's Island of Coins"
+  },
+  {
+    "id": "107961",
+    "name": "Special Episode 2 - Tower of Frozen Waves"
+  },
+  {
+    "id": "107943",
+    "name": "Bonus Time"
+  },
+  {
+    "id": "107944",
+    "name": "Episode 1 - Escape from the Oven"
+  },
+  {
+    "id": "107945",
+    "name": "Episode 2 - Primeval Jungle"
+  },
+  {
+    "id": "107946",
+    "name": "Episode 3 - Dragon's Valley"
+  },
+  {
+    "id": "107947",
+    "name": "Episode 4 - The City of Wizards"
+  },
+  {
+    "id": "107969",
+    "name": "Episode 5 - Dessert Paradise"
+  },
+  {
+    "id": "107968",
+    "name": "Special Episode 1 - Ghost Pirate's Island of Coins"
+  },
+  {
+    "id": "107967",
+    "name": "Special Episode 2 - Tower of Frozen Waves"
+  },
+  {
+    "id": "108122",
+    "name": "Cookie Skill Effects and Jellies"
+  },
+  {
+    "id": "107939",
+    "name": "Event Jellies"
+  },
+  {
+    "id": "107940",
+    "name": "General Effects"
+  },
+  {
+    "id": "107938",
+    "name": "General Jellies"
+  },
+  {
+    "id": "107941",
+    "name": "Miscellaneous Effects"
+  },
+  {
+    "id": "107942",
+    "name": "Pet Skill Effects and Jellies"
+  },
+  {
+    "id": "107583",
+    "name": "ch17"
+  },
+  {
+    "id": "107879",
+    "name": "pet25"
+  }
+]
