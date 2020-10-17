@@ -8,12 +8,19 @@ PLAYER_SIZE = 270
 
 class Player:
     RUNNING, FALLING, JUMPING, DOUBLE_JUMP, SLIDING = range(5)
-    ANIMS = [
+    ANIMS_11x6 = [
         [ 0x40, 0x41, 0x42, 0x43 ], # RUNNING
         [ 0x50 ],                   # FALLING
         [ 0x57, 0x58 ],             # JUMPING
         [ 0x51, 0x52, 0x53, 0x54 ], # DOUBLE_JUMP
         [ 0x59, 0x5A ],             # SLIDING
+    ]
+    ANIMS_13x6 = [
+        [ 0x40, 0x41, 0x42, 0x43 ], # RUNNING
+        [ 0x50 ],                   # FALLING
+        [ 0x56, 0x57 ],             # JUMPING
+        [ 0x51, 0x52, 0x53, 0x54 ], # DOUBLE_JUMP
+        [ 0x58, 0x59 ],             # SLIDING
     ]
     MAGNIFIED_RUN_ANIM = [ 0x44, 0x45, 0x46, 0x47 ]
     BB_DIFFS = [
@@ -37,6 +44,7 @@ class Player:
         self.FPS = 10
         self.mag = 1
         self.mag_speed = 0
+        self.anims = Player.ANIMS_11x6
         self.state = Player.RUNNING
 
     @property
@@ -45,7 +53,7 @@ class Player:
     @state.setter
     def state(self, state):
         self.__state = state
-        self.anim = Player.ANIMS[state]
+        self.anim = self.anims[state]
     def draw(self):
         anim = self.anim
         # if self.state == Player.RUNNING and self.mag > 1:
@@ -206,6 +214,7 @@ class Player:
         global PLAYER_SIZE
         prev_size = PLAYER_SIZE
         PLAYER_SIZE = cookie["size"]
+        self.anims = Player.ANIMS_11x6 if cookie["xcount"] == 11 else Player.ANIMS_13x6
 
         x,y = self.pos
         diff = (PLAYER_SIZE - prev_size) // 2
