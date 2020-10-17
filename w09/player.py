@@ -93,6 +93,8 @@ class Player:
             self.move((0, self.jump_speed * gfw.delta_time))
             self.jump_speed -= Player.GRAVITY * self.mag * gfw.delta_time
         _,foot,_,_ = self.get_bb()
+        if foot < 0:
+            self.move((0, get_canvas_height()))
         platform = self.get_platform(foot)
         if platform is not None:
             l,b,r,t = platform.get_bb()
@@ -223,3 +225,4 @@ class Player:
         diff = (PLAYER_SIZE - prev_size) // 2
         self.pos = x, y+diff
         print(cookie)
+
