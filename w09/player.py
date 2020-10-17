@@ -173,6 +173,7 @@ class Player:
 
     def get_bb(self):
         l,b,r,t = Player.BB_DIFFS[self.state]
+        b = - PLAYER_SIZE // 2
         x,y = self.pos
         if self.mag != 1:
             l *= self.mag
@@ -203,5 +204,10 @@ class Player:
         sheet = '../w09-res/out/%s_sheet.png' % cookie["id"]
         self.image = gfw.image.load(sheet)
         global PLAYER_SIZE
+        prev_size = PLAYER_SIZE
         PLAYER_SIZE = cookie["size"]
+
+        x,y = self.pos
+        diff = (PLAYER_SIZE - prev_size) // 2
+        self.pos = x, y+diff
         print(cookie)
