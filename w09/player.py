@@ -39,13 +39,16 @@ class Player:
     def __init__(self):
         self.pos = 150, get_canvas_height() // 2
         self.delta = 0, 0
-        self.image = gfw.image.load(gobj.res('cookie.png'))
+        # self.image = gfw.image.load(gobj.res('cookie.png'))
         self.time = 0
         self.FPS = 10
         self.mag = 1
         self.mag_speed = 0
-        self.anims = Player.ANIMS_11x6
+        # self.anims = Player.ANIMS_11x6
+        self.change_image(0)
         self.state = Player.RUNNING
+        # self.char_time = 0
+        # self.cookie_name = 'Brave Cookie'
 
     @property
     def state(self):
@@ -66,6 +69,10 @@ class Player:
         size = PLAYER_SIZE * self.mag, PLAYER_SIZE * self.mag
         self.image.clip_draw(x, y, PLAYER_SIZE, PLAYER_SIZE, *self.pos, *size)
 
+        if self.cookie_time < 3.0:
+            font = gfw.font.load(gobj.res('ENCR10B.TTF'), 30)
+            font.draw(20, 20, self.cookie_name)
+
     def magnify(self):
         self.mag_speed = 1.0
     def reduce(self):
@@ -85,6 +92,7 @@ class Player:
         self.time = 0.0
     def update(self):
         self.update_mag()
+        self.cookie_time += gfw.delta_time
         self.time += gfw.delta_time
         if self.state == Player.SLIDING and self.time > Player.SLIDE_DURATION:
             self.state = Player.RUNNING
@@ -225,4 +233,7 @@ class Player:
         diff = (PLAYER_SIZE - prev_size) // 2
         self.pos = x, y+diff
         print(cookie)
+
+        self.cookie_name = cookie["name"]
+        self.cookie_time = 0
 
