@@ -7,6 +7,9 @@ RES_DIR = './res/'
 def res(file):
 	return RES_DIR + file
 
+def resl(files):
+    return [ RES_DIR + f for f in files ]
+
 def rand(val):
     return val * random.uniform(0.9, 1.1)
 

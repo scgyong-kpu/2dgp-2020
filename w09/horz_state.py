@@ -12,7 +12,7 @@ canvas_width = 1120
 canvas_height = 630
 
 def enter():
-    gfw.world.init(['bg', 'enemy', 'platform', 'item', 'player'])
+    gfw.world.init(['bg', 'platform', 'enemy', 'item', 'player'])
 
     center = get_canvas_width() // 2, get_canvas_height() // 2
 
@@ -36,7 +36,7 @@ def update():
 
     dx = -250 * gfw.delta_time
 
-    for layer in range(gfw.layer.enemy, gfw.layer.item + 1):
+    for layer in range(gfw.layer.platform, gfw.layer.item + 1):
         for obj in gfw.world.objects_at(layer):
             obj.move(dx)
 

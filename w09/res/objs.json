@@ -1,0 +1,51 @@
+{
+  "objs": [
+    {
+      "char": "X",
+      "name": "pin",
+      "files": [ 
+        "witchs_oven/epN01_tm01_jp1A.png"
+      ],
+      "fps": 1,
+      "delay": 0,
+      "offset": 15
+    },{
+      "char": "Y",
+      "name": "rising pin 2",
+      "files": [
+        "transparent.png",
+        "witchs_oven/epN01_tm01_jp2up_01.png",
+        "witchs_oven/epN01_tm01_jp2up_02.png",
+        "witchs_oven/epN01_tm01_jp2up_03.png",
+        "witchs_oven/epN01_tm01_jp2up_04.png",
+        "witchs_oven/epN01_tm01_jp2up_05.png"
+      ],
+      "fps": 5,
+      "delay": 1,
+      "offset": 78
+    },{
+      "char": "Z",
+      "name": "rising pin 3",
+      "files": [
+        "transparent.png",
+        "witchs_oven/epN01_tm01_jp1up_01.png",
+        "witchs_oven/epN01_tm01_jp1up_02.png",
+        "witchs_oven/epN01_tm01_jp1up_03.png",
+        "witchs_oven/epN01_tm01_jp1up_04.png"
+      ],
+      "fps": 10,
+      "delay": 1,
+      "offset": 31
+    },{
+      "char": "T",
+      "name": "falling fork",
+      "files": [
+        "transparent.png",
+        "witchs_oven/epN01_tm01_sdA.png"
+      ],
+      "fps": 10,
+      "delay": 0,
+      "offset": 205
+    }
+  ]
+}
