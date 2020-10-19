@@ -34,7 +34,7 @@ def update():
         return
     gfw.world.update()
 
-    dx = -250 * gfw.delta_time
+    dx = -350 * gfw.delta_time
 
     for layer in range(gfw.layer.platform, gfw.layer.item + 1):
         for obj in gfw.world.objects_at(layer):

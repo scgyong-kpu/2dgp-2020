@@ -20,7 +20,7 @@ class Factory:
             y += obj["offset"]
         # print(char, py, y)
         ao = JsonObject(x, y)
-        if "delay" in obj:
-            ao.delay = obj["delay"]
+        if "attr" in obj:
+            ao.__dict__.update(obj["attr"])
         ao.set_anim(gobj.resl(obj['files']), obj['fps'])
         return ao

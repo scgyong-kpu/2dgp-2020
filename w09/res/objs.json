@@ -2,16 +2,19 @@
   "objs": [
     {
       "char": "X",
-      "name": "pin",
+      "name": "pin (63x99)",
       "files": [ 
         "witchs_oven/epN01_tm01_jp1A.png"
       ],
       "fps": 1,
-      "delay": 0,
-      "offset": 15
+      "offset": 15,
+      "attr": {
+        "delay": 0,
+        "bb": [ -15, -50, 15, 45 ]
+      }
     },{
       "char": "Y",
-      "name": "rising pin 2",
+      "name": "rising pin 2 (87x222)",
       "files": [
         "transparent.png",
         "witchs_oven/epN01_tm01_jp2up_01.png",
@@ -21,11 +24,14 @@
         "witchs_oven/epN01_tm01_jp2up_05.png"
       ],
       "fps": 5,
-      "delay": 1,
-      "offset": 78
+      "offset": 78,
+      "attr": {
+        "delay": 1,
+        "bb": [ -30, -111, 30, 50 ]
+      }
     },{
       "char": "Z",
-      "name": "rising pin 3",
+      "name": "rising pin 3 (81x131)",
       "files": [
         "transparent.png",
         "witchs_oven/epN01_tm01_jp1up_01.png",
@@ -34,18 +40,24 @@
         "witchs_oven/epN01_tm01_jp1up_04.png"
       ],
       "fps": 10,
-      "delay": 1,
-      "offset": 31
+        "offset": 31,
+      "attr": {
+        "delay": 1,
+        "bb": [ -30, -75, 30, 10 ]
+      }
     },{
       "char": "T",
-      "name": "falling fork",
+      "name": "falling fork (86x482)",
       "files": [
         "transparent.png",
         "witchs_oven/epN01_tm01_sdA.png"
       ],
       "fps": 10,
-      "delay": 0,
-      "offset": 205
+      "offset": 205,
+      "attr": {
+        "delay": 0,
+        "bb": [ -25, -240, 25, 240 ]
+      }
     }
   ]
 }
