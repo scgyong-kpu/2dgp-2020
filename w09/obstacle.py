@@ -19,3 +19,5 @@ class JsonObject(AnimObject):
     def get_bb(self):
         [l,b,r,t] = self.bb
         return self.x + l, self.y + b, self.x + r, self.y + t
+    def __str__(self):
+        return "Obstacle %s at [%d,%d]" % (self.name, self.x, self.y)

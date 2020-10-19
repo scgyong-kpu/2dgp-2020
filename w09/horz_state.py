@@ -34,13 +34,14 @@ def update():
         return
     gfw.world.update()
 
-    dx = -350 * gfw.delta_time
+    dx = -300 * gfw.delta_time
 
     for layer in range(gfw.layer.platform, gfw.layer.item + 1):
         for obj in gfw.world.objects_at(layer):
             obj.move(dx)
 
     check_items()
+    check_obstacles()
 
     stage_gen.update(dx)
 
@@ -49,6 +50,13 @@ def check_items():
         if gobj.collides_box(player, item):
             gfw.world.remove(item)
             break
+
+def check_obstacles():
+    for enemy in gfw.world.objects_at(gfw.layer.enemy):
+        if enemy.hit: continue
+        if gobj.collides_box(player, enemy):
+            print('Hit', enemy)
+            enemy.hit = True
 
 def draw():
     gfw.world.draw()

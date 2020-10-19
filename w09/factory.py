@@ -22,5 +22,7 @@ class Factory:
         ao = JsonObject(x, y)
         if "attr" in obj:
             ao.__dict__.update(obj["attr"])
+        if "name" in obj:
+            ao.name = obj["name"]
         ao.set_anim(gobj.resl(obj['files']), obj['fps'])
         return ao
