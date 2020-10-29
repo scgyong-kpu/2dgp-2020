@@ -6,7 +6,7 @@ from score import Score
 import gobj
 import enemy_gen
 import life_gauge
-from background import HorzScrollBackground
+from background import VertScrollBackground
 
 canvas_width = 500
 canvas_height = 800
@@ -24,11 +24,11 @@ def enter():
     global font
     font = gfw.font.load(gobj.RES_DIR + '/segoeprb.ttf', 40)
 
-    bg = HorzScrollBackground('bg_city.png')
+    bg = VertScrollBackground('bg_city.png')
     bg.speed = 10
     gfw.world.add(gfw.layer.bg, bg)
 
-    bg = HorzScrollBackground('clouds.png')
+    bg = VertScrollBackground('clouds.png')
     bg.speed = 20
     gfw.world.add(gfw.layer.bg2, bg)
 
