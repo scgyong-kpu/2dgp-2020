@@ -2,7 +2,10 @@ import random
 from pico2d import *
 import gfw
 
-RES_DIR = './res'
+RES_DIR = './res/'
+
+def res(file):
+    return RES_DIR + file
 
 def rand(val):
     return val * random.uniform(0.9, 1.1)
