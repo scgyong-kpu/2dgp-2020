@@ -2,6 +2,7 @@ import random
 from pico2d import *
 import gfw
 import gobj
+from ext_2dgp import *
 
 class Player:
     KEY_MAP = {
@@ -78,11 +79,15 @@ class Player:
             if dy > 0 and y >= ty or dy < 0 and y <= ty:
                 y = ty
                 done = True
+            elapsed = get_time() - self.btnDownOn
+            alpha = clamp(0, round(elapsed * 255 / 3.0), 255)
+            set_image_alpha(self.image, alpha)
 
         if done:
             self.target = None
             self.delta = 0, 0
             self.action = 2 if dx < 0 else 3
+            set_image_alpha(self.image, 255)
         self.pos = x,y
 
         # self.bg.pos = 2 * center_x - x, 2 * center_y - y
@@ -110,6 +115,7 @@ class Player:
             self.mag //= 2
 
         if e.type == SDL_MOUSEBUTTONDOWN:
+            self.btnDownOn = get_time()
             target = self.bg.translate(gobj.mouse_xy(e))
             self.set_target(target)
         elif e.type == SDL_MOUSEMOTION:
