@@ -11,6 +11,11 @@ class Card:
         self.bg.draw()
     def update(self):
         pass
+    def handle_event(self, e):
+        if e.type == SDL_MOUSEBUTTONDOWN and e.button == SDL_BUTTON_LEFT:
+            pos = gobj.mouse_xy(e)
+            if gobj.pt_in_rect(pos, self.get_bb()):
+                print("It's me:", self.index)
     def get_bb(self):
         hw = Card.WIDTH // 2
         hh = Card.HEIGHT // 2

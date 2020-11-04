@@ -40,6 +40,9 @@ def handle_event(e):
         if e.key == SDLK_ESCAPE:
             return gfw.quit()
 
+    for card in gfw.world.objects_at(gfw.layer.card):
+        card.handle_event(e)
+
 def exit():
     pass
 
