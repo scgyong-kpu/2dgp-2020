@@ -20,7 +20,7 @@ def enter():
 
     x,y = start_x, start_y
     for i in range(20):
-        c = Card(i, (x,y))
+        c = Card(i // 2 + 1, (x,y))
         gfw.world.add(gfw.layer.card, c)
         x += Card.WIDTH + PADDING
         if x > get_canvas_width():

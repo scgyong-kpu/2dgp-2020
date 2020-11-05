@@ -1,12 +1,14 @@
-import gfw
+import random
 from pico2d import *
+import gfw
 import gobj
 
 class Card:
     WIDTH,HEIGHT = 100,100
     def __init__(self, index, pos):
         self.bg = gobj.ImageObject('back.png', pos)
-        self.fg = gobj.AnimObject('f_01.png', pos, 10)
+        fps = random.randrange(20, 30)
+        self.fg = gobj.AnimObject('f_%02d.png' % index, pos, fps)
         self.image = self.bg
         self.index = index
     def draw(self):
