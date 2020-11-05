@@ -11,7 +11,7 @@ def start(theme):
     pair_state.theme = theme
     gfw.push(pair_state)
 
-def enter():
+def build_world():
     gfw.world.init(['bg', 'ui'])
 
     center = (canvas_width//2, canvas_height//2)
@@ -28,6 +28,9 @@ def enter():
     b -= 120
     btn = Button(l,b,w,h,font,"Play Twice Version", lambda: start("twice"))
     gfw.world.add(gfw.layer.ui, btn)
+
+def enter():
+    build_world()
 
 def update():
     gfw.world.update()
@@ -71,7 +74,7 @@ def pause():
     pass
 
 def resume():
-    pass
+    build_world()
 
 if __name__ == '__main__':
     gfw.run_main()
