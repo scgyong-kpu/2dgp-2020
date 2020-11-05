@@ -19,8 +19,10 @@ def enter():
     gfw.world.add(gfw.layer.bg, gobj.ImageObject('bg.png', center))
 
     x,y = start_x, start_y
-    for i in range(20):
-        c = Card(i // 2 + 1, (x,y))
+    idxs = [n + 1 for n in range(10)] * 2
+    print(idxs)
+    for i in idxs:
+        c = Card(i, (x,y))
         gfw.world.add(gfw.layer.card, c)
         x += Card.WIDTH + PADDING
         if x > get_canvas_width():
