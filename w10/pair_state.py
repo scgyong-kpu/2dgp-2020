@@ -56,6 +56,10 @@ def handle_event(e):
             if last_card is None:
                 last_card = card
                 break
+            if last_card.index == card.index:
+                last_card.remove()
+                card.remove()
+                break
             last_card.toggle()
             last_card = card
 
