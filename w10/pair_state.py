@@ -18,10 +18,12 @@ SCORE_TEXT_COLOR = (255, 255, 255)
 start_x = Card.WIDTH // 2 + PADDING
 start_y = Card.HEIGHT // 2 + PADDING
 
+theme = 'twice'
+
 def enter():
     gfw.world.init(['bg', 'card'])
     center = get_canvas_width()//2, get_canvas_height()//2
-    gfw.world.add(gfw.layer.bg, gobj.ImageObject('bg.png', center))
+    gfw.world.add(gfw.layer.bg, gobj.ImageObject(theme + '/bg.png', center))
 
     x,y = start_x, start_y
     idxs = [n + 1 for n in range(10)] * 2
@@ -29,7 +31,7 @@ def enter():
     random.shuffle(idxs)
     print('after: ', idxs)
     for i in idxs:
-        c = Card(i, (x,y))
+        c = Card(i, (x,y), theme)
         gfw.world.add(gfw.layer.card, c)
         x += Card.WIDTH + PADDING
         if x > get_canvas_width():
@@ -42,7 +44,7 @@ def enter():
     global score, font
     score = 0
     font = gfw.font.load(gobj.res('ENCR10B.TTF'), 20)
-    
+
     global bg_music, flip_wav
     bg_music = load_music(gobj.res('bg.mp3'))
     bg_music.set_volume(60)
@@ -87,7 +89,9 @@ def handle_event(e):
             last_card = card
 
 def exit():
-    pass
+    global bg_music
+    bg_music.stop()
+    del bg_music
 
 if __name__ == '__main__':
     gfw.run_main()

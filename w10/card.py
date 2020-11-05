@@ -5,10 +5,10 @@ import gobj
 
 class Card:
     WIDTH,HEIGHT = 100,100
-    def __init__(self, index, pos):
-        self.bg = gobj.ImageObject('back.png', pos)
+    def __init__(self, index, pos, theme='.'):
+        self.bg = gobj.ImageObject(theme + '/back.png', pos)
         fps = random.randrange(20, 30)
-        self.fg = gobj.AnimObject('f_%02d.png' % index, pos, fps)
+        self.fg = gobj.AnimObject(theme + '/f_%02d.png' % index, pos, fps)
         self.image = self.bg
         self.index = index
     def draw(self):
