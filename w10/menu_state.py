@@ -64,6 +64,7 @@ def handle_mouse(e):
     return False
 
 def exit():
+    print("menu_state exits")
     pass
 
 def pause():

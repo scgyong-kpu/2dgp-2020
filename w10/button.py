@@ -107,6 +107,9 @@ class Button:
     def update(self):
         pass
 
+    def __del__(self):
+        print('Del Button:', self)
+
 def get_text_extent(font, text):
     w, h = c_int(), c_int()
     TTF_SizeText(font.font, text.encode('utf-8'), ctypes.byref(w), ctypes.byref(h))
