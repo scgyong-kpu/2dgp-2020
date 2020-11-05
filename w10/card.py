@@ -20,6 +20,8 @@ class Card:
             pos = gobj.mouse_xy(e)
             if gobj.pt_in_rect(pos, self.get_bb()):
                 self.toggle()
+                return True
+        return False
     def toggle(self):
         self.image = self.bg if self.image == self.fg else self.fg
     def get_bb(self):

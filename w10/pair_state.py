@@ -32,6 +32,9 @@ def enter():
             x = start_x
             y += Card.HEIGHT + PADDING
 
+    global last_card
+    last_card = None
+
 def update():
     gfw.world.update()
 
@@ -45,8 +48,16 @@ def handle_event(e):
         if e.key == SDLK_ESCAPE:
             return gfw.quit()
 
+    global last_card
     for card in gfw.world.objects_at(gfw.layer.card):
-        card.handle_event(e)
+        if card == last_card:
+            continue
+        if card.handle_event(e):
+            if last_card is None:
+                last_card = card
+                break
+            last_card.toggle()
+            last_card = card
 
 def exit():
     pass
