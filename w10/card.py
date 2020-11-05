@@ -6,7 +6,7 @@ class Card:
     WIDTH,HEIGHT = 100,100
     def __init__(self, index, pos):
         self.bg = gobj.ImageObject('back.png', pos)
-        self.fg = gobj.ImageObject('fg.png', pos)
+        self.fg = gobj.AnimObject('f_01.png', pos, 10)
         self.image = self.bg
         self.index = index
     def draw(self):
