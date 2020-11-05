@@ -75,8 +75,8 @@ class ImageObject:
     def __setstate__(self, dict):
         self.__dict__.update(dict)
         self.image = gfw.image.load(res(self.imageName))
-    def __del__(self):
-        print('Del Img:', self)
+    # def __del__(self):
+    #     print('Del Img:', self)
 
 class AnimObject:
     def __init__(self, imageName, pos, fps, fcount=0):
@@ -96,8 +96,8 @@ class AnimObject:
         self.image.clip_draw(sx, 0, self.width, self.height, *self.pos)
     def update(self):
         pass
-    def __del__(self):
-        print('Del Anim:', self)
+    # def __del__(self):
+    #     print('Del Anim:', self)
 
 if __name__ == "__main__":
 	print("This file is not supposed to be executed directly.")

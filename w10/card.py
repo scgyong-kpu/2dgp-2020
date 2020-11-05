@@ -33,5 +33,6 @@ class Card:
     def remove(self):
         gfw.world.remove(self)
 
-    def __del__(self):
-        print('Del Card:', self)
+    # def __del__(self):
+    #     print('Del Card:', self)
+
