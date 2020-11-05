@@ -1,5 +1,6 @@
-import gfw
+import random
 from pico2d import *
+import gfw
 import gobj
 from card import Card
 
@@ -20,7 +21,9 @@ def enter():
 
     x,y = start_x, start_y
     idxs = [n + 1 for n in range(10)] * 2
-    print(idxs)
+    print('before:', idxs)
+    random.shuffle(idxs)
+    print('after: ', idxs)
     for i in idxs:
         c = Card(i, (x,y))
         gfw.world.add(gfw.layer.card, c)
