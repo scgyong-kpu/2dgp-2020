@@ -27,9 +27,11 @@ def enter():
 
     x,y = start_x, start_y
     idxs = [n + 1 for n in range(10)] * 2
-    print('before:', idxs)
+    # print('before:', idxs)
     random.shuffle(idxs)
-    print('after: ', idxs)
+    # print('after: ', idxs)
+    for i in range(15, -1, -5):
+        print(idxs[i:i+5])
     for i in idxs:
         c = Card(i, (x,y), theme)
         gfw.world.add(gfw.layer.card, c)
