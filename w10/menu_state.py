@@ -7,6 +7,10 @@ import pair_state
 canvas_width = pair_state.canvas_width
 canvas_height = pair_state.canvas_height
 
+def start(theme):
+    pair_state.theme = theme
+    gfw.change(pair_state)
+
 def enter():
     gfw.world.init(['bg', 'ui'])
 
@@ -18,11 +22,11 @@ def enter():
     font = gfw.font.load(gobj.res('ENCR10B.TTF'), 40)
 
     l,b,w,h = 50,350,get_canvas_width()-100,80
-    btn = Button(l,b,w,h,font,"Play Card Version", lambda: print("Card"))
+    btn = Button(l,b,w,h,font,"Play Card Version", lambda: start("enemy"))
     gfw.world.add(gfw.layer.ui, btn)
 
     b -= 120
-    btn = Button(l,b,w,h,font,"Play Twice Version", lambda: print("Twice"))
+    btn = Button(l,b,w,h,font,"Play Twice Version", lambda: start("twice"))
     gfw.world.add(gfw.layer.ui, btn)
 
 def update():
