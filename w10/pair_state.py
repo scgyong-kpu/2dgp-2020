@@ -3,7 +3,6 @@ from pico2d import *
 import gfw
 import gobj
 from card import Card
-import menu_state
 
 SCORE_HEIGHT = 30
 PADDING = 10
@@ -71,7 +70,7 @@ def handle_event(e):
         return gfw.quit()
     elif e.type == SDL_KEYDOWN:
         if e.key == SDLK_ESCAPE:
-            return gfw.change(menu_state)
+            return gfw.pop()
 
     global last_card, flip_wav
     for card in gfw.world.objects_at(gfw.layer.card):

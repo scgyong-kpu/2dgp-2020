@@ -9,7 +9,7 @@ canvas_height = pair_state.canvas_height
 
 def start(theme):
     pair_state.theme = theme
-    gfw.change(pair_state)
+    gfw.push(pair_state)
 
 def enter():
     gfw.world.init(['bg', 'ui'])
