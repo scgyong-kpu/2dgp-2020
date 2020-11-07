@@ -21,8 +21,14 @@ def generate_block():
 
     gfw.world.add(gfw.layer.block, block)
 
-def move_left():
-    board.move_left()
+def move_board(convert):
+    board.move(convert)
+
+def convert_left(x, y):
+    return x, y
+
+def convert_right(x, y):
+    return 3-x, y
 
 def enter():
     build_world()
@@ -42,7 +48,9 @@ def handle_event(e):
         if e.key == SDLK_SPACE:
             generate_block()
         elif e.key == SDLK_LEFT:
-            move_left()
+            move_board(convert_left)
+        elif e.key == SDLK_RIGHT:
+            move_board(convert_right)
 
 def exit():
     pass

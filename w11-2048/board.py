@@ -32,15 +32,15 @@ def generate_block(block):
     y = i // 4
     return x, y
 
-def move_left():
+def move(converter):
     moved = False
     for y in range(4):
         for x in range(4):
-            ox, oy = (x, y)
+            ox, oy = converter(x, y)
             b = get_block(ox, oy)
             if b is None:
                 for x2 in range(x + 1, 4):
-                    ox2, oy2 = (x2, y)
+                    ox2, oy2 = converter(x2, y)
                     b = get_block(ox2, oy2)
                     # v = self.blocks[y * 4 + x2].getValue()
                     if b is not None:
