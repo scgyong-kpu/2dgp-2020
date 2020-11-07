@@ -22,7 +22,7 @@ def is_full():
     return True
 
 def generate_block():
-    if is_full(): return False
+    if is_full(): return (-1, -1, 0)
     while True:
         i = random.randint(0, 15)
         print(i, blocks[i])
@@ -30,7 +30,9 @@ def generate_block():
     block = random.choice([2, 4])
     print("Generating %d at %d" % (block, i))
     blocks[i] = block
-    return True
+    x = i % 4
+    y = i // 4
+    return (x, y, block)
 
 def test_board():
     for i in range(16):
