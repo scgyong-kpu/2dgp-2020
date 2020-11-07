@@ -36,6 +36,7 @@ def move(converter):
     moved = False
     for y in range(4):
         for x in range(4):
+            v = 0
             ox, oy = converter(x, y)
             b = get_block(ox, oy)
             if b is None:
@@ -44,12 +45,29 @@ def move(converter):
                     b = get_block(ox2, oy2)
                     # v = self.blocks[y * 4 + x2].getValue()
                     if b is not None:
+                        v = b.value
                         set_block(ox, oy, b)
                         b.move_to(ox, oy)
                         set_block(ox2, oy2, None)
                         moved = True
                         break
                 if b is None:
+                    break
+            else:
+                v = b.value
+            for x2 in range(x + 1, 4):
+                ox2, oy2 = converter(x2, y)
+                b2 = get_block(ox2, oy2)
+                if b2 is not None:
+                    v2 = b2.value
+                    if v == v2:
+                        # score += 2 * v
+                        b.remove()
+                        set_block(ox, oy, b2)
+                        b2.double()
+                        b2.move_to(ox, oy)
+                        set_block(ox2, oy2, None)
+                        moved = True
                     break
 
 def test_board():
