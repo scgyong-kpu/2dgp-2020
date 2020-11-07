@@ -17,13 +17,12 @@ def generate_block():
     value = random.choice([2, 4])
     block = Block(value)
     x,y = board.generate_block(block)
+    block.move_to(x, y)
 
-    x = x * 120 + 80
-    y = y * 120 + 80
-    fn = 'block_%05d.png' % value
-    block = gobj.AnimObject(fn, (x,y), 10)
     gfw.world.add(gfw.layer.block, block)
 
+def move_left():
+    board.move_left()
 
 def enter():
     build_world()
@@ -42,6 +41,8 @@ def handle_event(e):
             return gfw.pop()
         if e.key == SDLK_SPACE:
             generate_block()
+        elif e.key == SDLK_LEFT:
+            move_left()
 
 def exit():
     pass

@@ -32,6 +32,26 @@ def generate_block(block):
     y = i // 4
     return x, y
 
+def move_left():
+    moved = False
+    for y in range(4):
+        for x in range(4):
+            ox, oy = (x, y)
+            b = get_block(ox, oy)
+            if b is None:
+                for x2 in range(x + 1, 4):
+                    ox2, oy2 = (x2, y)
+                    b = get_block(ox2, oy2)
+                    # v = self.blocks[y * 4 + x2].getValue()
+                    if b is not None:
+                        set_block(ox, oy, b)
+                        b.move_to(ox, oy)
+                        set_block(ox2, oy2, None)
+                        moved = True
+                        break
+                if b is None:
+                    break
+
 def test_board():
     for i in range(16):
         generate_block()
