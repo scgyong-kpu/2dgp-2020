@@ -22,8 +22,9 @@ def generate_block():
     gfw.world.add(gfw.layer.block, block)
 
 def move_board(convert):
-    board.move(convert)
-    generate_block()
+    moved = board.move(convert)
+    if moved:
+        generate_block()
 
 def enter():
     build_world()

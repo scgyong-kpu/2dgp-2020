@@ -4,6 +4,9 @@ blocks = [ None for i in range(16) ]
 
 def get_block(x, y):
     return blocks[y * 4 + x]
+def get_value(x, y):
+    b = blocks[y * 4 + x]
+    return 0 if b is None else b.value
 def set_block(x, y, block):
     blocks[y * 4 + x] = block
 
@@ -31,6 +34,15 @@ def generate_block(block):
     x = i % 4
     y = i // 4
     return x, y
+
+def can_reduce(self):
+    for y in range(3):
+        for x in range(3):
+            v = get_value(x, y)
+            if v == 0: continue
+            if v == get_value(x + 1, y): return True
+            if v == get_value(x, y + 1): return True
+    return False
 
 def move(converter):
     moved = False
@@ -69,6 +81,7 @@ def move(converter):
                         set_block(ox2, oy2, None)
                         moved = True
                     break
+    return moved
 
 def test_board():
     for i in range(16):
