@@ -1,3 +1,4 @@
+import random
 
 blocks = [ None for i in range(16) ]
 
@@ -15,13 +16,26 @@ def print_blocks():
             line += str
         print(line)
 
+def is_full():
+    for i in range(16):
+        if blocks[i] == None: return False
+    return True
+
+def generate_block():
+    if is_full(): return False
+    while True:
+        i = random.randint(0, 15)
+        print(i, blocks[i])
+        if blocks[i] is None: break
+    block = random.choice([2, 4])
+    print("Generating %d at %d" % (block, i))
+    blocks[i] = block
+    return True
 
 def test_board():
-    set_block(2, 3, 16)
-    set_block(1, 2, 4)
-    set_block(0, 2, 8)
-    set_block(3, 0, 32)
-    print_blocks()
+    for i in range(16):
+        generate_block()
+        print_blocks()
 
 if __name__ == '__main__':
     test_board()
