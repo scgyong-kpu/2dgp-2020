@@ -2,6 +2,7 @@ import gfw
 from gobj import *
 
 SPEED_PPS = 3000
+MAG_SPEED = 0.15
 
 class Block(AnimObject):
     def __init__(self, value):
@@ -9,6 +10,8 @@ class Block(AnimObject):
         fn = 'block_%05d.png' % value
         super(Block, self).__init__(fn, (0, 0), 10)
         self.target = None
+        self.being_born = True
+        self.mag = 0
     def double(self):
         self.value *= 2
         fn = 'block_%05d.png' % self.value
@@ -21,8 +24,21 @@ class Block(AnimObject):
             # print('target = ', self.target)
         else:
             self.pos = x, y
+    def draw(self):
+        elapsed = get_time() - self.time
+        fidx = round(elapsed * self.fps) % self.fcount
+        sx = self.width * fidx
+        size = self.width * self.mag, self.height * self.mag
+        self.image.clip_draw(sx, 0, self.width, self.height, *self.pos, *size)
     def update(self):
-        if self.target is None: return
+        if self.target is not None: 
+            self.head_to_target()
+        if self.being_born:
+            self.mag += (1.0/MAG_SPEED) * gfw.delta_time
+            if self.mag >= 1.0:
+                self.mag = 1.0
+                self.being_born = False
+    def head_to_target(self):
         dist = SPEED_PPS * gfw.delta_time
         x,y = self.pos
         tx,ty = self.target
