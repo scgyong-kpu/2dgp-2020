@@ -46,6 +46,7 @@ def can_reduce(self):
 
 def move(converter):
     moved = False
+    score = 0
     for y in range(4):
         for x in range(4):
             v = 0
@@ -73,7 +74,7 @@ def move(converter):
                 if b2 is not None:
                     v2 = b2.value
                     if v == v2:
-                        # score += 2 * v
+                        score += 2 * v
                         b.remove()
                         set_block(ox, oy, b2)
                         b2.double()
@@ -81,7 +82,7 @@ def move(converter):
                         set_block(ox2, oy2, None)
                         moved = True
                     break
-    return moved
+    return moved, score
 
 def test_board():
     for i in range(16):

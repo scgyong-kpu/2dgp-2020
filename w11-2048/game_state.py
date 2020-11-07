@@ -5,11 +5,19 @@ import gfw
 import gobj
 import board
 from block import Block
+from score import Score
+
+canvas_width = 520
+canvas_height = 600
 
 def build_world():
     gfw.world.init(['bg', 'block', 'ui'])
     bg = gobj.ImageBackground('FF9F49.png')
     gfw.world.add(gfw.layer.bg, bg)
+
+    global score
+    score = Score(get_canvas_width() - 20, get_canvas_height() - 50)
+    gfw.world.add(gfw.layer.ui, score)
 
 def generate_block():
     if board.is_full(): return
@@ -22,9 +30,11 @@ def generate_block():
     gfw.world.add(gfw.layer.block, block)
 
 def move_board(convert):
-    moved = board.move(convert)
+    moved, score_inc = board.move(convert)
     if moved:
         generate_block()
+
+    score.score += score_inc
 
 def enter():
     build_world()
