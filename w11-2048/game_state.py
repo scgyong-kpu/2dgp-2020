@@ -24,12 +24,6 @@ def generate_block():
 def move_board(convert):
     board.move(convert)
 
-def convert_left(x, y):
-    return x, y
-
-def convert_right(x, y):
-    return 3-x, y
-
 def enter():
     build_world()
 
@@ -48,9 +42,13 @@ def handle_event(e):
         if e.key == SDLK_SPACE:
             generate_block()
         elif e.key == SDLK_LEFT:
-            move_board(convert_left)
+            move_board(lambda x,y: (x,y))
         elif e.key == SDLK_RIGHT:
-            move_board(convert_right)
+            move_board(lambda x,y: (3-x,y))
+        elif e.key == SDLK_DOWN:
+            move_board(lambda x,y: (y,x))
+        elif e.key == SDLK_UP:
+            move_board(lambda x,y: (3-y,3-x))
 
 def exit():
     pass
