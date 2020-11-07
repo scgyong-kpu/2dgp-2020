@@ -1,8 +1,10 @@
+import random
 from pico2d import *
 from ext_pico2d import *
 import gfw
 import gobj
 import board
+from block import Block
 
 def build_world():
     gfw.world.init(['bg', 'block', 'ui'])
@@ -10,12 +12,15 @@ def build_world():
     gfw.world.add(gfw.layer.bg, bg)
 
 def generate_block():
-    x,y,n = board.generate_block()
-    if n == 0: return
+    if board.is_full(): return
+
+    value = random.choice([2, 4])
+    block = Block(value)
+    x,y = board.generate_block(block)
 
     x = x * 120 + 80
     y = y * 120 + 80
-    fn = 'block_%05d.png' % n
+    fn = 'block_%05d.png' % value
     block = gobj.AnimObject(fn, (x,y), 10)
     gfw.world.add(gfw.layer.block, block)
 

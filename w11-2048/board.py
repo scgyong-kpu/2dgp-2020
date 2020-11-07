@@ -21,18 +21,16 @@ def is_full():
         if blocks[i] == None: return False
     return True
 
-def generate_block():
+def generate_block(block):
     if is_full(): return (-1, -1, 0)
     while True:
         i = random.randint(0, 15)
-        print(i, blocks[i])
+        # print(i, blocks[i])
         if blocks[i] is None: break
-    block = random.choice([2, 4])
-    print("Generating %d at %d" % (block, i))
     blocks[i] = block
     x = i % 4
     y = i // 4
-    return (x, y, block)
+    return x, y
 
 def test_board():
     for i in range(16):
