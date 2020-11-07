@@ -23,9 +23,11 @@ def generate_block():
 
 def move_board(convert):
     board.move(convert)
+    generate_block()
 
 def enter():
     build_world()
+    generate_block()
 
 def update():
     gfw.world.update()
@@ -39,8 +41,8 @@ def handle_event(e):
     elif e.type == SDL_KEYDOWN:
         if e.key == SDLK_ESCAPE:
             return gfw.pop()
-        if e.key == SDLK_SPACE:
-            generate_block()
+        # if e.key == SDLK_SPACE:
+        #     generate_block()
         elif e.key == SDLK_LEFT:
             move_board(lambda x,y: (x,y))
         elif e.key == SDLK_RIGHT:
