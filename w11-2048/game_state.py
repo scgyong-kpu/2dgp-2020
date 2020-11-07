@@ -17,7 +17,7 @@ def generate_block():
     value = random.choice([2, 4])
     block = Block(value)
     x,y = board.generate_block(block)
-    block.move_to(x, y)
+    block.move_to(x, y, False)
 
     gfw.world.add(gfw.layer.block, block)
 
