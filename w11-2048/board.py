@@ -89,25 +89,13 @@ def move(converter):
                     break
     return moved, score
 
-fps = 10
-slow_down_speed = 0
 def slow_down_animation():
-    global fps, slow_down_speed
-    fps = 10
-    slow_down_speed = 2.0
-
-def update():
-    global slow_down_speed, fps
-    if slow_down_speed == 0: return
-
-    fps -= slow_down_speed * gfw.delta_time
-    if fps <= 0.1: fps = 0.1
-    # print('fps: %.2f' % fps)
     for b in blocks:
         if b is None: continue
-        b.fps = fps
-    if fps == 0.1:
-        slow_down_speed = 0
+        b.fps = random.random()
+
+def update():
+    pass
 
 def test_board():
     for i in range(16):
