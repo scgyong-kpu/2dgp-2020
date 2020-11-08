@@ -49,8 +49,24 @@ def move_board(convert):
     if board.is_full() and not board.can_reduce():
         end_game()
 
+def start_game():
+    global state
+    if state != GAME_OVER:
+        return
+
+    board.reset()
+    gfw.world.clear_at(gfw.layer.block)
+    global score
+    score.reset()
+    gfw.world.remove(highscore)
+
+    state = IN_GAME
+    generate_block()
+
 def end_game():
     global state
+    if state != IN_GAME:
+        return
     state = GAME_OVER
     print("Game Over")
     board.slow_down_animation()
@@ -84,6 +100,8 @@ def handle_event(e):
             move_board(lambda x,y: (y,x))
         elif e.key == SDLK_UP:
             move_board(lambda x,y: (3-y,3-x))
+        elif e.key == SDLK_RETURN:
+            start_game()
         elif e.key == SDLK_e:
             end_game()
 

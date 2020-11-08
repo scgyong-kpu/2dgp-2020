@@ -3,6 +3,10 @@ import gfw
 
 blocks = [ None for i in range(16) ]
 
+def reset():
+    global blocks
+    blocks = [ None for i in range(16) ]
+
 def get_block(x, y):
     return blocks[y * 4 + x]
 def get_value(x, y):
