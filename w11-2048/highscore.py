@@ -1,8 +1,10 @@
+import pickle
 from pico2d import *
 import time
 import gfw
 import gobj
 
+FILENAME = 'data.pickle'
 scores = []
 MAX_SCORE_COUNT = 10
 last_rank = -1
@@ -16,6 +18,20 @@ def load():
     global font, image
     font = gfw.font.load(gobj.res('ConsolaMalgun.ttf'), 20)
     image = gfw.image.load(gobj.res('game_over.png'))
+
+    global scores
+    try:
+        f = open(FILENAME, "rb")
+        scores = pickle.load(f)
+        f.close()
+        print("Scores:", scores)
+    except:
+        print("No highscore file")
+
+def save():
+    f = open(FILENAME, "wb")
+    pickle.dump(scores, f)
+    f.close()
 
 def add(score):
     global scores, last_rank
@@ -34,8 +50,8 @@ def add(score):
 
     if (len(scores) > MAX_SCORE_COUNT):
         scores.pop(-1)
-    # if last_rank <= MAX_SCORE_COUNT:
-    #     save()
+    if last_rank <= MAX_SCORE_COUNT:
+        save()
 
 def draw():
     global font, image, last_rank
