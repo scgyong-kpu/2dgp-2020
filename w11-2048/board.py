@@ -41,12 +41,12 @@ def generate_block(block):
     return x, y
 
 def can_reduce():
-    for y in range(3):
-        for x in range(3):
+    for y in range(4):
+        for x in range(4):
             v = get_value(x, y)
             if v == 0: continue
-            if v == get_value(x + 1, y): return True
-            if v == get_value(x, y + 1): return True
+            if x < 3 and v == get_value(x + 1, y): return True
+            if y < 3 and v == get_value(x, y + 1): return True
     return False
 
 def move(converter):
