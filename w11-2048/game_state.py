@@ -6,12 +6,16 @@ import gobj
 import board
 from block import Block
 from score import Score
+# import highscore
 
 canvas_width = 520
 canvas_height = 600
 
+IN_GAME, GAME_OVER = range(2)
+state = IN_GAME
+
 def build_world():
-    gfw.world.init(['bg', 'block', 'ui'])
+    gfw.world.init(['bg', 'block', 'highscore', 'ui'])
     bg = gobj.ImageBackground('FF9F49.png')
     gfw.world.add(gfw.layer.bg, bg)
 
@@ -30,11 +34,25 @@ def generate_block():
     gfw.world.add(gfw.layer.block, block)
 
 def move_board(convert):
+    global state
+    if state == GAME_OVER:
+        return
+
     moved, score_inc = board.move(convert)
     if moved:
         generate_block()
 
     score.score += score_inc
+
+    if board.is_full() and not board.can_reduce():
+        end_game()
+
+def end_game():
+    state = GAME_OVER
+    print("Game Over")
+    board.slow_down_animation()
+    # highscore.add(score.score)
+    # gfw.world.add(gfw.layer.highscore, highscore)
 
 def enter():
     build_world()
@@ -42,6 +60,7 @@ def enter():
 
 def update():
     gfw.world.update()
+    board.update()
 
 def draw():
     gfw.world.draw()
@@ -62,6 +81,8 @@ def handle_event(e):
             move_board(lambda x,y: (y,x))
         elif e.key == SDLK_UP:
             move_board(lambda x,y: (3-y,3-x))
+        elif e.key == SDLK_e:
+            end_game()
 
 def exit():
     pass

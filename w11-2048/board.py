@@ -1,4 +1,5 @@
 import random
+import gfw
 
 blocks = [ None for i in range(16) ]
 
@@ -35,7 +36,7 @@ def generate_block(block):
     y = i // 4
     return x, y
 
-def can_reduce(self):
+def can_reduce():
     for y in range(3):
         for x in range(3):
             v = get_value(x, y)
@@ -83,6 +84,26 @@ def move(converter):
                         moved = True
                     break
     return moved, score
+
+fps = 10
+slow_down_speed = 0
+def slow_down_animation():
+    global fps, slow_down_speed
+    fps = 10
+    slow_down_speed = 2.0
+
+def update():
+    global slow_down_speed, fps
+    if slow_down_speed == 0: return
+
+    fps -= slow_down_speed * gfw.delta_time
+    if fps <= 0.1: fps = 0.1
+    print('fps: %.2f' % fps)
+    for b in blocks:
+        if b is None: continue
+        b.fps = fps
+    if fps == 0.1:
+        slow_down_speed = 0
 
 def test_board():
     for i in range(16):
