@@ -6,7 +6,7 @@ import gobj
 import board
 from block import Block
 from score import Score
-# import highscore
+import highscore
 
 canvas_width = 520
 canvas_height = 600
@@ -51,8 +51,8 @@ def end_game():
     state = GAME_OVER
     print("Game Over")
     board.slow_down_animation()
-    # highscore.add(score.score)
-    # gfw.world.add(gfw.layer.highscore, highscore)
+    highscore.add(score.score)
+    gfw.world.add(gfw.layer.highscore, highscore)
 
 def enter():
     build_world()
