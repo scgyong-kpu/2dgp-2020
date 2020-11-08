@@ -23,6 +23,8 @@ def build_world():
     score = Score(get_canvas_width() - 20, get_canvas_height() - 50)
     gfw.world.add(gfw.layer.ui, score)
 
+    highscore.load()
+
 def generate_block():
     if board.is_full(): return
 
@@ -48,6 +50,7 @@ def move_board(convert):
         end_game()
 
 def end_game():
+    global state
     state = GAME_OVER
     print("Game Over")
     board.slow_down_animation()

@@ -98,7 +98,7 @@ def update():
 
     fps -= slow_down_speed * gfw.delta_time
     if fps <= 0.1: fps = 0.1
-    print('fps: %.2f' % fps)
+    # print('fps: %.2f' % fps)
     for b in blocks:
         if b is None: continue
         b.fps = fps
@@ -111,4 +111,5 @@ def test_board():
         print_blocks()
 
 if __name__ == '__main__':
-    test_board()
+    # test_board()
+    pass

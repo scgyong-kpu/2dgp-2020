@@ -12,6 +12,11 @@ class Entry:
         self.score = score
         self.time = time.time()
 
+def load():
+    global font, image
+    font = gfw.font.load(gobj.res('ConsolaMalgun.ttf'), 20)
+    image = gfw.image.load(gobj.res('game_over.png'))
+
 def add(score):
     global scores, last_rank
     entry = Entry(score)
@@ -33,9 +38,10 @@ def add(score):
     #     save()
 
 def draw():
-    font = gfw.font.load(gobj.res('ConsolaMalgun.ttf'), 20)
+    global font, image
+    image.draw_to_origin(0, 0)
     no = 1
-    y = 400
+    y = 360
     for e in scores:
         str = "{:2d} {:5.1f}".format(no, e.score)
         color = (255, 255, 128) if no == last_rank else (223, 255, 223)
