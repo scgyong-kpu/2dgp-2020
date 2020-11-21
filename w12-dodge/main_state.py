@@ -4,24 +4,10 @@ import player
 import generator
 import bg
 import highscore
+from collision import *
 
 STATE_IN_GAME, STATE_GAME_OVER = range(2)
 
-def collides_distance(a, b):
-    ax,ay = a.pos
-    bx,by = b.pos
-    radius_sum = a.radius + b.radius
-    distance_sq = (ax-bx)**2 + (ay-by)**2
-    return distance_sq < radius_sum**2
-
-def check_collision():
-    for m in gfw.world.objects_at(gfw.layer.missile):
-        if collides_distance(player, m):
-            wav_explosion.play()
-            gfw.world.remove(m)
-            dead = player.decrease_life()
-            if dead:
-                end_game()
 
 def start_game():
     global state
@@ -85,7 +71,12 @@ def update():
     score += gfw.delta_time
     gfw.world.update()
     generator.update(score)
-    check_collision()
+    hits, ends = check_collision()
+    if hits:
+        wav_explosion.play()
+
+    if ends:
+        end_game()
 
 def draw():
     gfw.world.draw()
