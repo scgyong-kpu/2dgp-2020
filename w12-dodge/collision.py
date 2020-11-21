@@ -10,7 +10,7 @@ def collides_distance(a, b):
 
 # returns hit, dead
 def check_collision():
-    hit, dead = False, False
+    hit, dead, item = False, False, None
     for m in gfw.world.objects_at(gfw.layer.missile):
         if collides_distance(player, m):
             hit = True
@@ -18,4 +18,9 @@ def check_collision():
             dead = player.decrease_life()
             break
 
-    return hit, dead
+    for m in gfw.world.objects_at(gfw.layer.item):
+        if collides_distance(player, m):
+            item = m
+            gfw.world.remove(m)
+
+    return hit, dead, item

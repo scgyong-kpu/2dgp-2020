@@ -40,10 +40,12 @@ class Missile:
 class PresentItem(Missile):
     def __init__(self, pos, delta):
         self.init(pos, delta, 'res/present_box.png')
+        self.score = 5.0
 
 class CoinItem(PresentItem):
     def __init__(self, pos, delta):
         self.init(pos, delta, 'res/coin.png')
+        self.score = 7.5
         self.time = get_time()
         self.fps = 8
         self.fcount = 6

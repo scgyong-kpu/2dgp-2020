@@ -25,6 +25,13 @@ def reset():
     global life
     life = MAX_LIFE
 
+def increase_life():
+    global life
+    if life >= MAX_LIFE:
+        return True
+    life += 1
+    return False
+
 def decrease_life():
     global life
     life -= 1

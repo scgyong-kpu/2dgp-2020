@@ -71,9 +71,14 @@ def update():
     score += gfw.delta_time
     gfw.world.update()
     generator.update(score)
-    hits, ends = check_collision()
+    hits, ends, item = check_collision()
     if hits:
         wav_explosion.play()
+    if item is not None:
+        wav_item.play()
+        full = player.increase_life()
+        if full:
+            score += item.score
 
     if ends:
         end_game()
