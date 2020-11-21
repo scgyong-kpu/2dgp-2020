@@ -64,7 +64,6 @@ def follow_mouse_target():
     dx,dy = target_x-x, target_y-y
     distance = math.sqrt(dx**2+dy**2)
     if distance == 0:
-        angle = 0
         return
     dx,dy = dx / distance, dy / distance
     x += dx * MOVE_PPS * gfw.delta_time
@@ -75,12 +74,13 @@ def follow_mouse_target():
     if dy < 0 and y < target_y: y = target_y
     pos = x, y
 
-    angle = math.atan2(dy, dx)
+    angle = math.atan2(dy, dx) - math.pi / 2
     print('Angle: %.3f' % angle)
 
 def draw():
     global image, pos
-    image.draw(*pos)
+    # image.draw(*pos)
+    image.composite_draw(angle, '', *pos)
 
     x,y = get_canvas_width() - 30, get_canvas_height() - 30
     for i in range(MAX_LIFE):
