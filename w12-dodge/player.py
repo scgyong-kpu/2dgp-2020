@@ -8,8 +8,8 @@ mouse_control = False
 
 def init():
     global image, pos, radius
-    image = gfw.image.load('res/player.png')
-    radius = image.h // 2
+    image = gfw.image.load('res/BattleCruiser.png')
+    radius = 34
 
     global heart_red, heart_white
     heart_red = gfw.image.load('res/heart_red.png')
@@ -52,9 +52,8 @@ def update():
         x += delta_x * MOVE_PPS * gfw.delta_time
         y += delta_y * MOVE_PPS * gfw.delta_time
 
-    hw, hh = image.w // 2, image.h // 2
-    x = clamp(hw, x, get_canvas_width() - hw)
-    y = clamp(hh, y, get_canvas_height() - hh)
+    x = clamp(radius, x, get_canvas_width() - radius)
+    y = clamp(radius, y, get_canvas_height() - radius)
     pos = x, y
 
 
@@ -80,7 +79,12 @@ def follow_mouse_target():
 def draw():
     global image, pos
     # image.draw(*pos)
-    image.composite_draw(angle, '', *pos)
+    size = image.h
+    fidx = round(-(angle / math.pi * 16)) % 32
+    # print('Angle: %.3f' % angle, 'fidx:', fidx_)
+    rect = fidx * size, 0, size, size
+    # print(rect, pos)
+    image.clip_draw(*rect, *pos)
 
     x,y = get_canvas_width() - 30, get_canvas_height() - 30
     for i in range(MAX_LIFE):

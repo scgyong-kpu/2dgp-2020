@@ -2,7 +2,7 @@ from pico2d import *
 import gfw
 import random
 
-MOVE_PPS = 200
+MOVE_PPS = 120
 
 class Missile:
     def __init__(self, pos, delta):

@@ -4,7 +4,7 @@ from missile import Missile, PresentItem, CoinItem
 import random
 
 MISSILE_COUNT = 10
-MAX_ITEM_COUNT = 3
+MAX_ITEM_COUNT = 2
 
 def update(score):
     max_missile_count = MISSILE_COUNT + score / 10
