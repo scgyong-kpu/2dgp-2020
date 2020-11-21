@@ -99,6 +99,8 @@ def handle_event(e):
             gfw.pop()
         elif e.key == SDLK_RETURN:
             start_game()
+    elif e.type == SDL_MOUSEBUTTONDOWN:
+        start_game()
 
     player.handle_event(e)
 

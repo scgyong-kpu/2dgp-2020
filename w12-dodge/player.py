@@ -4,6 +4,8 @@ import gfw
 MOVE_PPS = 300
 MAX_LIFE = 5
 
+mouse_control = False
+
 def init():
     global image, pos, radius
     image = gfw.image.load('res/player.png')
@@ -22,6 +24,9 @@ def reset():
     global delta_x, delta_y
     delta_x, delta_y = 0, 0
 
+    global angle
+    angle = 0
+
     global life
     life = MAX_LIFE
 
@@ -38,15 +43,40 @@ def decrease_life():
     return life <= 0
 
 def update():
-    global pos, delta_x, delta_y
-    x, y = pos
-    x += delta_x * MOVE_PPS * gfw.delta_time
-    y += delta_y * MOVE_PPS * gfw.delta_time
+    global pos
+    if mouse_control:
+        follow_mouse_target()
+        x, y = pos
+    else:
+        x, y = pos
+        x += delta_x * MOVE_PPS * gfw.delta_time
+        y += delta_y * MOVE_PPS * gfw.delta_time
 
     hw, hh = image.w // 2, image.h // 2
     x = clamp(hw, x, get_canvas_width() - hw)
     y = clamp(hh, y, get_canvas_height() - hh)
     pos = x, y
+
+
+def follow_mouse_target():
+    global pos, angle
+    x,y = pos
+    dx,dy = target_x-x, target_y-y
+    distance = math.sqrt(dx**2+dy**2)
+    if distance == 0:
+        angle = 0
+        return
+    dx,dy = dx / distance, dy / distance
+    x += dx * MOVE_PPS * gfw.delta_time
+    y += dy * MOVE_PPS * gfw.delta_time
+    if dx > 0 and x > target_x: x = target_x
+    if dx < 0 and x < target_x: x = target_x
+    if dy > 0 and y > target_y: y = target_y
+    if dy < 0 and y < target_y: y = target_y
+    pos = x, y
+
+    angle = math.atan2(dy, dx)
+    print('Angle: %.3f' % angle)
 
 def draw():
     global image, pos
@@ -58,8 +88,29 @@ def draw():
         heart.draw(x, y)
         x -= heart.w
 
+def set_target(e):
+    global target_x, target_y
+    target_x, target_y = e.x, get_canvas_height() - e.y - 1
+
 def handle_event(e):
-    global delta_x, delta_y
+    global mouse_control
+    global delta_x, delta_y, angle
+
+    if e.type == SDL_MOUSEBUTTONDOWN:
+        mouse_control = True
+        return set_target(e)
+    elif e.type == SDL_MOUSEMOTION:
+        if mouse_control:
+            return set_target(e)
+
+    if e.type == SDL_KEYDOWN and e.key == SDLK_RETURN:
+        if mouse_control:
+            mouse_control = False
+            angle = 0
+
+    if mouse_control:
+        return
+
     if e.type == SDL_KEYDOWN:
         if e.key == SDLK_LEFT:
             delta_x -= 1
