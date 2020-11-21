@@ -35,7 +35,7 @@ def end_game():
     gfw.world.add(gfw.layer.ui, highscore)
 
 def enter():
-    gfw.world.init(['bg', 'missile', 'player', 'ui'])
+    gfw.world.init(['bg', 'missile', 'item', 'player', 'ui'])
     player.init()
     gfw.world.add(gfw.layer.player, player)
     bg.init()

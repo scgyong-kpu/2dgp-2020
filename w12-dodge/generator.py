@@ -1,16 +1,32 @@
 from pico2d import *
 import gfw
-from missile import Missile
+from missile import Missile, PresentItem, CoinItem
 import random
 
 MISSILE_COUNT = 10
+MAX_ITEM_COUNT = 3
 
 def update(score):
-    max_count = MISSILE_COUNT + score / 10
-    if gfw.world.count_at(gfw.layer.missile) < max_count:
-        generate(score)
+    max_missile_count = MISSILE_COUNT + score / 10
+    if gfw.world.count_at(gfw.layer.missile) < max_missile_count:
+        generate_missile(score)
+    if gfw.world.count_at(gfw.layer.item) < MAX_ITEM_COUNT:
+        generate_item(score)
 
-def generate(score):
+def generate_missile(score):
+    x,y,dx,dy = get_coords(score)
+    m = Missile((x,y), (dx,dy))
+    gfw.world.add(gfw.layer.missile, m)
+
+def generate_item(score):
+    x,y,dx,dy = get_coords(score)
+    if random.randrange(2) == 0:
+        m = PresentItem((x,y), (dx,dy))
+    else:
+        m = CoinItem((x,y), (dx,dy))
+    gfw.world.add(gfw.layer.item, m)
+
+def get_coords(score):
     dx = random.random()
     if dx < 0.5: dx -= 1.0
     dy = random.random()
@@ -38,5 +54,4 @@ def generate(score):
         y = get_canvas_height()
         if dy > 0: dy = -dy
 
-    m = Missile((x,y), (dx,dy))
-    gfw.world.add(gfw.layer.missile, m)
+    return x, y, dx, dy
