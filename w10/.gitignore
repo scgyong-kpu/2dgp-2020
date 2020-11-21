@@ -1,4 +1,3 @@
-data.pickle
 *.spec
 build/
 dist/
