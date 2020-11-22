@@ -7,6 +7,7 @@ import gobj
 import enemy_gen
 import life_gauge
 from background import VertScrollBackground
+from tilebg import Background
 
 canvas_width = 500
 canvas_height = 800
@@ -24,8 +25,11 @@ def enter():
     global font
     font = gfw.font.load(gobj.RES_DIR + '/segoeprb.ttf', 40)
 
-    bg = VertScrollBackground('bg_city.png')
-    bg.speed = 10
+    # bg = VertScrollBackground('bg_city.png')
+    # bg.speed = 10
+    # gfw.world.add(gfw.layer.bg, bg)
+    bg = Background('res/earth.json', 'res/forest_tiles.png')
+    bg.speed_y = 10
     gfw.world.add(gfw.layer.bg, bg)
 
     bg = VertScrollBackground('clouds.png')

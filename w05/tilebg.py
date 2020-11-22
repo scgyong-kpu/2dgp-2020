@@ -35,6 +35,7 @@ class Background:
         self.tileset = self.map.tilesets[0]
         self.layer = self.map.layers[0]
         self.wraps = True
+        self.speed_x, self.speed_y = 0, 0
     def get_boundary(self):
         return 0, 0, self.width, self.height
     def to_screen(self, x, y):
@@ -42,9 +43,10 @@ class Background:
     def translate(self, x, y):
         return x + self.scroll_x, y + self.scroll_y
     def update(self):
-        pass
+        self.scroll_x += self.speed_x * gfw.delta_time
+        self.scroll_y += self.speed_y * gfw.delta_time
     def draw(self):
-        sx, sy = self.scroll_x, self.scroll_y
+        sx, sy = round(self.scroll_x), round(self.scroll_y)
         if self.wraps:
             sx %= self.width;
             if sx < 0:
@@ -66,20 +68,20 @@ class Background:
                 dl = beg_x;
                 dr = beg_x + self.map.tilewidth;
                 tx = tile_x;
-                print(tx, ty, self.map.height - ty - 1)
+                # print(tx, ty, self.map.height - ty - 1)
                 ti = (self.map.height - ty - 1) * self.map.width + tx;
-                babo = []
+                # babo = []
                 while tx < self.layer.width and dl < cw:
                     tile = self.layer.data[ti];
-                    babo.append(tile)
+                    # babo.append(tile)
                     rect = self.tileset.getRectForTile(tile);
-                    babo.append(rect)
+                    # babo.append(rect)
                     # print(rect, dl, db)
                     self.image.clip_draw_to_origin(*rect, dl, db)
                     dl += self.map.tilewidth
                     ti += 1;
                     tx += 1;
-                print(babo)
+                # print(babo)
             db += self.map.tileheight
             ty += 1;
             if self.wraps and ty >= self.layer.height:
