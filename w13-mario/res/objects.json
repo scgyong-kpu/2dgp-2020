@@ -1,0 +1,161 @@
+[
+  {
+    "height": 100,
+    "id": 1,
+    "name": "Platform",
+    "rotation": 0,
+    "type": "Platform",
+    "visible": true,
+    "width": 300,
+    "x": 0,
+    "y": 0
+  },
+  {
+    "height": 100,
+    "id": 3,
+    "name": "Platform",
+    "rotation": 0,
+    "type": "Platform",
+    "visible": true,
+    "width": 540,
+    "x": 420,
+    "y": 0
+  },
+  {
+    "height": 120,
+    "id": 9,
+    "name": "Rock",
+    "rotation": 0,
+    "type": "Rock",
+    "visible": true,
+    "width": 200,
+    "x": 480,
+    "y": 220
+  },
+  {
+    "height": 240,
+    "id": 10,
+    "name": "L",
+    "rotation": 0,
+    "type": "Ladder",
+    "visible": true,
+    "width": 40,
+    "x": 560,
+    "y": 100
+  },
+  {
+    "height": 0,
+    "id": 11,
+    "name": "Coin",
+    "point": true,
+    "rotation": 0,
+    "type": "Coin",
+    "visible": true,
+    "width": 0,
+    "x": 364,
+    "y": 188
+  },
+  {
+    "height": 0,
+    "id": 12,
+    "name": "Coin",
+    "point": true,
+    "rotation": 0,
+    "type": "Coin",
+    "visible": true,
+    "width": 0,
+    "x": 372,
+    "y": 364
+  },
+  {
+    "height": 0,
+    "id": 13,
+    "name": "Coin",
+    "point": true,
+    "rotation": 0,
+    "type": "Coin",
+    "visible": true,
+    "width": 0,
+    "x": 416,
+    "y": 436
+  },
+  {
+    "height": 0,
+    "id": 14,
+    "name": "Coin",
+    "point": true,
+    "rotation": 0,
+    "type": "Coin",
+    "visible": true,
+    "width": 0,
+    "x": 488,
+    "y": 434
+  },
+  {
+    "height": 0,
+    "id": 15,
+    "name": "Coin",
+    "point": true,
+    "rotation": 0,
+    "type": "Coin",
+    "visible": true,
+    "width": 0,
+    "x": 456,
+    "y": 474
+  },
+  {
+    "height": 100,
+    "id": 16,
+    "name": "Platform",
+    "rotation": 0,
+    "type": "Platform",
+    "visible": true,
+    "width": 340,
+    "x": 1060,
+    "y": 0
+  },
+  {
+    "height": 60,
+    "id": 17,
+    "name": "Stone",
+    "rotation": 0,
+    "type": "Stone",
+    "visible": true,
+    "width": 60,
+    "x": 1460,
+    "y": 140
+  },
+  {
+    "height": 120,
+    "id": 18,
+    "name": "Rock",
+    "rotation": 0,
+    "type": "Rock",
+    "visible": true,
+    "width": 200,
+    "x": 1320,
+    "y": 320
+  },
+  {
+    "height": 240,
+    "id": 19,
+    "name": "L",
+    "rotation": 0,
+    "type": "Ladder",
+    "visible": true,
+    "width": 40,
+    "x": 1460,
+    "y": 200
+  },
+  {
+    "height": 120,
+    "id": 20,
+    "name": "Rock",
+    "rotation": 0,
+    "type": "Rock",
+    "visible": true,
+    "width": 200,
+    "x": 940,
+    "y": 340
+  }
+]
