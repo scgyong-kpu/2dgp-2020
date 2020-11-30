@@ -1,6 +1,7 @@
 from pico2d import *
 import gfw
 import json
+import bg
 
 def load():
     with open('res/objects.json') as f:
@@ -23,7 +24,8 @@ class SpriteObj:
     def layer(self): return gfw.layer.platform
     def draw(self):
         rect = self.getRect()
-        sprite_image.clip_draw_to_origin(*rect, *self.pos, *self.size)
+        pos = bg.to_screen(self.pos)
+        sprite_image.clip_draw_to_origin(*rect, *pos, *self.size)
     def get_bb(self):
         l, b, w, h = self.getRect()
         return l, b, l+w, b+h
@@ -60,7 +62,8 @@ class Coin(SpriteObj):
 
     def draw(self):
         rect = self.getRect()
-        sprite_image.clip_draw(*rect, *self.pos)
+        pos = bg.to_screen(self.pos)
+        sprite_image.clip_draw(*rect, *pos)
     def layer(self):
         return gfw.layer.item
 
