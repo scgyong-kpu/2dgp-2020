@@ -1,8 +1,10 @@
 from pico2d import *
 import gfw
+import map_loader
 
 def enter():
     gfw.world.init(['bg', 'platform', 'item', 'player', 'ui'])
+    map_loader.load()
 
 def exit():
     pass
