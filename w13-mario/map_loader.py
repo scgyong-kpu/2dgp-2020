@@ -21,6 +21,10 @@ class SpriteObj:
         self.size = d["width"], d["height"]
         self.name = d["name"]
         self.time = 0
+        if "properties" in d:
+            for prop in d["properties"]:
+                self.__dict__[prop["name"]] = prop["value"]
+
     def layer(self): return gfw.layer.platform
     def draw(self):
         rect = self.getRect()
@@ -65,6 +69,7 @@ class Coin(SpriteObj):
         pos = bg.to_screen(self.pos)
         sprite_image.clip_draw(*rect, *pos)
     def layer(self):
+        print(self.score, self)
         return gfw.layer.item
 
 CLASSES = {
