@@ -175,7 +175,7 @@
                         {
                          "name":"score",
                          "type":"int",
-                         "value":60
+                         "value":40
                         }],
                  "rotation":0,
                  "type":"Coin",
@@ -193,7 +193,7 @@
                         {
                          "name":"score",
                          "type":"int",
-                         "value":50
+                         "value":30
                         }],
                  "rotation":0,
                  "type":"Coin",
@@ -211,7 +211,7 @@
                         {
                          "name":"score",
                          "type":"int",
-                         "value":40
+                         "value":20
                         }],
                  "rotation":0,
                  "type":"Coin",
@@ -229,7 +229,7 @@
                         {
                          "name":"score",
                          "type":"int",
-                         "value":30
+                         "value":10
                         }],
                  "rotation":0,
                  "type":"Coin",
