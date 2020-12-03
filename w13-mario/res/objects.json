@@ -48,6 +48,13 @@
     "id": 11,
     "name": "Coin",
     "point": true,
+    "properties": [
+      {
+        "name": "score",
+        "type": "int",
+        "value": 30
+      }
+    ],
     "rotation": 0,
     "type": "Coin",
     "visible": true,
@@ -60,6 +67,13 @@
     "id": 12,
     "name": "Coin",
     "point": true,
+    "properties": [
+      {
+        "name": "score",
+        "type": "int",
+        "value": 60
+      }
+    ],
     "rotation": 0,
     "type": "Coin",
     "visible": true,
@@ -72,6 +86,13 @@
     "id": 13,
     "name": "Coin",
     "point": true,
+    "properties": [
+      {
+        "name": "score",
+        "type": "int",
+        "value": 50
+      }
+    ],
     "rotation": 0,
     "type": "Coin",
     "visible": true,
@@ -84,6 +105,13 @@
     "id": 14,
     "name": "Coin",
     "point": true,
+    "properties": [
+      {
+        "name": "score",
+        "type": "int",
+        "value": 40
+      }
+    ],
     "rotation": 0,
     "type": "Coin",
     "visible": true,
@@ -96,6 +124,13 @@
     "id": 15,
     "name": "Coin",
     "point": true,
+    "properties": [
+      {
+        "name": "score",
+        "type": "int",
+        "value": 30
+      }
+    ],
     "rotation": 0,
     "type": "Coin",
     "visible": true,

@@ -10,6 +10,10 @@ def load():
     for d in objects:
         clazz = CLASSES[d["type"]]
         obj = clazz(d)
+        if "properties" in d:
+            props = d["properties"]
+            for prop in props:
+                obj.__dict__[prop["name"]] = prop["value"]
         gfw.world.add(obj.layer(), obj)
 
     global sprite_image
@@ -64,6 +68,7 @@ class Coin(SpriteObj):
         rect = self.getRect()
         pos = bg.to_screen(self.pos)
         sprite_image.clip_draw(*rect, *pos)
+        # print(self.score, self)
     def layer(self):
         return gfw.layer.item
 

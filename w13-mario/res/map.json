@@ -1,4 +1,11 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":60,
  "infinite":false,
  "layers":[
@@ -11,6 +18,12 @@
                  "height":600,
                  "id":4,
                  "name":"Screen 1",
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":30
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -122,6 +135,12 @@
                  "height":240,
                  "id":10,
                  "name":"L",
+                 "properties":[
+                        {
+                         "name":"hello",
+                         "type":"string",
+                         "value":"world"
+                        }],
                  "rotation":0,
                  "type":"Ladder",
                  "visible":true,
@@ -134,6 +153,12 @@
                  "id":11,
                  "name":"Coin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":30
+                        }],
                  "rotation":0,
                  "type":"Coin",
                  "visible":true,
@@ -146,6 +171,12 @@
                  "id":12,
                  "name":"Coin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":60
+                        }],
                  "rotation":0,
                  "type":"Coin",
                  "visible":true,
@@ -158,6 +189,12 @@
                  "id":13,
                  "name":"Coin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":50
+                        }],
                  "rotation":0,
                  "type":"Coin",
                  "visible":true,
@@ -170,6 +207,12 @@
                  "id":14,
                  "name":"Coin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":40
+                        }],
                  "rotation":0,
                  "type":"Coin",
                  "visible":true,
@@ -182,6 +225,12 @@
                  "id":15,
                  "name":"Coin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":30
+                        }],
                  "rotation":0,
                  "type":"Coin",
                  "visible":true,
@@ -226,6 +275,12 @@
                  "height":240,
                  "id":19,
                  "name":"L",
+                 "properties":[
+                        {
+                         "name":"hello",
+                         "type":"string",
+                         "value":"hahaha"
+                        }],
                  "rotation":0,
                  "type":"Ladder",
                  "visible":true,
@@ -251,7 +306,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":21,
+ "nextobjectid":22,
  "orientation":"orthogonal",
  "renderorder":"right-up",
  "tiledversion":"1.4.3",
